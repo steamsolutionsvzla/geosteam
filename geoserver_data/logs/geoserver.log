@@ -1,0 +1,1562 @@
+26 Aug 23:42:02 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+26 Aug 23:42:04 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+26 Aug 23:42:05 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+26 Aug 23:42:05 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded style generic (parent=global)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded style line (parent=global)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded style point (parent=global)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded style raster (parent=global)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded workspace geosteam
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded namespace geosteam
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+26 Aug 23:42:05 INFO   [geoserver.config] - Read Catalog in 485.4 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+26 Aug 23:42:05 CONFIG [config.datadir] - Loading GeoServer config...
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+26 Aug 23:42:05 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+26 Aug 23:42:05 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+26 Aug 23:42:05 CONFIG [config.datadir] - Loading workspace services and settings...
+26 Aug 23:42:05 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 113.3 ms
+26 Aug 23:42:06 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+26 Aug 23:42:06 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+26 Aug 23:42:06 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+26 Aug 23:42:06 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+26 Aug 23:42:06 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+26 Aug 23:42:06 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+26 Aug 23:42:06 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+26 Aug 23:42:06 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+26 Aug 23:42:06 CONFIG [gwc.layer] - Loaded 12 tile layers in 41.37 ms
+26 Aug 23:42:06 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+26 Aug 23:42:06 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+26 Aug 23:42:06 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+26 Aug 23:42:06 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+26 Aug 23:42:06 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+26 Aug 23:42:07 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+26 Aug 23:42:07 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+26 Aug 23:42:07 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+26 Aug 23:42:07 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+26 Aug 23:42:07 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+26 Aug 23:42:07 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+26 Aug 23:42:07 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+26 Aug 23:42:07 WARN   [codec.ImageEncoderImpl] - Preferred SPI not found, using the first available one: com.sun.imageio.plugins.tiff.TIFFImageWriterSpi
+26 Aug 23:42:09 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+26 Aug 23:42:09 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+26 Aug 23:42:09 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+26 Aug 23:42:09 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+26 Aug 23:42:09 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+26 Aug 23:42:10 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+26 Aug 23:42:10 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+26 Aug 23:43:07 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+26 Aug 23:43:07 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+26 Aug 23:43:07 CONFIG [gwc.layer] - Loaded 12 tile layers in 48.30 ms
+26 Aug 23:43:07 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+26 Aug 23:43:07 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+26 Aug 23:43:07 CONFIG [gwc.layer] - Loaded 12 tile layers in 31.32 ms
+26 Aug 23:43:07 WARN   [support.DisposableBeanAdapter] - Custom destroy method 'destroy' on bean with name 'gwcMemoryBlobStore' threw an exception: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@7a681ede[Not completed, task = org.geowebcache.storage.blobstore.memory.MemoryBlobStore$BlobStoreTask@1d2b30ab] rejected from java.util.concurrent.ThreadPoolExecutor@a313860[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+26 Aug 23:43:07 INFO   [geoserver.logging] - Beginning GeoServer cleanup sequence
+26 Aug 23:43:07 WARN   [geoserver.platform] - bean lookup error
+java.lang.IllegalStateException: BeanFactory not initialized or already closed - call 'refresh' before accessing beans via the ApplicationContext
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.getBeanFactory(AbstractRefreshableApplicationContext.java:169)
+	at org.springframework.context.support.AbstractApplicationContext.getBeanNamesForType(AbstractApplicationContext.java:1305)
+	at org.geoserver.platform.GeoServerExtensions.extensionNames(GeoServerExtensions.java:224)
+	at org.geoserver.platform.GeoServerExtensions.extensions(GeoServerExtensions.java:130)
+	at org.geoserver.platform.GeoServerExtensions.extensions(GeoServerExtensions.java:118)
+	at org.geoserver.platform.GeoServerExtensions.bean(GeoServerExtensions.java:342)
+	at org.geoserver.platform.GeoServerExtensions.bean(GeoServerExtensions.java:328)
+	at org.vfny.geoserver.crs.GeoserverWKTOperationFactory.getDefinitionsURL(GeoserverWKTOperationFactory.java:44)
+	at org.geotools.referencing.factory.epsg.CoordinateOperationFactoryUsingWKT.createBackingStore(CoordinateOperationFactoryUsingWKT.java:159)
+	at org.geotools.referencing.factory.DeferredAuthorityFactory.getBackingStore(DeferredAuthorityFactory.java:115)
+	at org.geotools.referencing.factory.BufferedAuthorityFactory.isAvailable(BufferedAuthorityFactory.java:238)
+	at org.geotools.referencing.factory.DeferredAuthorityFactory.isAvailable(DeferredAuthorityFactory.java:96)
+	at org.geotools.util.factory.FactoryRegistry.isAvailable(FactoryRegistry.java:703)
+	at org.geotools.util.factory.FactoryRegistry.isAcceptable(FactoryRegistry.java:543)
+	at org.geotools.util.factory.FactoryRegistry.lambda$getFactories$0(FactoryRegistry.java:252)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:178)
+	at java.base/java.util.Spliterators$IteratorSpliterator.tryAdvance(Spliterators.java:1950)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.lambda$initPartialTraversalState$0(StreamSpliterators.java:292)
+	at java.base/java.util.stream.StreamSpliterators$AbstractWrappingSpliterator.fillBuffer(StreamSpliterators.java:206)
+	at java.base/java.util.stream.StreamSpliterators$AbstractWrappingSpliterator.doAdvance(StreamSpliterators.java:161)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.tryAdvance(StreamSpliterators.java:298)
+	at java.base/java.util.Spliterators$1Adapter.hasNext(Spliterators.java:681)
+	at org.geotools.util.LazySet.exists(LazySet.java:110)
+	at org.geotools.util.LazySet$Iter.hasNext(LazySet.java:132)
+	at org.geoserver.GeoserverInitStartupListener.disposeAuthorityFactories(GeoserverInitStartupListener.java:481)
+	at org.geoserver.GeoserverInitStartupListener.contextDestroyed(GeoserverInitStartupListener.java:285)
+	at org.apache.catalina.core.StandardContext.listenerStop(StandardContext.java:4093)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:4715)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:235)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1217)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1206)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:812)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:235)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1217)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1206)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:812)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:235)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:466)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:235)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:917)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:235)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:811)
+	at org.apache.catalina.startup.Catalina$CatalinaShutdownHook.run(Catalina.java:957)
+26 Aug 23:43:21 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+26 Aug 23:43:23 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+26 Aug 23:43:23 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+26 Aug 23:43:23 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+26 Aug 23:43:23 CONFIG [config.datadir] - Loaded style generic (parent=global)
+26 Aug 23:43:23 CONFIG [config.datadir] - Loaded style line (parent=global)
+26 Aug 23:43:23 CONFIG [config.datadir] - Loaded style point (parent=global)
+26 Aug 23:43:23 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+26 Aug 23:43:23 CONFIG [config.datadir] - Loaded style raster (parent=global)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded workspace geosteam
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded namespace geosteam
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+26 Aug 23:43:24 INFO   [geoserver.config] - Read Catalog in 371.5 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+26 Aug 23:43:24 CONFIG [config.datadir] - Loading GeoServer config...
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+26 Aug 23:43:24 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+26 Aug 23:43:24 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+26 Aug 23:43:24 CONFIG [config.datadir] - Loading workspace services and settings...
+26 Aug 23:43:24 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 116.3 ms
+26 Aug 23:43:24 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+26 Aug 23:43:24 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+26 Aug 23:43:24 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+26 Aug 23:43:24 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+26 Aug 23:43:24 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+26 Aug 23:43:24 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+26 Aug 23:43:24 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+26 Aug 23:43:24 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+26 Aug 23:43:24 CONFIG [gwc.layer] - Loaded 12 tile layers in 32.38 ms
+26 Aug 23:43:24 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+26 Aug 23:43:24 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+26 Aug 23:43:24 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+26 Aug 23:43:25 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+26 Aug 23:43:25 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+26 Aug 23:43:25 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+26 Aug 23:43:25 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+26 Aug 23:43:25 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+26 Aug 23:43:25 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+26 Aug 23:43:26 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+26 Aug 23:43:26 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+26 Aug 23:43:26 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+26 Aug 23:43:26 WARN   [codec.ImageEncoderImpl] - Preferred SPI not found, using the first available one: com.sun.imageio.plugins.tiff.TIFFImageWriterSpi
+26 Aug 23:43:27 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+26 Aug 23:43:27 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+26 Aug 23:43:27 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+26 Aug 23:43:27 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+26 Aug 23:43:27 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+26 Aug 23:43:28 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+26 Aug 23:43:28 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+27 Aug 00:14:47 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+27 Aug 00:14:49 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+27 Aug 00:14:50 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+27 Aug 00:14:50 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded style generic (parent=global)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded style line (parent=global)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded style point (parent=global)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded style raster (parent=global)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded workspace geosteam
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded namespace geosteam
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+27 Aug 00:14:50 INFO   [geoserver.config] - Read Catalog in 343.1 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+27 Aug 00:14:50 CONFIG [config.datadir] - Loading GeoServer config...
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+27 Aug 00:14:50 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+27 Aug 00:14:50 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+27 Aug 00:14:50 CONFIG [config.datadir] - Loading workspace services and settings...
+27 Aug 00:14:50 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 132.6 ms
+27 Aug 00:14:50 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:14:50 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+27 Aug 00:14:50 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+27 Aug 00:14:50 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+27 Aug 00:14:50 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+27 Aug 00:14:50 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+27 Aug 00:14:50 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+27 Aug 00:14:50 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+27 Aug 00:14:50 CONFIG [gwc.layer] - Loaded 12 tile layers in 36.76 ms
+27 Aug 00:14:50 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+27 Aug 00:14:50 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+27 Aug 00:14:50 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+27 Aug 00:14:51 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+27 Aug 00:14:51 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+27 Aug 00:14:51 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:14:51 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:14:51 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:14:51 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:14:52 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+27 Aug 00:14:52 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+27 Aug 00:14:52 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+27 Aug 00:14:52 WARN   [codec.ImageEncoderImpl] - Preferred SPI not found, using the first available one: com.sun.imageio.plugins.tiff.TIFFImageWriterSpi
+27 Aug 00:14:53 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:14:53 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+27 Aug 00:14:53 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+27 Aug 00:14:53 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+27 Aug 00:14:53 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+27 Aug 00:14:53 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+27 Aug 00:14:53 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+27 Aug 00:25:10 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+27 Aug 00:25:10 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+27 Aug 00:25:10 CONFIG [gwc.layer] - Loaded 12 tile layers in 35.73 ms
+27 Aug 00:25:10 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+27 Aug 00:25:10 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+27 Aug 00:25:10 CONFIG [gwc.layer] - Loaded 12 tile layers in 29.12 ms
+27 Aug 00:25:10 WARN   [support.DisposableBeanAdapter] - Custom destroy method 'destroy' on bean with name 'gwcMemoryBlobStore' threw an exception: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@66c26dea[Not completed, task = org.geowebcache.storage.blobstore.memory.MemoryBlobStore$BlobStoreTask@263d1fad] rejected from java.util.concurrent.ThreadPoolExecutor@4713c315[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+27 Aug 00:25:10 INFO   [geoserver.logging] - Beginning GeoServer cleanup sequence
+27 Aug 00:25:27 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+27 Aug 00:25:29 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+27 Aug 00:25:29 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+27 Aug 00:25:29 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded style generic (parent=global)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded style line (parent=global)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded style point (parent=global)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded style raster (parent=global)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded workspace geosteam
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded namespace geosteam
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+27 Aug 00:25:30 INFO   [geoserver.config] - Read Catalog in 428.6 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+27 Aug 00:25:30 CONFIG [config.datadir] - Loading GeoServer config...
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+27 Aug 00:25:30 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+27 Aug 00:25:30 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+27 Aug 00:25:30 CONFIG [config.datadir] - Loading workspace services and settings...
+27 Aug 00:25:30 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 107.7 ms
+27 Aug 00:25:30 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:25:30 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+27 Aug 00:25:30 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+27 Aug 00:25:30 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+27 Aug 00:25:30 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+27 Aug 00:25:30 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+27 Aug 00:25:30 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+27 Aug 00:25:30 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+27 Aug 00:25:30 CONFIG [gwc.layer] - Loaded 12 tile layers in 39.85 ms
+27 Aug 00:25:30 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+27 Aug 00:25:30 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+27 Aug 00:25:30 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+27 Aug 00:25:31 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+27 Aug 00:25:31 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+27 Aug 00:25:31 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:25:31 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:25:31 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:25:31 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:25:32 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+27 Aug 00:25:32 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+27 Aug 00:25:32 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+27 Aug 00:25:32 WARN   [codec.ImageEncoderImpl] - Preferred SPI not found, using the first available one: com.sun.imageio.plugins.tiff.TIFFImageWriterSpi
+27 Aug 00:25:33 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:25:33 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+27 Aug 00:25:33 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+27 Aug 00:25:33 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+27 Aug 00:25:33 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+27 Aug 00:25:34 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+27 Aug 00:25:34 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+27 Aug 00:45:25 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+27 Aug 00:45:25 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+27 Aug 00:45:25 CONFIG [gwc.layer] - Loaded 12 tile layers in 35.81 ms
+27 Aug 00:45:25 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+27 Aug 00:45:25 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+27 Aug 00:45:25 CONFIG [gwc.layer] - Loaded 12 tile layers in 47.01 ms
+27 Aug 00:45:25 WARN   [support.DisposableBeanAdapter] - Custom destroy method 'destroy' on bean with name 'gwcMemoryBlobStore' threw an exception: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@10944763[Not completed, task = org.geowebcache.storage.blobstore.memory.MemoryBlobStore$BlobStoreTask@42f22411] rejected from java.util.concurrent.ThreadPoolExecutor@4c28f738[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+27 Aug 00:45:25 INFO   [geoserver.logging] - Beginning GeoServer cleanup sequence
+27 Aug 00:45:49 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+27 Aug 00:45:51 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+27 Aug 00:45:51 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+27 Aug 00:45:51 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded style generic (parent=global)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded style line (parent=global)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded style point (parent=global)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded style raster (parent=global)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded workspace geosteam
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded namespace geosteam
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+27 Aug 00:45:52 INFO   [geoserver.config] - Read Catalog in 279.9 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+27 Aug 00:45:52 CONFIG [config.datadir] - Loading GeoServer config...
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+27 Aug 00:45:52 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+27 Aug 00:45:52 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+27 Aug 00:45:52 CONFIG [config.datadir] - Loading workspace services and settings...
+27 Aug 00:45:52 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 99.44 ms
+27 Aug 00:45:52 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:45:52 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+27 Aug 00:45:52 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+27 Aug 00:45:52 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+27 Aug 00:45:52 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+27 Aug 00:45:52 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+27 Aug 00:45:52 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+27 Aug 00:45:52 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+27 Aug 00:45:52 CONFIG [gwc.layer] - Loaded 12 tile layers in 29.66 ms
+27 Aug 00:45:52 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+27 Aug 00:45:52 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+27 Aug 00:45:52 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+27 Aug 00:45:52 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+27 Aug 00:45:52 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+27 Aug 00:45:53 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:45:53 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+27 Aug 00:45:53 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:45:53 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:45:54 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+27 Aug 00:45:54 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+27 Aug 00:45:54 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+27 Aug 00:45:55 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+27 Aug 00:45:55 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+27 Aug 00:45:55 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+27 Aug 00:45:55 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+27 Aug 00:45:55 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+27 Aug 00:45:55 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+27 Aug 00:45:55 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+27 Aug 00:46:23 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:23 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@5ca00fb4 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Bloques_Campos_petroleros]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Bloques_Campos_petroleros
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@72b1c454 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_plantas]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_plantas
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@22c1ac1f (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Distrito_San_Tome]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Distrito_San_Tome
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@2b850594 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Estaciones]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Estaciones
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:24 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@97a7b42 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Distrito_Anaco]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Distrito_Anaco
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@7b37bd06 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_estaciones]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_estaciones
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@c329be1 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_pozos]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_pozos
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@42811c17 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}t_200901_Lotes_petroleros_venezuela_WGS84]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}t_200901_Lotes_petroleros_venezuela_WGS84
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@fbb8b4c (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Lotes_petroleros_venezuela_WGS84]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Lotes_petroleros_venezuela_WGS84
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@23db0319 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Tuberias_oleoductos_gasoductos_FPO]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Tuberias_oleoductos_gasoductos_FPO
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@562c2749 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Limite_FPO_2012]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Limite_FPO_2012
+        srsName = urn:ogc:def:crs:OGC::CRS84
+27 Aug 00:46:25 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@5b369152 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Plantas]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Plantas
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 13:41:58 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+28 Aug 13:41:59 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+28 Aug 13:42:00 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+28 Aug 13:42:00 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded style generic (parent=global)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded style line (parent=global)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded style point (parent=global)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded style raster (parent=global)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded workspace geosteam
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded namespace geosteam
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 13:42:00 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+28 Aug 13:42:00 INFO   [geoserver.config] - Read Catalog in 466.1 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+28 Aug 13:42:00 CONFIG [config.datadir] - Loading GeoServer config...
+28 Aug 13:42:01 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+28 Aug 13:42:01 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+28 Aug 13:42:01 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+28 Aug 13:42:01 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+28 Aug 13:42:01 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 13:42:01 CONFIG [config.datadir] - Loading workspace services and settings...
+28 Aug 13:42:01 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 210.5 ms
+28 Aug 13:42:01 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 13:42:01 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+28 Aug 13:42:01 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+28 Aug 13:42:01 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+28 Aug 13:42:01 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+28 Aug 13:42:01 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+28 Aug 13:42:01 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 13:42:01 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 13:42:01 CONFIG [gwc.layer] - Loaded 12 tile layers in 58.40 ms
+28 Aug 13:42:01 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+28 Aug 13:42:01 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+28 Aug 13:42:01 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+28 Aug 13:42:01 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+28 Aug 13:42:01 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+28 Aug 13:42:02 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 13:42:02 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 13:42:02 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 13:42:02 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 13:42:03 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+28 Aug 13:42:03 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+28 Aug 13:42:03 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+28 Aug 13:42:04 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 13:42:04 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+28 Aug 13:42:04 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+28 Aug 13:42:04 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+28 Aug 13:42:04 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+28 Aug 13:42:05 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+28 Aug 13:42:05 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+28 Aug 14:25:19 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:19 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:19 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:19 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:19 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:19 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@12aa911 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Distrito_San_Tome]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Distrito_San_Tome
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@7904061d (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Bloques_Campos_petroleros]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Bloques_Campos_petroleros
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@51c3bf62 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_plantas]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_plantas
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@7fa59e6b (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Estaciones]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Estaciones
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@2ff688cc (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Distrito_Anaco]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Distrito_Anaco
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@2bfe1a6c (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_estaciones]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_estaciones
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@4fa90b91 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_pozos]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_pozos
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@29227f23 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Limite_FPO_2012]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Limite_FPO_2012
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@619c2d25 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Lotes_petroleros_venezuela_WGS84]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Lotes_petroleros_venezuela_WGS84
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@6b3415ff (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Plantas]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Plantas
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@550c43f4 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}t_200901_Lotes_petroleros_venezuela_WGS84]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}t_200901_Lotes_petroleros_venezuela_WGS84
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 14:25:21 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@50220e0b (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Tuberias_oleoductos_gasoductos_FPO]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Tuberias_oleoductos_gasoductos_FPO
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 15:37:09 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+28 Aug 15:37:10 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+28 Aug 15:37:11 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+28 Aug 15:37:11 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded style generic (parent=global)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded style line (parent=global)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded style point (parent=global)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded style raster (parent=global)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded workspace geosteam
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded namespace geosteam
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 15:37:11 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+28 Aug 15:37:11 INFO   [geoserver.config] - Read Catalog in 296.9 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+28 Aug 15:37:11 CONFIG [config.datadir] - Loading GeoServer config...
+28 Aug 15:37:12 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+28 Aug 15:37:12 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+28 Aug 15:37:12 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+28 Aug 15:37:12 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+28 Aug 15:37:12 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 15:37:12 CONFIG [config.datadir] - Loading workspace services and settings...
+28 Aug 15:37:12 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 176.5 ms
+28 Aug 15:37:12 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:37:12 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+28 Aug 15:37:12 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+28 Aug 15:37:12 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+28 Aug 15:37:12 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+28 Aug 15:37:12 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+28 Aug 15:37:12 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 15:37:12 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 15:37:12 CONFIG [gwc.layer] - Loaded 12 tile layers in 29.23 ms
+28 Aug 15:37:12 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+28 Aug 15:37:12 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+28 Aug 15:37:12 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+28 Aug 15:37:12 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+28 Aug 15:37:12 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+28 Aug 15:37:13 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:37:13 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:37:13 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:37:13 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:37:14 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+28 Aug 15:37:14 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+28 Aug 15:37:14 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+28 Aug 15:37:15 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:37:15 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+28 Aug 15:37:15 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+28 Aug 15:37:15 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+28 Aug 15:37:15 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+28 Aug 15:37:16 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+28 Aug 15:37:16 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+28 Aug 15:51:19 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+28 Aug 15:51:20 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+28 Aug 15:51:21 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+28 Aug 15:51:21 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded style generic (parent=global)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded style line (parent=global)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded style point (parent=global)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded style raster (parent=global)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded workspace geosteam
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded namespace geosteam
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+28 Aug 15:51:21 INFO   [geoserver.config] - Read Catalog in 314.1 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+28 Aug 15:51:21 CONFIG [config.datadir] - Loading GeoServer config...
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+28 Aug 15:51:21 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+28 Aug 15:51:21 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 15:51:21 CONFIG [config.datadir] - Loading workspace services and settings...
+28 Aug 15:51:21 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 96.08 ms
+28 Aug 15:51:22 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:51:22 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+28 Aug 15:51:22 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+28 Aug 15:51:22 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+28 Aug 15:51:22 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+28 Aug 15:51:22 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+28 Aug 15:51:22 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 15:51:22 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 15:51:22 CONFIG [gwc.layer] - Loaded 12 tile layers in 31.26 ms
+28 Aug 15:51:22 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+28 Aug 15:51:22 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+28 Aug 15:51:22 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+28 Aug 15:51:22 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+28 Aug 15:51:22 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+28 Aug 15:51:23 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:51:23 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:51:23 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:51:23 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:51:23 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+28 Aug 15:51:23 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+28 Aug 15:51:23 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+28 Aug 15:51:25 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:51:25 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+28 Aug 15:51:25 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+28 Aug 15:51:25 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+28 Aug 15:51:25 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+28 Aug 15:51:25 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+28 Aug 15:51:25 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+28 Aug 15:53:38 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 15:53:38 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 15:53:38 CONFIG [gwc.layer] - Loaded 12 tile layers in 32.77 ms
+28 Aug 15:53:38 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 15:53:38 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 15:53:38 CONFIG [gwc.layer] - Loaded 12 tile layers in 30.00 ms
+28 Aug 15:53:38 WARN   [support.DisposableBeanAdapter] - Custom destroy method 'destroy' on bean with name 'gwcMemoryBlobStore' threw an exception: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@b7e9dc9[Not completed, task = org.geowebcache.storage.blobstore.memory.MemoryBlobStore$BlobStoreTask@394fb53b] rejected from java.util.concurrent.ThreadPoolExecutor@5f0ef850[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+28 Aug 15:53:38 INFO   [geoserver.logging] - Beginning GeoServer cleanup sequence
+28 Aug 15:53:49 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+28 Aug 15:53:51 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+28 Aug 15:53:52 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+28 Aug 15:53:52 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded style generic (parent=global)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded style line (parent=global)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded style point (parent=global)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded style raster (parent=global)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded workspace geosteam
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded namespace geosteam
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+28 Aug 15:53:52 INFO   [geoserver.config] - Read Catalog in 291.2 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+28 Aug 15:53:52 CONFIG [config.datadir] - Loading GeoServer config...
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+28 Aug 15:53:52 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+28 Aug 15:53:52 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 15:53:52 CONFIG [config.datadir] - Loading workspace services and settings...
+28 Aug 15:53:52 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 96.43 ms
+28 Aug 15:53:52 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:53:52 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+28 Aug 15:53:52 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+28 Aug 15:53:52 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+28 Aug 15:53:52 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+28 Aug 15:53:52 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+28 Aug 15:53:52 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 15:53:52 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 15:53:52 CONFIG [gwc.layer] - Loaded 12 tile layers in 32.94 ms
+28 Aug 15:53:52 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+28 Aug 15:53:52 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+28 Aug 15:53:52 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+28 Aug 15:53:53 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+28 Aug 15:53:53 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+28 Aug 15:53:53 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:53:53 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:53:53 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:53:53 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:53:54 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+28 Aug 15:53:54 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+28 Aug 15:53:54 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+28 Aug 15:53:55 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:53:55 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+28 Aug 15:53:55 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+28 Aug 15:53:55 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+28 Aug 15:53:55 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+28 Aug 15:53:55 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+28 Aug 15:53:55 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+28 Aug 15:56:09 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 15:56:09 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 15:56:09 CONFIG [gwc.layer] - Loaded 12 tile layers in 28.84 ms
+28 Aug 15:56:09 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 15:56:09 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 15:56:09 CONFIG [gwc.layer] - Loaded 12 tile layers in 27.09 ms
+28 Aug 15:56:09 WARN   [support.DisposableBeanAdapter] - Custom destroy method 'destroy' on bean with name 'gwcMemoryBlobStore' threw an exception: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@226c0d29[Not completed, task = org.geowebcache.storage.blobstore.memory.MemoryBlobStore$BlobStoreTask@20456235] rejected from java.util.concurrent.ThreadPoolExecutor@20d79882[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+28 Aug 15:56:09 INFO   [geoserver.logging] - Beginning GeoServer cleanup sequence
+28 Aug 15:56:20 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+28 Aug 15:56:22 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+28 Aug 15:56:22 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+28 Aug 15:56:22 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded style generic (parent=global)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded style line (parent=global)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded style point (parent=global)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded style raster (parent=global)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded workspace geosteam
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded namespace geosteam
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 15:56:22 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+28 Aug 15:56:23 INFO   [geoserver.config] - Read Catalog in 279.7 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+28 Aug 15:56:23 CONFIG [config.datadir] - Loading GeoServer config...
+28 Aug 15:56:23 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+28 Aug 15:56:23 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+28 Aug 15:56:23 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+28 Aug 15:56:23 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+28 Aug 15:56:23 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 15:56:23 CONFIG [config.datadir] - Loading workspace services and settings...
+28 Aug 15:56:23 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 143.3 ms
+28 Aug 15:56:23 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:56:23 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+28 Aug 15:56:23 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+28 Aug 15:56:23 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+28 Aug 15:56:23 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+28 Aug 15:56:23 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+28 Aug 15:56:23 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 15:56:23 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 15:56:23 CONFIG [gwc.layer] - Loaded 12 tile layers in 26.95 ms
+28 Aug 15:56:23 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+28 Aug 15:56:23 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+28 Aug 15:56:23 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+28 Aug 15:56:23 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+28 Aug 15:56:23 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+28 Aug 15:56:24 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:56:24 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 15:56:24 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:56:24 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:56:24 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+28 Aug 15:56:24 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+28 Aug 15:56:24 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+28 Aug 15:56:24 WARN   [codec.ImageEncoderImpl] - Preferred SPI not found, using the first available one: com.sun.imageio.plugins.tiff.TIFFImageWriterSpi
+28 Aug 15:56:26 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 15:56:26 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+28 Aug 15:56:26 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+28 Aug 15:56:26 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+28 Aug 15:56:26 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+28 Aug 15:56:26 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+28 Aug 15:56:26 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+28 Aug 16:02:25 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 16:02:25 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 16:02:25 CONFIG [gwc.layer] - Loaded 12 tile layers in 31.46 ms
+28 Aug 16:02:25 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 16:02:25 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 16:02:25 CONFIG [gwc.layer] - Loaded 12 tile layers in 29.86 ms
+28 Aug 16:02:25 WARN   [support.DisposableBeanAdapter] - Custom destroy method 'destroy' on bean with name 'gwcMemoryBlobStore' threw an exception: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@2a83df24[Not completed, task = org.geowebcache.storage.blobstore.memory.MemoryBlobStore$BlobStoreTask@23d8dc2c] rejected from java.util.concurrent.ThreadPoolExecutor@35b4f63a[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+28 Aug 16:02:25 INFO   [geoserver.logging] - Beginning GeoServer cleanup sequence
+28 Aug 16:02:36 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+28 Aug 16:02:37 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+28 Aug 16:02:38 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+28 Aug 16:02:38 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded style generic (parent=global)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded style line (parent=global)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded style point (parent=global)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded style raster (parent=global)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded workspace geosteam
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded namespace geosteam
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+28 Aug 16:02:38 INFO   [geoserver.config] - Read Catalog in 355.1 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+28 Aug 16:02:38 CONFIG [config.datadir] - Loading GeoServer config...
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+28 Aug 16:02:38 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+28 Aug 16:02:38 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 16:02:38 CONFIG [config.datadir] - Loading workspace services and settings...
+28 Aug 16:02:39 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 112.1 ms
+28 Aug 16:02:39 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 16:02:39 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+28 Aug 16:02:39 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+28 Aug 16:02:39 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+28 Aug 16:02:39 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+28 Aug 16:02:39 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+28 Aug 16:02:39 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 16:02:39 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 16:02:39 CONFIG [gwc.layer] - Loaded 12 tile layers in 33.81 ms
+28 Aug 16:02:39 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+28 Aug 16:02:39 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+28 Aug 16:02:39 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+28 Aug 16:02:39 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+28 Aug 16:02:39 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+28 Aug 16:02:39 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 16:02:39 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 16:02:39 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 16:02:39 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 16:02:40 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+28 Aug 16:02:40 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+28 Aug 16:02:40 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+28 Aug 16:02:40 WARN   [codec.ImageEncoderImpl] - Preferred SPI not found, using the first available one: com.sun.imageio.plugins.tiff.TIFFImageWriterSpi
+28 Aug 16:02:42 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 16:02:42 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+28 Aug 16:02:42 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+28 Aug 16:02:42 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+28 Aug 16:02:42 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+28 Aug 16:02:42 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+28 Aug 16:02:42 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+28 Aug 16:03:08 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 16:03:08 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 16:03:08 CONFIG [gwc.layer] - Loaded 12 tile layers in 30.34 ms
+28 Aug 16:03:08 WARN   [support.DisposableBeanAdapter] - Custom destroy method 'destroy' on bean with name 'gwcMemoryBlobStore' threw an exception: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@137240fd[Not completed, task = org.geowebcache.storage.blobstore.memory.MemoryBlobStore$BlobStoreTask@cd126b3] rejected from java.util.concurrent.ThreadPoolExecutor@63d00950[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1]
+28 Aug 16:03:08 INFO   [geoserver.logging] - Beginning GeoServer cleanup sequence
+28 Aug 16:03:25 CONFIG [geoserver.logging] - Log4j 2 configuration set to DEFAULT_LOGGING.xml
+28 Aug 16:03:26 CONFIG [org.geoserver] - GeoServer configuration lock is enabled
+28 Aug 16:03:27 CONFIG [geoserver.config] - Loading catalog /opt/geoserver_data
+28 Aug 16:03:27 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded style generic (parent=global)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded style line (parent=global)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded style point (parent=global)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded style polygon (parent=global)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded style raster (parent=global)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded workspace geosteam
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded namespace geosteam
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded data store geosteam (parent=geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Limite_FPO_2012, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type t_200901_Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Plantas, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Distrito_Anaco, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Tuberias_oleoductos_gasoductos_FPO, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Distrito_San_Tome, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Fosas_pozos, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Fosas_plantas, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Bloques_Campos_petroleros, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded feature type Fosas_estaciones, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Fosas_plantas (parent=geosteam:Fosas_plantas)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Distrito_Anaco (parent=geosteam:Distrito_Anaco)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Limite_FPO_2012 (parent=geosteam:Limite_FPO_2012)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Plantas (parent=geosteam:Plantas)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Estaciones (parent=geosteam:Estaciones)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer t_200901_Lotes_petroleros_venezuela_WGS84 (parent=geosteam:t_200901_Lotes_petroleros_venezuela_WGS84)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Fosas_estaciones (parent=geosteam:Fosas_estaciones)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Bloques_Campos_petroleros (parent=geosteam:Bloques_Campos_petroleros)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Fosas_pozos (parent=geosteam:Fosas_pozos)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Distrito_San_Tome (parent=geosteam:Distrito_San_Tome)
+28 Aug 16:03:27 CONFIG [config.datadir] - Loaded layer Tuberias_oleoductos_gasoductos_FPO (parent=geosteam:Tuberias_oleoductos_gasoductos_FPO)
+28 Aug 16:03:28 CONFIG [config.datadir] - Loaded feature type Lotes_petroleros_venezuela_WGS84, enabled (parent=geosteam/geosteam)
+28 Aug 16:03:28 CONFIG [config.datadir] - Loaded layer Lotes_petroleros_venezuela_WGS84 (parent=geosteam:Lotes_petroleros_venezuela_WGS84)
+28 Aug 16:03:28 INFO   [geoserver.config] - Read Catalog in 312.5 ms: workspaces: 1, namespaces: 1, styles: 5, stores: 1, resources: 12, layers: 12, layer groups: 0.
+28 Aug 16:03:28 CONFIG [config.datadir] - Loading GeoServer config...
+28 Aug 16:03:28 CONFIG [config.datadir] - Loaded service 'WMSInfoImpl-43461c02:1a02f3c69d6:-7ffb', enabled
+28 Aug 16:03:28 CONFIG [config.datadir] - Loaded service 'WCSInfoImpl-43461c02:1a02f3c69d6:-7ffa', enabled
+28 Aug 16:03:28 CONFIG [config.datadir] - Loaded service 'WMTSInfoImpl-43461c02:1a02f3c69d6:-7ff9', enabled
+28 Aug 16:03:28 CONFIG [config.datadir] - Loaded service 'WFSInfoImpl-43461c02:1a02f3c69d6:-7ff8', enabled
+28 Aug 16:03:28 CONFIG [config.datadir] - Catalog and configuration loader uses 12 threads out of 12 available cores.
+28 Aug 16:03:28 CONFIG [config.datadir] - Loading workspace services and settings...
+28 Aug 16:03:28 CONFIG [config.datadir] - GeoServer config (settings and services) loaded in 106.0 ms
+28 Aug 16:03:28 CONFIG [gwc.config] - Will look for 'geowebcache.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 16:03:28 WARN   [config.XMLConfiguration] - GWC configuration validation error: cvc-elt.1.a: Cannot find the declaration of element 'gwcConfiguration'.
+28 Aug 16:03:28 WARN   [config.XMLConfiguration] - Will try to use configuration anyway. Please check the order of declared elements against the schema.
+28 Aug 16:03:28 CONFIG [config.XMLConfiguration] - Initializing GridSets from gwc
+28 Aug 16:03:28 CONFIG [config.XMLConfiguration] - Initializing layers from gwc
+28 Aug 16:03:28 CONFIG [gwc.layer] - Initializing GWC configuration based on GeoServer's Catalog
+28 Aug 16:03:28 CONFIG [gwc.layer] - GeoServer TileLayer store base directory is: gwc-layers
+28 Aug 16:03:28 CONFIG [gwc.layer] - Loading tile layers from gwc-layers
+28 Aug 16:03:28 CONFIG [gwc.layer] - Loaded 12 tile layers in 34.60 ms
+28 Aug 16:03:28 CONFIG [storage.BlobStoreAggregator] - BlobStoreConfiguration gwc contained no blob store infos.
+28 Aug 16:03:28 CONFIG [storage.DefaultStorageFinder] - Found system environment variable GEOSERVER_DATA_DIR set to /opt/geoserver_data/, using it as the default prefix.
+28 Aug 16:03:28 CONFIG [gwc.config] - Initializing GeoServer specific GWC configuration from gwc-gs.xml
+28 Aug 16:03:28 CONFIG [geoserver.security] - AuthenticationCache Initialized with 1000 Max Entries, 300 seconds idle time, 600 seconds time to live and 3 concurrency level
+28 Aug 16:03:28 CONFIG [geoserver.security] - AuthenticationCache Eviction Task created to run every 600 seconds
+28 Aug 16:03:29 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 16:03:29 CONFIG [gwc.config] - Will look for 'geowebcache-diskquota-jdbc.xml' in directory '/opt/geoserver_data/gwc'.
+28 Aug 16:03:29 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 16:03:29 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 16:03:29 CONFIG [geowebcache.GeoWebCacheDispatcher] - Invoked setServletPrefix(gwc)
+28 Aug 16:03:29 CONFIG [wms.WMSService] - Will NOT recombine tiles for non-tiling clients.
+28 Aug 16:03:29 CONFIG [wms.WMSService] - Will proxy requests to backend that are not getmap or getcapabilities.
+28 Aug 16:03:31 CONFIG [diskquota.ConfigLoader] - DiskQuota configuration is not readable: gwc/geowebcache-diskquota.xml
+28 Aug 16:03:31 CONFIG [diskquota.DiskQuotaMonitor] - Setting up disk quota periodic enforcement task
+28 Aug 16:03:31 CONFIG [diskquota.DiskQuotaMonitor] - 0 layers configured with their own quotas. 
+28 Aug 16:03:31 CONFIG [diskquota.DiskQuotaMonitor] - 12 layers attached to global quota 500.0 MB
+28 Aug 16:03:31 CONFIG [diskquota.DiskQuotaMonitor] - Disk quota periodic enforcement task set up every 10 SECONDS
+28 Aug 16:03:31 CONFIG [geoserver.security] - Start reloading user/groups for service named default
+28 Aug 16:03:31 CONFIG [geoserver.security] - Reloading user/groups successful for service named default
+28 Aug 16:05:16 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:16 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:16 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:16 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:16 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:16 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@2079aee4 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_estaciones]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_estaciones
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@b522576 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Distrito_San_Tome]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Distrito_San_Tome
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@7b634009 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Distrito_Anaco]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Distrito_Anaco
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@6224fe5e (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Estaciones]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Estaciones
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@511b3662 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_plantas]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_plantas
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@60586080 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Bloques_Campos_petroleros]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Bloques_Campos_petroleros
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getServiceInfo
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@1668bbda (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Tuberias_oleoductos_gasoductos_FPO]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Tuberias_oleoductos_gasoductos_FPO
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@4136d9a1 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Lotes_petroleros_venezuela_WGS84]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Lotes_petroleros_venezuela_WGS84
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@3e73d03a (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Limite_FPO_2012]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Limite_FPO_2012
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@45270c7 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}t_200901_Lotes_petroleros_venezuela_WGS84]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}t_200901_Lotes_petroleros_venezuela_WGS84
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@345ca7f5 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Plantas]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Plantas
+        srsName = urn:ogc:def:crs:OGC::CRS84
+28 Aug 16:05:17 INFO   [geoserver.wfs] - 
+Request: getFeature
+    service = WFS
+    version = 2.0.0
+    baseUrl = http://localhost:8001/geoserver/
+    outputFormat = application/json
+    resolve = none
+    resolveDepth = *
+    resolveTimeout = 300
+    resultType = results
+    abstractQueryExpressionGroup[0] = wfs:abstractQueryExpression=net.opengis.wfs20.impl.QueryTypeImpl@4770a4e2 (handle: null) (abstractProjectionClause: null, abstractSelectionClause: null, abstractSortingClause: null, aliases: null, typeNames: [{http://geosteam.tech}Fosas_pozos]) (featureVersion: null, srsName: urn:ogc:def:crs:OGC::CRS84, filter: null, propertyNames: null, sortBy: null)
+    abstractQueryExpression[0]:
+        typeNames[0] = {http://geosteam.tech}Fosas_pozos
+        srsName = urn:ogc:def:crs:OGC::CRS84

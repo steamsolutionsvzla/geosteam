@@ -1,0 +1,16 @@
+<layer>
+  <name>Tuberias_oleoductos_gasoductos_FPO</name>
+  <id>LayerInfoImpl--21f8ec9d:1a030054137:-7dbb</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-43461c02:1a02f3c69d6:-7ffc</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dbc</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-08-23 19:43:46.199 UTC</dateCreated>
+</layer>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Geoportal — GeoSteam</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- MapLibre GL JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/geoportal.css">
+
+</head>
+<body>
+
+<div class="geo-app">
+
+  <!-- ============ TOPBAR ============ -->
+  <header class="geo-topbar">
+    <a href="index.html" class="geo-brand font-display fw-semibold">
+      <svg width="26" height="23" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#4ECDC4"/>
+            <stop offset="0.6" stop-color="#4A7FC5"/>
+            <stop offset="1" stop-color="#1E3A5F"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+        <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+        <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+      </svg>
+      GeoSteam <span class="brand-sep">/ Geoportal</span>
+    </a>
+
+    <div class="geo-topbar-actions">
+      <a href="hub.html" class="icon-btn" title="Volver al espacio de trabajo" aria-label="Volver al espacio de trabajo" style="text-decoration:none;">⟵</a>
+    <div class="basemap-switch" role="group" aria-label="Mapa base">
+        <button class="basemap-option" data-base="claro">Claro</button>
+        <button class="basemap-option active" data-base="oscuro">Oscuro</button>
+        <button class="basemap-option" data-base="satelite">Satélite</button>
+      </div>
+      <span id="sessionBadge" class="font-mono"></span>
+      <button class="icon-btn" id="btnToggleLayers" title="Capas" aria-label="Mostrar capas">☰</button>
+    </div>
+  </header>
+
+  <!-- ============ BODY ============ -->
+  <div class="geo-body">
+
+    <!-- ---------- SIDEBAR DE CAPAS ---------- -->
+    <aside class="geo-sidebar" id="layerSidebar">
+      <p class="sidebar-eyebrow font-mono">Capas de datos</p>
+      <h1 class="sidebar-title font-display fw-semibold">Geoportal territorial</h1>
+      <p class="sidebar-hint">
+        Activa o desactiva cada capa y ajusta su opacidad. Las capas se
+        sirven desde GeoServer (WFS); si una capa aún no tiene datos
+        publicados, se muestra con datos de demostración.
+      </p>
+
+      <div id="layerList"></div>
+
+      <p class="sidebar-legend-note">
+        <b>●</b> punto &nbsp; <b>—</b> línea &nbsp; <b>▮</b> polígono.
+        Haz click sobre cualquier elemento del mapa para ver sus atributos.
+      </p>
+    </aside>
+
+    <!-- ---------- MAPA ---------- -->
+    <div class="geo-map-wrap">
+      <div id="map"></div>
+
+      <div id="coord-readout" class="font-mono">LAT 00.0000°  LON 00.0000°</div>
+
+      <div class="map-controls">
+        <button class="icon-btn" id="btnZoomIn" title="Acercar" aria-label="Acercar">+</button>
+        <button class="icon-btn" id="btnZoomOut" title="Alejar" aria-label="Alejar">−</button>
+        <button class="icon-btn" id="btnFitVenezuela" title="Centrar en Venezuela" aria-label="Centrar en Venezuela">⤢</button>
+      </div>
+    </div>
+
+    <!-- ---------- PANEL DE ATRIBUTOS ---------- -->
+    <aside class="geo-feature-panel" id="featurePanel">
+      <div class="feature-panel-head">
+        <h2 class="font-display" id="featurePanelTitle">Sin selección</h2>
+        <button class="icon-btn" id="btnCloseFeaturePanel" aria-label="Cerrar">×</button>
+      </div>
+      <div class="feature-panel-body" id="featurePanelBody">
+        <p style="color:var(--mist); font-size:0.82rem;">
+          Haz click sobre un punto, línea o polígono del mapa para ver aquí
+          su información.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ============ FOOTER CORPORATIVO ============ -->
+  <footer class="geo-footer">
+    <div class="geo-footer-brand">
+      <svg width="20" height="18" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+        <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+        <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+      </svg>
+      <span>GeoSteam — un producto de <b>Steam Solutions</b></span>
+    </div>
+    <div class="geo-footer-links font-mono">
+      <a href="index.html#plataforma">Plataforma</a>
+      <a href="index.html#capas">Capas</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
+    <p class="geo-footer-copy font-mono">© 2026 Steam Solutions</p>
+  </footer>
+</div>
+
+<script src="js/geosteam-config.js"></script>
+<script src="js/visit-tracker.js"></script>
+<script src="js/geoportal-config.js"></script>
+<script src="js/geoportal.js"></script>
+
+</body>
+</html>

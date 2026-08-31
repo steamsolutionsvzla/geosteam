@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesión | GeoSteam</title>
+
+<!-- Bootstrap 5 (CDN) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="container-fluid auth-wrap">
+  <div class="row h-100">
+
+    <!-- ============ PANEL IZQUIERDO (marca) ============ -->
+    <div class="col-lg-6 brand-panel">
+      <div class="contour-bg">
+        <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#4ECDC4"/>
+              <stop offset="0.5" stop-color="#4A7FC5"/>
+              <stop offset="1" stop-color="#1E3A5F"/>
+            </linearGradient>
+          </defs>
+          <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580"/>
+          <path d="M-10,480 C190,400 330,580 580,500 C830,420 970,540 1210,460"/>
+          <path d="M-70,360 C130,280 310,460 560,380 C810,300 990,420 1270,340"/>
+          <path d="M-130,240 C70,160 290,340 540,260 C790,180 1010,300 1330,220"/>
+          <path d="M0,750 C220,680 380,820 620,740 C860,660 980,760 1200,700"/>
+        </svg>
+      </div>
+
+      <a href="index.html" class="d-flex align-items-center gap-2 position-relative">
+        <svg width="30" height="27" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#4ECDC4"/>
+              <stop offset="0.6" stop-color="#4A7FC5"/>
+              <stop offset="1" stop-color="#1E3A5F"/>
+            </linearGradient>
+          </defs>
+          <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+          <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+          <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+        </svg>
+        <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
+      </a>
+
+      <div class="position-relative">
+        <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">Acceso al geoportal</p>
+        <h1 class="font-display fw-semibold" style="font-size:2.3rem; line-height:1.15; max-width:22rem;">
+          Tu territorio,<br><span class="grad-text">a una sesión de distancia.</span>
+        </h1>
+        <p class="mt-3 mb-4" style="color:var(--mist); max-width:22rem; font-size:0.95rem;">
+          Ingresa con tu cuenta institucional para ver catastro, infraestructura y capas ambientales en un solo mapa.
+        </p>
+        <div class="status-card font-mono">
+          <div class="row-line"><span>ESTADO DEL SISTEMA</span><span class="val" style="color:var(--teal);">● EN LÍNEA</span></div>
+          <hr style="border-color:var(--line); margin:0.4rem 0;">
+          <div class="row-line"><span>Capas activas</span><span class="val">128</span></div>
+          <div class="row-line"><span>Disponibilidad</span><span class="val">99.9%</span></div>
+        </div>
+      </div>
+
+      <p class="font-mono position-relative" style="color:var(--mist); opacity:0.5; font-size:0.72rem;">© 2026 Steam Solutions</p>
+    </div>
+
+    <!-- ============ PANEL DERECHO (formulario) ============ -->
+    <div class="col-lg-6 form-panel">
+      <div class="form-card">
+
+        <!-- Logo visible solo en móvil, donde el panel izquierdo se oculta -->
+        <div class="d-lg-none d-flex align-items-center gap-2 justify-content-center mb-5">
+          <svg width="28" height="25" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+            <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+            <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+          </svg>
+          <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
+        </div>
+
+        <h2 class="font-display fw-semibold mb-1" style="font-size:1.6rem;">Iniciar sesión</h2>
+        <p class="mb-4" style="color:var(--mist); font-size:0.9rem;">Accede al geoportal con tu cuenta de Steam Solutions.</p>
+
+       
+
+        <form id="loginForm" novalidate>
+
+          <!-- Campo email -->
+<div class="mb-3">
+    <label for="email" class="form-label-geo">Correo institucional</label>
+    <input type="email" id="email" class="form-control form-control-geo" placeholder="nombre@institucion.gob" required>
+    <div id="emailError" class="invalid-feedback"></div>
+</div>
+
+<!-- Campo contraseña -->
+<div class="mb-2">
+    <div class="d-flex justify-content-between align-items-center">
+        <label for="password" class="form-label-geo mb-0">Contraseña</label>
+        <a href="#" class="font-mono link-teal" style="font-size:0.72rem;">¿Olvidaste tu contraseña?</a>
+    </div>
+    <div class="position-relative mt-2">
+        <input type="password" id="password" class="form-control form-control-geo" placeholder="Ingresar contraseña" required>
+        <button type="button" class="toggle-pass font-mono" id="togglePass">👁</button>
+        <div id="passwordError" class="invalid-feedback"></div>
+    </div>
+</div>
+
+<!-- Alerta general (usamos el mismo id 'alertBox' que usa el JS) -->
+<div id="alertBox" class="alert d-none" role="alert" style="display:none;"></div>
+
+          <div class="form-check mt-3 mb-4">
+            <input class="form-check-input" type="checkbox" id="remember">
+            <label class="form-check-label" for="remember" style="font-size:0.85rem; color:var(--mist);">
+              Mantener sesión iniciada
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-teal" id="btnLogin">
+            <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+            <span id="btnText">Iniciar sesión</span>
+          </button>
+
+          <p class="text-center mt-4 mb-0" style="font-size:0.85rem; color:var(--mist);">
+            ¿No tienes cuenta? <a href="#" class="link-teal">Solicita acceso</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/geosteam-config.js"></script>
+<script src="js/visit-tracker.js"></script>
+<script src="js/login.js"></script>
+
+</body>
+</html>

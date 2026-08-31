@@ -1,0 +1,44 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dba</id>
+  <name>t_200901_Lotes_petroleros_venezuela_WGS84</name>
+  <nativeName>t_200901_Lotes_petroleros_venezuela_WGS84</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-43461c02:1a02f3c69d6:-7fe2</id>
+  </namespace>
+  <title>t_200901_Lotes_petroleros_venezuela_WGS84</title>
+  <keywords>
+    <string>features</string>
+    <string>t_200901_Lotes_petroleros_venezuela_WGS84</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>-72.95848666699999</minx>
+    <maxx>-59.228117087999976</maxx>
+    <miny>6.965001579000045</miny>
+    <maxy>12.78323167800005</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-72.95848666699999</minx>
+    <maxx>-59.228117087999976</maxx>
+    <miny>6.965001579000045</miny>
+    <maxy>12.78323167800005</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--8a217f7:1a02f4ea176:-8000</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

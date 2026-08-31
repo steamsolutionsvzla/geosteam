@@ -1,0 +1,44 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dc2</id>
+  <name>Fosas_pozos</name>
+  <nativeName>Fosas_pozos</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-43461c02:1a02f3c69d6:-7fe2</id>
+  </namespace>
+  <title>Fosas_pozos</title>
+  <keywords>
+    <string>features</string>
+    <string>Fosas_pozos</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>-64.66279176435177</minx>
+    <maxx>-63.633167513765265</maxx>
+    <miny>8.525579006889485</miny>
+    <maxy>9.169264006346634</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-64.66279176435177</minx>
+    <maxx>-63.633167513765265</maxx>
+    <miny>8.525579006889485</miny>
+    <maxy>9.169264006346634</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--8a217f7:1a02f4ea176:-8000</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

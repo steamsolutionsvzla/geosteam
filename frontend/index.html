@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoSteam — Geoportal territorial | Steam Solutions</title>
+
+<!-- Bootstrap 5 (CDN) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+
+
+<!-- ============ NAV ============ -->
+<nav class="navbar navbar-expand-md navbar-geo fixed-top py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#top">
+      <svg width="30" height="27" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#4ECDC4"/>
+            <stop offset="0.6" stop-color="#4A7FC5"/>
+            <stop offset="1" stop-color="#1E3A5F"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+        <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+        <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+      </svg>
+      <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav gap-md-4 mb-3 mb-md-0">
+        <li class="nav-item"><a class="nav-link" href="#plataforma">Plataforma</a></li>
+        <li class="nav-item"><a class="nav-link" href="#capas">Capas de datos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#flujo">Cómo funciona</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="d-flex gap-2 ms-md-4">
+        <a href="login.html" class="btn btn-outline-line">Iniciar sesión</a>
+        <a href="geoportal.html" class="btn btn-teal">Abrir geoportal</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero">
+  <div class="contour-bg">
+    <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4ECDC4"/>
+          <stop offset="0.5" stop-color="#4A7FC5"/>
+          <stop offset="1" stop-color="#1E3A5F"/>
+        </linearGradient>
+      </defs>
+      <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580"/>
+      <path d="M20,540 C220,460 340,640 590,560 C840,480 960,600 1180,520"/>
+      <path d="M-10,480 C190,400 330,580 580,500 C830,420 970,540 1210,460"/>
+      <path d="M-40,420 C160,340 320,520 570,440 C820,360 980,480 1240,400"/>
+      <path d="M-70,360 C130,280 310,460 560,380 C810,300 990,420 1270,340"/>
+      <path d="M-100,300 C100,220 300,400 550,320 C800,240 1000,360 1300,280"/>
+      <path d="M0,750 C220,680 380,820 620,740 C860,660 980,760 1200,700"/>
+    </svg>
+  </div>
+
+  <div class="container position-relative">
+    <div class="row align-items-end g-5">
+      <div class="col-md-7">
+        <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">Steam Solutions · Geoportal</p>
+        <h1 class="font-display fw-semibold display-4" style="line-height:1.05;">
+          El territorio,<br><span class="grad-text">legible en tiempo real.</span>
+        </h1>
+        <p class="mt-4 mb-4" style="color:var(--mist); max-width:32rem; font-size:1.1rem;">
+          GeoSteam reúne catastro, infraestructura y datos ambientales en un solo mapa vivo, para que cada decisión territorial parta de coordenadas exactas, no de suposiciones.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="geoportal.html" class="btn btn-teal">Abrir geoportal</a>
+          <a href="#capas" class="btn btn-outline-line">Ver capas de datos</a>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="status-card font-mono">
+          <div class="row-line"><span>ESTADO DEL SISTEMA</span><span class="val" style="color:var(--teal);">● EN LÍNEA</span></div>
+          <hr style="border-color:var(--line); margin:0.5rem 0;">
+          <div class="row-line"><span>Capas activas</span><span class="val">128</span></div>
+          <div class="row-line"><span>Latencia de consulta</span><span class="val">&lt; 200ms</span></div>
+          <div class="row-line"><span>Disponibilidad</span><span class="val">99.9%</span></div>
+          <div class="row-line"><span>Última sincronización</span><span class="val">hace 4s</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STRIP ============ -->
+<section class="strip py-3">
+  <div class="container d-flex flex-wrap justify-content-between gap-3 font-mono">
+    <span>CATASTRO</span><span class="text-white-50">/</span>
+    <span>INFRAESTRUCTURA</span><span class="text-white-50">/</span>
+    <span>AMBIENTE</span><span class="text-white-50">/</span>
+    <span>MOVILIDAD</span><span class="text-white-50">/</span>
+    <span>RIESGO</span><span class="text-white-50">/</span>
+    <span>ANALÍTICA TERRITORIAL</span>
+  </div>
+</section>
+
+<!-- ============ CAPAS ============ -->
+<section id="capas" class="py-5 py-md-5" style="padding-top:6rem !important; padding-bottom:6rem !important;">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-md-5">
+        <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">Capas que se conectan</p>
+        <h2 class="font-display fw-semibold" style="font-size:2.1rem;">Un mapa,<br>tantas capas como necesites.</h2>
+        <p class="mt-3" style="color:var(--mist); max-width:28rem;">
+          Cada fuente de datos entra como una capa propia: parcelas, redes, sensores, permisos. GeoSteam las apila, las cruza y te deja consultarlas juntas sin perder el origen de cada una.
+        </p>
+        <ul class="list-unstyled mt-4">
+          <li class="d-flex mb-3">
+            <span class="dot mt-1" style="background:var(--teal);"></span>
+            <span><strong>Catastro digital</strong> — parcelas, propietarios y usos de suelo, actualizados desde la fuente oficial.</span>
+          </li>
+          <li class="d-flex mb-3">
+            <span class="dot mt-1" style="background:#5FB8D9;"></span>
+            <span><strong>Infraestructura urbana</strong> — redes de agua, energía y vialidad, superpuestas y auditables.</span>
+          </li>
+          <li class="d-flex mb-3">
+            <span class="dot mt-1" style="background:var(--blue);"></span>
+            <span><strong>Monitoreo ambiental</strong> — sensores y alertas de riesgo integrados en tiempo real.</span>
+          </li>
+          <li class="d-flex mb-3">
+            <span class="dot mt-1" style="background:var(--navy);"></span>
+            <span><strong>Analítica territorial</strong> — cruces de datos y reportes exportables, sin escribir código.</span>
+          </li>
+        </ul>
+        <a href="geoportal.html" class="btn btn-teal mt-2">Explorar el geoportal</a>
+      </div>
+      <div class="col-md-7">
+        <div class="layer-stack">
+          <div class="layer-card">01 · Catastro</div>
+          <div class="layer-card">02 · Infraestructura</div>
+          <div class="layer-card">03 · Ambiente</div>
+          <div class="layer-card">04 · Analítica territorial</div>
+        </div>
+        <p class="text-center font-mono small mt-3" style="color:var(--mist); opacity:.7;">pasa el cursor para separar las capas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATAFORMA ============ -->
+<section id="plataforma" class="py-5" style="padding-top:6rem !important; padding-bottom:6rem !important; border-top:1px solid var(--line);">
+  <div class="container">
+    <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">La plataforma</p>
+    <h2 class="font-display fw-semibold mb-5" style="font-size:2.1rem; max-width:36rem;">
+      Todo lo que un equipo técnico necesita para leer su territorio.
+    </h2>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--teal),var(--teal-dark));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Visor cartográfico</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Navega por capas vectoriales y raster con tiempos de carga bajos, incluso con miles de predios activos a la vez.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#5FB8D9,var(--blue));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Alertas territoriales</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Define umbrales por capa y recibe avisos cuando un sensor, permiso o predio entra en un estado que requiere revisión.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--navy));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><path d="M4 19h16M7 15V9m5 6V5m5 10v-3"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Reportes exportables</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Convierte cualquier consulta en un reporte con mapas, tablas y filtros, listo para compartir fuera de la plataforma.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--teal),var(--blue));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Integración de fuentes</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Conecta bases catastrales, sensores IoT y sistemas municipales existentes mediante conectores estándar (WMS, WFS, REST).</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--teal-dark));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Control de permisos</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Define quién ve, edita o descarga cada capa, con registro de auditoría por usuario y por consulta.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--navy),#0F1D2E);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="2"><path d="M4 4v16h16M8 16l3-4 3 3 4-6"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Histórico territorial</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Compara el estado de una capa entre dos fechas y observa cómo cambió el territorio con el tiempo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLUJO ============ -->
+<section id="flujo" class="py-5" style="padding-top:6rem !important; padding-bottom:6rem !important; border-top:1px solid var(--line);">
+  <div class="container">
+    <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">Cómo funciona</p>
+    <h2 class="font-display fw-semibold mb-5" style="font-size:2.1rem; max-width:34rem;">
+      De datos dispersos a un territorio en un solo lugar.
+    </h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3 class="font-display fw-semibold fs-5 mt-2 mb-2">Conecta tus fuentes</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Importa catastro, sensores y sistemas existentes. GeoSteam normaliza los formatos automáticamente.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3 class="font-display fw-semibold fs-5 mt-2 mb-2">Organiza en capas</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Cada fuente se apila como una capa independiente, con su propio control de acceso y actualización.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3 class="font-display fw-semibold fs-5 mt-2 mb-2">Decide con datos</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Cruza capas, genera reportes y actúa sobre alertas, todo desde el mismo mapa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="contacto" class="cta-section py-5 text-center" style="padding-top:6rem !important; padding-bottom:6rem !important;">
+  <div class="contour-bg" style="opacity:0.5;">
+    <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580" stroke="url(#contourGrad)"/>
+      <path d="M-40,420 C160,340 320,520 570,440 C820,360 980,480 1240,400" stroke="url(#contourGrad)"/>
+    </svg>
+  </div>
+  <div class="container position-relative" style="max-width:640px;">
+    <h2 class="font-display fw-semibold" style="font-size:2.4rem;">Empieza a mapear<br><span class="grad-text">tu territorio.</span></h2>
+    <p class="mt-3 mb-4" style="color:var(--mist);">Agenda una demo con el equipo de Steam Solutions y te mostramos GeoSteam con datos de tu propia zona.</p>
+
+    <form class="d-flex flex-column flex-sm-row gap-3 justify-content-center" onsubmit="return false;">
+      <label for="email" class="visually-hidden">Correo institucional</label>
+      <input id="email" type="email" required placeholder="correo@institucion.gob" class="form-control form-control-geo" style="max-width:320px;">
+      <button type="submit" class="btn btn-teal">Solicitar demo</button>
+    </form>
+    <p class="font-mono small mt-3" style="color:var(--mist); opacity:0.7;">Sin compromiso · respuesta en 1 día hábil</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+    <div class="d-flex align-items-center gap-2">
+      <svg width="24" height="21" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+        <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+        <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+      </svg>
+      <span style="color:var(--mist); font-size:0.85rem;">GeoSteam — un producto de <span class="text-white">Steam Solutions</span></span>
+    </div>
+    <div class="footer-links font-mono">
+      <a href="#plataforma">Plataforma</a>
+      <a href="#capas">Capas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <p class="font-mono small mb-0" style="color:var(--mist); opacity:0.5;">© 2026 Steam Solutions</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS (solo para el menú móvil) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/geosteam-config.js"></script>
+<script src="js/visit-tracker.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

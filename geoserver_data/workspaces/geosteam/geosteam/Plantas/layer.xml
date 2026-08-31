@@ -1,0 +1,16 @@
+<layer>
+  <name>Plantas</name>
+  <id>LayerInfoImpl--21f8ec9d:1a030054137:-7dbd</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-43461c02:1a02f3c69d6:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dbe</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-08-23 19:43:46.29 UTC</dateCreated>
+</layer>

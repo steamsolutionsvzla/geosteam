@@ -1,0 +1,44 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dcc</id>
+  <name>Distrito_Anaco</name>
+  <nativeName>Distrito_Anaco</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-43461c02:1a02f3c69d6:-7fe2</id>
+  </namespace>
+  <title>Distrito_Anaco</title>
+  <keywords>
+    <string>features</string>
+    <string>Distrito_Anaco</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>-65.05303316456092</minx>
+    <maxx>-63.60162289121652</maxx>
+    <miny>9.07750822663105</miny>
+    <maxy>9.94756379525065</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-65.05303316456092</minx>
+    <maxx>-63.60162289121652</maxx>
+    <miny>9.07750822663105</miny>
+    <maxy>9.94756379525065</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--8a217f7:1a02f4ea176:-8000</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

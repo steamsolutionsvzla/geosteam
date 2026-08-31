@@ -1,0 +1,44 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dc0</id>
+  <name>Limite_FPO_2012</name>
+  <nativeName>Limite_FPO_2012</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-43461c02:1a02f3c69d6:-7fe2</id>
+  </namespace>
+  <title>Limite_FPO_2012</title>
+  <keywords>
+    <string>features</string>
+    <string>Limite_FPO_2012</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>-67.61673041669724</minx>
+    <maxx>-62.00132556651112</maxx>
+    <miny>7.398675779276291</miny>
+    <maxy>9.105855334258171</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-67.61673041669724</minx>
+    <maxx>-62.00132556651112</maxx>
+    <miny>7.398675779276291</miny>
+    <maxy>9.105855334258171</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--8a217f7:1a02f4ea176:-8000</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

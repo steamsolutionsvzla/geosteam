@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espacio de trabajo | GeoSteam</title>
+
+<!-- Bootstrap 5 (CDN) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/hub.css">
+</head>
+<body class="hub-body">
+
+<!-- ============ TOPBAR ============ -->
+<header class="geo-topbar">
+  <a href="index.html" class="geo-brand font-display fw-semibold">
+    <svg width="26" height="23" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#4ECDC4"/>
+          <stop offset="0.6" stop-color="#4A7FC5"/>
+          <stop offset="1" stop-color="#1E3A5F"/>
+        </linearGradient>
+      </defs>
+      <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+      <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+      <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+    </svg>
+    GeoSteam <span class="brand-sep">/ Espacio de trabajo</span>
+  </a>
+
+  <div class="geo-topbar-actions">
+    <span id="sessionBadge" class="font-mono"></span>
+  </div>
+</header>
+
+<!-- ============ CONTENIDO ============ -->
+<main class="hub-main">
+  <div class="contour-bg">
+    <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4ECDC4"/>
+          <stop offset="0.5" stop-color="#4A7FC5"/>
+          <stop offset="1" stop-color="#1E3A5F"/>
+        </linearGradient>
+      </defs>
+      <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580"/>
+      <path d="M-10,480 C190,400 330,580 580,500 C830,420 970,540 1210,460"/>
+      <path d="M-70,360 C130,280 310,460 560,380 C810,300 990,420 1270,340"/>
+    </svg>
+  </div>
+
+  <div class="container position-relative">
+    <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">Bienvenido de vuelta</p>
+    <h1 class="font-display fw-semibold hub-title">
+      ¿A dónde quieres ir <span class="grad-text">hoy</span>?
+    </h1>
+    <p class="hub-subtitle">
+      Elige un espacio de trabajo. Puedes cambiar entre ellos cuando quieras.
+    </p>
+
+    <div class="row g-4 mt-2 hub-grid">
+
+      <!-- ======= CARD 1: GEOPORTAL (disponible) ======= -->
+      <div class="col-lg-4">
+        <a href="geoportal.html" class="hub-card hub-card--active">
+          <span class="hub-badge hub-badge--live">● Disponible</span>
+
+          <div class="hub-preview hub-preview--geoportal" aria-hidden="true">
+            <div class="preview-chrome">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="preview-body">
+              <div class="preview-sidebar">
+                <span class="bar w-70"></span>
+                <span class="bar w-40"></span>
+                <span class="bar w-55"></span>
+                <span class="bar w-30"></span>
+              </div>
+              <div class="preview-map">
+                <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <path class="p-line" d="M-10,180 C90,140 150,210 260,170 C330,145 370,160 420,130"/>
+                  <path class="p-line" d="M-10,120 C100,80 170,150 280,110 C350,85 380,100 420,70"/>
+                  <path class="p-line" d="M-10,220 C110,190 160,240 270,215 C340,195 380,205 420,180"/>
+                </svg>
+                <span class="p-pin p-pin--teal" style="top:38%; left:32%;"></span>
+                <span class="p-pin p-pin--blue" style="top:58%; left:55%;"></span>
+                <span class="p-pin p-pin--teal" style="top:28%; left:70%;"></span>
+                <span class="p-pin p-pin--navy" style="top:70%; left:22%;"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-card-body">
+            <h2 class="font-display fw-semibold">Geoportal</h2>
+            <p>Catastro, infraestructura y capas ambientales en un mapa vivo, listo para explorar.</p>
+            <span class="hub-cta font-mono">Abrir geoportal →</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- ======= CARD 2: DASHBOARD DE MAPAS (próximamente) ======= -->
+      <div class="col-lg-4">
+        <button type="button" class="hub-card hub-card--soon" data-soon="Dashboard de mapas">
+          <span class="hub-badge hub-badge--soon">Próximamente</span>
+
+          <div class="hub-preview hub-preview--dashboard" aria-hidden="true">
+            <div class="preview-chrome">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="preview-body preview-body--dash">
+              <div class="dash-kpi">
+                <span class="bar w-40"></span>
+                <span class="dash-kpi-num">—</span>
+              </div>
+              <div class="dash-kpi">
+                <span class="bar w-40"></span>
+                <span class="dash-kpi-num">—</span>
+              </div>
+              <div class="dash-chart">
+                <span style="height:35%;"></span>
+                <span style="height:60%;"></span>
+                <span style="height:42%;"></span>
+                <span style="height:78%;"></span>
+                <span style="height:50%;"></span>
+                <span style="height:65%;"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-card-body">
+            <h2 class="font-display fw-semibold">Dashboard de mapas</h2>
+            <p>Métricas y reportes territoriales en tableros configurables. En construcción.</p>
+            <span class="hub-cta hub-cta--soon font-mono">Disponible pronto</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- ======= CARD 3: PANEL DE ADMINISTRADOR (solo admins) ======= -->
+      <div class="col-lg-4 d-none" id="adminCardWrap">
+        <a href="admin.html" class="hub-card hub-card--active">
+          <span class="hub-badge hub-badge--live">● Disponible</span>
+
+          <div class="hub-preview hub-preview--dashboard" aria-hidden="true">
+            <div class="preview-chrome">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="preview-body preview-body--dash">
+              <div class="dash-kpi">
+                <span class="bar w-40"></span>
+                <span class="dash-kpi-num" style="color:var(--teal);">128</span>
+              </div>
+              <div class="dash-kpi">
+                <span class="bar w-40"></span>
+                <span class="dash-kpi-num" style="color:var(--teal);">32</span>
+              </div>
+              <div class="dash-chart">
+                <span style="height:35%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                <span style="height:60%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                <span style="height:42%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                <span style="height:78%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                <span style="height:50%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                <span style="height:65%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-card-body">
+            <h2 class="font-display fw-semibold">Panel de administrador</h2>
+            <p>Gestiona usuarios, revisa estadísticas de visitas y entra directo a GeoServer.</p>
+            <span class="hub-cta font-mono">Abrir panel →</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- ======= CARD 4: GEOLIBRE (próximamente) ======= -->
+      <div class="col-lg-4">
+        <button type="button" class="hub-card hub-card--soon" data-soon="GeoLibre">
+          <span class="hub-badge hub-badge--soon">Próximamente</span>
+
+          <div class="hub-preview hub-preview--earth" aria-hidden="true">
+            <div class="earth-stars"></div>
+            <div class="earth-globe">
+              <div class="earth-glow"></div>
+              <svg class="earth-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="oceanGrad" cx="35%" cy="30%" r="75%">
+                    <stop offset="0%" stop-color="#5FB8D9"/>
+                    <stop offset="45%" stop-color="#4A7FC5"/>
+                    <stop offset="100%" stop-color="#152B45"/>
+                  </radialGradient>
+                  <clipPath id="earthClip"><circle cx="100" cy="100" r="92"/></clipPath>
+                </defs>
+                <circle cx="100" cy="100" r="92" fill="url(#oceanGrad)"/>
+                <g clip-path="url(#earthClip)" opacity="0.92">
+                  <path d="M30,60 C50,45 70,55 85,50 C100,45 95,65 80,72 C65,80 45,85 35,95 C25,80 22,68 30,60Z" fill="#2E9E93"/>
+                  <path d="M95,40 C120,35 140,50 135,68 C130,85 110,80 100,90 C90,78 85,55 95,40Z" fill="#3FB39E"/>
+                  <path d="M120,110 C145,105 160,120 155,140 C150,158 130,165 115,155 C108,140 105,120 120,110Z" fill="#2E9E93"/>
+                  <path d="M40,130 C58,125 68,140 60,155 C52,168 34,165 28,150 C26,140 30,133 40,130Z" fill="#3FB39E"/>
+                  <ellipse cx="100" cy="100" rx="92" ry="92" fill="none" stroke="#0A1420" stroke-opacity="0.25" stroke-width="1"/>
+                </g>
+                <circle cx="100" cy="100" r="92" fill="url(#oceanGrad)" opacity="0.06"/>
+              </svg>
+              <span class="earth-ring"></span>
+            </div>
+          </div>
+
+          <div class="hub-card-body">
+            <h2 class="font-display fw-semibold">GeoLibre</h2>
+            <p>Capas y datos geoespaciales abiertos, libres para consultar, cruzar y descargar.</p>
+            <span class="hub-cta hub-cta--soon font-mono">Disponible pronto</span>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ============ TOAST "próximamente" ============ -->
+<div id="soonToast" class="soon-toast font-mono" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/geosteam-config.js"></script>
+<script src="js/visit-tracker.js"></script>
+<script src="js/hub.js"></script>
+
+</body>
+</html>

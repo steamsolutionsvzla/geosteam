@@ -1,0 +1,16 @@
+<layer>
+  <name>t_200901_Lotes_petroleros_venezuela_WGS84</name>
+  <id>LayerInfoImpl--21f8ec9d:1a030054137:-7db9</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-43461c02:1a02f3c69d6:-7ffc</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dba</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-08-23 19:43:46.338 UTC</dateCreated>
+</layer>

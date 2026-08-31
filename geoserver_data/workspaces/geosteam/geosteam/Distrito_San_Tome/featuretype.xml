@@ -1,0 +1,44 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dca</id>
+  <name>Distrito_San_Tome</name>
+  <nativeName>Distrito_San_Tome</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-43461c02:1a02f3c69d6:-7fe2</id>
+  </namespace>
+  <title>Distrito_San_Tome</title>
+  <keywords>
+    <string>features</string>
+    <string>Distrito_San_Tome</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>-66.00183530817303</minx>
+    <maxx>-62.79399706098683</maxx>
+    <miny>8.010251638090189</miny>
+    <maxy>9.576913972629658</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-66.00183530817303</minx>
+    <maxx>-62.79399706098683</maxx>
+    <miny>8.010251638090189</miny>
+    <maxy>9.576913972629658</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--8a217f7:1a02f4ea176:-8000</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

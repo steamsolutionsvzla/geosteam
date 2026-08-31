@@ -1,0 +1,16 @@
+<layer>
+  <name>Bloques_Campos_petroleros</name>
+  <id>LayerInfoImpl--21f8ec9d:1a030054137:-7dcd</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-43461c02:1a02f3c69d6:-7ffe</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dce</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-08-23 19:43:44.702 UTC</dateCreated>
+</layer>

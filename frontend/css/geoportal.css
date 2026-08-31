@@ -1,0 +1,466 @@
+/* GeoSteam · Geoportal — parte de las variables de css/index.css, con una
+   variante más clara (más blanco) específica para esta pantalla. */
+
+:root {
+  --ink: #101E30;
+  --surface: #17293F;
+  --line: rgba(255, 255, 255, 0.16);
+  --mist: #B7C6D9;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--ink);
+  color: #FBFDFF;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.font-display { font-family: 'Space Grotesk', Arial, sans-serif; }
+.font-mono { font-family: 'IBM Plex Mono', Consolas, monospace; }
+
+/* ============ LAYOUT ============ */
+
+.geo-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ---------- Topbar ---------- */
+
+.geo-topbar {
+  height: 60px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1.1rem;
+  background: rgba(23, 41, 63, 0.97);
+  border-bottom: 1px solid var(--line);
+  z-index: 20;
+}
+
+.geo-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #fff;
+  font-size: 1rem;
+}
+.geo-brand:hover { color: var(--teal); }
+.geo-brand .brand-sep {
+  color: var(--mist);
+  font-weight: 400;
+  font-size: 0.85rem;
+  margin-left: 0.15rem;
+}
+
+.geo-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  color: #EAF1F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.icon-btn:hover { border-color: rgba(78, 205, 196, 0.5); color: var(--teal); background: rgba(255, 255, 255, 0.1); }
+
+.basemap-switch {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+}
+.basemap-option {
+  border: none;
+  background: transparent;
+  color: var(--mist);
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  letter-spacing: .04em;
+}
+.basemap-option.active { background: var(--teal); color: var(--ink); }
+.basemap-option:not(.active):hover { color: #fff; }
+
+#sessionBadge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--teal);
+  white-space: nowrap;
+}
+#sessionBadge.is-guest { color: var(--mist); }
+#sessionBadge a { color: var(--teal); }
+
+#btnToggleLayers { display: none; }
+@media (max-width: 900px) {
+  #btnToggleLayers { display: flex; }
+}
+
+/* ---------- Body: sidebar + map + info panel ---------- */
+
+.geo-body {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+/* ---------- Sidebar de capas ---------- */
+
+.geo-sidebar {
+  width: 320px;
+  flex: 0 0 auto;
+  background: rgba(19, 33, 51, 0.98);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+  padding: 1.1rem 1rem 2rem;
+  z-index: 15;
+}
+
+.sidebar-eyebrow {
+  color: var(--teal);
+  letter-spacing: .2em;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.sidebar-title {
+  font-size: 1.15rem;
+  margin-bottom: 1.1rem;
+}
+.sidebar-hint {
+  color: var(--mist);
+  font-size: 0.78rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.layer-group {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 0.7rem;
+  background: rgba(255, 255, 255, 0.035);
+  overflow: hidden;
+}
+.layer-group > summary {
+  cursor: pointer;
+  padding: 0.65rem 0.85rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mist);
+  list-style: none;
+}
+.layer-group > summary::-webkit-details-marker { display: none; }
+.layer-group > summary::before {
+  content: '▸';
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform .15s ease;
+  color: var(--teal);
+}
+.layer-group[open] > summary::before { transform: rotate(90deg); }
+
+.layer-row {
+  padding: 0.55rem 0.85rem 0.7rem;
+  border-top: 1px solid var(--line);
+}
+.layer-row.is-off { opacity: 0.55; }
+
+.layer-row-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.layer-row-top input[type="checkbox"] {
+  accent-color: var(--teal);
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+}
+.layer-swatch {
+  flex: 0 0 auto;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+.layer-name {
+  flex: 1 1 auto;
+  font-size: 0.85rem;
+  color: #EAF1F7;
+}
+.layer-badge {
+  flex: 0 0 auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--mist);
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+.layer-badge.is-live { color: var(--teal); border-color: rgba(78, 205, 196, 0.4); }
+.layer-badge.is-demo { color: #E0A03C; border-color: rgba(224, 160, 60, 0.4); }
+
+.layer-opacity {
+  margin-top: 0.45rem;
+  padding-left: 1.65rem;
+}
+.layer-opacity input[type="range"] {
+  width: 100%;
+  accent-color: var(--teal);
+  height: 3px;
+}
+
+.sidebar-legend-note {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.7rem;
+  color: var(--mist);
+  line-height: 1.6;
+}
+.sidebar-legend-note b { color: #EAF1F7; }
+
+/* ---------- Mapa ---------- */
+
+.geo-map-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+  background: #101E30;
+}
+
+.map-controls {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+}
+.map-controls .icon-btn {
+  width: 38px;
+  height: 38px;
+  background: rgba(23, 41, 63, 0.92);
+  font-size: 1.1rem;
+}
+
+.map-controls-left {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
+
+#coord-readout {
+  position: absolute;
+  left: 1rem;
+  bottom: 2.6rem;
+  z-index: 10;
+  font-size: 0.72rem;
+  color: var(--teal);
+  background: rgba(23, 41, 63, 0.9);
+  border: 1px solid rgba(78, 205, 196, 0.35);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* ---------- Controles de MapLibre GL ---------- */
+
+.maplibregl-ctrl-scale {
+  background: rgba(23, 41, 63, 0.9) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--mist) !important;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem !important;
+  border-radius: 4px;
+}
+.maplibregl-ctrl-bottom-left { left: 1rem !important; bottom: 0.6rem !important; }
+.maplibregl-ctrl-bottom-right { right: 1rem !important; bottom: 0.6rem !important; }
+.maplibregl-ctrl-attrib {
+  background: rgba(23, 41, 63, 0.85) !important;
+  font-size: 0.62rem !important;
+  border-radius: 4px;
+}
+.maplibregl-ctrl-attrib a { color: var(--mist) !important; }
+.maplibregl-ctrl-attrib-button { filter: invert(1) brightness(1.6); }
+.maplibregl-popup-content { display: none; }
+.maplibregl-canvas:focus-visible { outline: none; }
+
+/* ---------- Panel de atributos (feature info) ---------- */
+
+.geo-feature-panel {
+  position: absolute;
+  top: 0;
+  right: -360px;
+  width: 340px;
+  height: 100%;
+  background: rgba(19, 33, 51, 0.98);
+  border-left: 1px solid var(--line);
+  z-index: 18;
+  display: flex;
+  flex-direction: column;
+  transition: right .25s ease;
+  box-shadow: -12px 0 28px rgba(0, 0, 0, 0.35);
+}
+.geo-feature-panel.is-open { right: 0; }
+
+.feature-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+.feature-panel-head h2 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+.feature-panel-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 1rem 1.1rem 2rem;
+}
+
+.feature-card-info {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 0.9rem;
+  overflow: hidden;
+}
+.feature-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+.feature-geom-icon { font-size: 1rem; }
+
+.feature-attr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+.feature-attr-table tr:not(:last-child) th,
+.feature-attr-table tr:not(:last-child) td {
+  border-bottom: 1px solid var(--line);
+}
+.feature-attr-table th {
+  text-align: left;
+  color: var(--mist);
+  font-weight: 400;
+  padding: 0.5rem 0.6rem;
+  width: 45%;
+  vertical-align: top;
+}
+.feature-attr-table td {
+  padding: 0.5rem 0.6rem;
+  color: #EAF1F7;
+  word-break: break-word;
+}
+
+/* ---------- Footer corporativo ---------- */
+
+.geo-footer {
+  flex: 0 0 auto;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 0 1.1rem;
+  background: rgba(23, 41, 63, 0.97);
+  border-top: 1px solid var(--line);
+  z-index: 20;
+}
+
+.geo-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--mist);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.geo-footer-brand b { color: #FBFDFF; font-weight: 600; }
+.geo-footer-brand svg { flex: 0 0 auto; }
+
+.geo-footer-links {
+  display: flex;
+  gap: 1.2rem;
+  white-space: nowrap;
+}
+.geo-footer-links a {
+  color: var(--mist);
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+.geo-footer-links a:hover { color: #fff; }
+
+.geo-footer-copy {
+  margin: 0;
+  color: var(--mist);
+  opacity: 0.7;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 900px) {
+  .geo-sidebar {
+    position: absolute;
+    top: 0;
+    left: -340px;
+    height: 100%;
+    width: 300px;
+    transition: left .25s ease;
+    box-shadow: 12px 0 28px rgba(0, 0, 0, 0.35);
+  }
+  .geo-sidebar.is-open { left: 0; }
+
+  .geo-feature-panel { width: 88vw; right: -90vw; }
+
+  #sessionBadge { display: none; }
+  #coord-readout { display: none; }
+
+  .geo-footer-brand span { display: none; }
+  .geo-footer-links { gap: 0.8rem; }
+}
+
+@media (max-width: 560px) {
+  .geo-footer-links { display: none; }
+}

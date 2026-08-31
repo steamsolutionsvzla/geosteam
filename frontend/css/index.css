@@ -1,0 +1,217 @@
+:root{
+    --teal:#4ECDC4;
+    --teal-dark:#2E9E93;
+    --blue:#4A7FC5;
+    --navy:#1E3A5F;
+    --ink:#0A1420;
+    --surface:#101B2C;
+    --line:rgba(255,255,255,0.08);
+    --mist:#93A6BC;
+  }
+
+  body{
+    background:var(--ink);
+    color:#EAF1F7;
+    font-family:'Inter', Arial, sans-serif;
+  }
+  .font-display{ font-family:'Space Grotesk', Arial, sans-serif; }
+  .font-mono{ font-family:'IBM Plex Mono', Consolas, monospace; }
+
+  a{ text-decoration:none; }
+
+  .grad-text{
+    background:linear-gradient(100deg, var(--teal) 0%, var(--blue) 65%, var(--navy) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:#4ECDC4; /* fallback si el navegador no soporta background-clip:text */
+  }
+  @supports (background-clip:text) or (-webkit-background-clip:text){
+    .grad-text{ -webkit-text-fill-color:transparent; }
+  }
+
+  /* ---------- Navbar ---------- */
+  .navbar-geo{
+    background:rgba(10,20,32,0.92);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar-geo .nav-link{
+    color:var(--mist);
+    font-size:0.9rem;
+  }
+  .navbar-geo .nav-link:hover{ color:#fff; }
+  .btn-teal{
+    background:var(--teal);
+    color:var(--ink);
+    border:none;
+    font-weight:500;
+    border-radius:999px;
+    padding:0.55rem 1.4rem;
+  }
+  .btn-teal:hover{ background:#fff; color:var(--ink); }
+  .btn-outline-line{
+    border:1px solid rgba(255,255,255,0.18);
+    color:#EAF1F7;
+    border-radius:999px;
+    padding:0.55rem 1.4rem;
+  }
+  .btn-outline-line:hover{ border-color:rgba(78,205,196,0.6); color:var(--teal); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding-top:9rem;
+    padding-bottom:6rem;
+    overflow:hidden;
+    background:radial-gradient(1200px 600px at 20% -10%, rgba(74,127,197,0.18), transparent 60%);
+  }
+  .contour-bg{
+    position:absolute;
+    inset:0;
+    opacity:0.35;
+    pointer-events:none;
+  }
+  .contour-bg svg{
+    position:absolute;
+    top:50%; left:50%;
+    width:160%;
+    max-width:1800px;
+    transform:translate(-50%,-50%);
+  }
+  .contour-bg path{ fill:none; stroke:url(#contourGrad); stroke-width:1; }
+
+  .status-card{
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(255,255,255,0.02);
+    padding:1.25rem 1.4rem;
+    font-size:0.82rem;
+  }
+  .status-card .row-line{
+    display:flex;
+    justify-content:space-between;
+    padding:0.3rem 0;
+    color:var(--mist);
+  }
+  .status-card .row-line span.val{ color:#fff; }
+
+  /* ---------- Strip ---------- */
+  .strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,0.015);
+  }
+  .strip span{ color:var(--mist); font-size:0.78rem; letter-spacing:.05em; }
+
+  /* ---------- Layer stack (signature) ---------- */
+  .layer-stack{
+    position:relative;
+    height:420px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  .layer-card{
+    position:absolute;
+    width:72%;
+    height:74px;
+    border-radius:999px;
+    background:linear-gradient(155deg, var(--teal) 0%, var(--blue) 55%, var(--navy) 100%);
+    box-shadow:0 20px 40px -12px rgba(78,205,196,0.25);
+    display:flex;
+    align-items:center;
+    padding:0 1.5rem;
+    transition:transform .5s cubic-bezier(.16,1,.3,1);
+    color:rgba(10,20,32,0.75);
+    font-size:0.8rem;
+  }
+  .layer-card:nth-child(1){ transform:translate(0,0); z-index:1; }
+  .layer-card:nth-child(2){ transform:translate(18px,-14px); z-index:2; }
+  .layer-card:nth-child(3){ transform:translate(36px,-28px); z-index:3; }
+  .layer-card:nth-child(4){ transform:translate(54px,-42px); z-index:4; }
+  .layer-stack:hover .layer-card:nth-child(1){ transform:translate(0,0) scale(1.02); }
+  .layer-stack:hover .layer-card:nth-child(2){ transform:translate(18px,-30px) scale(1.02); }
+  .layer-stack:hover .layer-card:nth-child(3){ transform:translate(36px,-60px) scale(1.02); }
+  .layer-stack:hover .layer-card:nth-child(4){ transform:translate(54px,-90px) scale(1.02); }
+
+  .dot{ width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:8px; }
+
+  /* ---------- Feature cards ---------- */
+  .feature-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:rgba(255,255,255,0.02);
+    padding:1.75rem;
+    height:100%;
+    transition:border-color .3s ease;
+  }
+  .feature-card:hover{ border-color:rgba(78,205,196,0.4); }
+  .feature-icon{
+    width:42px; height:42px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:1.1rem;
+  }
+
+  /* ---------- Steps ---------- */
+  .step{
+    border-left:1px solid var(--line);
+    padding-left:1.5rem;
+    position:relative;
+  }
+  .step .step-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    color:var(--teal);
+  }
+
+  /* ---------- CTA ---------- */
+  .cta-section{
+    position:relative;
+    overflow:hidden;
+    border-top:1px solid var(--line);
+  }
+  .form-control-geo{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.15);
+    color:#fff;
+    border-radius:999px;
+    padding:0.7rem 1.2rem;
+  }
+  .form-control-geo::placeholder{ color:rgba(147,166,188,0.6); }
+  .form-control-geo:focus{
+    background:rgba(255,255,255,0.06);
+    border-color:rgba(78,205,196,0.6);
+    color:#fff;
+    box-shadow:none;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:3rem 0;
+  }
+  footer .footer-links a{ color:var(--mist); font-size:0.8rem; margin-right:1.5rem; }
+  footer .footer-links a:hover{ color:#fff; }
+
+  /* ---------- Coordinate readout ---------- */
+  #coord-readout{
+    position:fixed;
+    z-index:1050;
+    pointer-events:none;
+    transform:translate(14px, 14px);
+    white-space:nowrap;
+    opacity:0;
+    transition:opacity .2s ease;
+    font-size:0.7rem;
+    color:var(--teal);
+    background:rgba(10,20,32,0.92);
+    border:1px solid rgba(78,205,196,0.3);
+    padding:0.25rem 0.5rem;
+    border-radius:4px;
+  }
+
+  @media (max-width: 767px){
+    #coord-readout{ display:none; }
+    .layer-stack{ height:340px; }
+  }

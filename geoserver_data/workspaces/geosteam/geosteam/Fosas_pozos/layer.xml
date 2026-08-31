@@ -1,0 +1,16 @@
+<layer>
+  <name>Fosas_pozos</name>
+  <id>LayerInfoImpl--21f8ec9d:1a030054137:-7dc1</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-43461c02:1a02f3c69d6:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--21f8ec9d:1a030054137:-7dc2</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-08-23 19:43:45.703 UTC</dateCreated>
+</layer>
