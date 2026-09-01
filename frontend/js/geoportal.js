@@ -43,7 +43,7 @@
     /* 1. Sesión (JWT emitido por el backend FastAPI)                     */
     /* ----------------------------------------------------------------- */
 
-    var API_BASE = window.GEOSTEAM_API_BASE || ''; // Ahora es relativo
+    var API_BASE = window.GEOSTEAM_API_BASE || ''; 
     var token = localStorage.getItem('geosteam_token');
     var sessionBadge = document.getElementById('sessionBadge');
 
@@ -104,13 +104,12 @@
         ],
         attribution: '&copy; OpenStreetMap'
       },
-      oscuro: {
-        tiles: [
-           'https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-    'https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
-        ],
-        attribution: '&copy; OpenStreetMap &copy; CARTO'
-      },
+     oscuro: {
+    tiles: [
+       'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+    ],
+    attribution: 'Tiles &copy; Esri'
+},
       satelite: {
         tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
         attribution: 'Tiles &copy; Esri'
@@ -144,18 +143,22 @@
     var emptyFC = { type: 'FeatureCollection', features: [] };
 
     function buildWfsUrl(layerCfg) {
-      var typeName = CFG.WORKSPACE + ':' + layerCfg.typeName;
-      var params = new URLSearchParams({
-        service: 'WFS',
-        version: '2.0.0',
-        request: 'GetFeature',
-        typeNames: typeName,
-        outputFormat: 'application/json',
-        srsName: 'urn:ogc:def:crs:OGC::CRS84'
-      });
-      // Ahora usa la API_BASE relativa (que apunta al mismo dominio, Nginx o FastAPI)
-      return API_BASE + '/geoserver/' + CFG.WORKSPACE + '/wfs?' + params.toString();
-    }
+  // Usamos layerCfg.workspace (que viene del backend) en lugar de CFG.WORKSPACE
+  // Si por alguna razón no viene, usamos el que esté en la config global
+  var workspace = layerCfg.workspace || CFG.WORKSPACE;
+
+  var typeName = workspace + ':' + layerCfg.typeName;
+  var params = new URLSearchParams({
+    service: 'WFS',
+    version: '2.0.0',
+    request: 'GetFeature',
+    typeNames: typeName,
+    outputFormat: 'application/json',
+    srsName: 'urn:ogc:def:crs:OGC::CRS84'
+  });
+  
+  return API_BASE + '/geoserver/' + workspace + '/wfs?' + params.toString();
+}
 
     function selectedExpr(whenTrue, whenFalse) {
       return ['case', ['boolean', ['feature-state', 'selected'], false], whenTrue, whenFalse];

@@ -29,6 +29,20 @@ class Settings(BaseSettings):
     # Es distinta de la URL interna que usa el backend para el proxy WFS.
     GEOSERVER_PUBLIC_URL: str = "http://localhost:8080/geoserver/web/"
 
+    # Credenciales de administrador de GeoServer, usadas SOLO por el backend
+    # para autenticar el proxy REST (nunca deben ir al frontend).
+    # Se leen del .env / variables de entorno; estos valores son solo un
+    # fallback para desarrollo local.
+    GEOSERVER_ADMIN_USER: str = "admin"
+    GEOSERVER_ADMIN_PASSWORD: str = "geoserver"
+
+    @computed_field
+    @property
+    def GEOSERVER_AUTH_HEADER(self) -> str:
+        import base64
+        raw = f"{self.GEOSERVER_ADMIN_USER}:{self.GEOSERVER_ADMIN_PASSWORD}"
+        return "Basic " + base64.b64encode(raw.encode()).decode()
+
     @computed_field
     @property
     def DATABASE_URL(self) -> str:

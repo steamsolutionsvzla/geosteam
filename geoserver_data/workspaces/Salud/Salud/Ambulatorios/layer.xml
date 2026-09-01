@@ -1,0 +1,16 @@
+<layer>
+  <name>Ambulatorios</name>
+  <id>LayerInfoImpl-481e477:1a05d7bf72f:-5b9c</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-43461c02:1a02f3c69d6:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-481e477:1a05d7bf72f:-5b9d</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2026-09-01 17:11:16.526 UTC</dateCreated>
+</layer>

@@ -2,7 +2,7 @@
   <id>LayerInfoImpl--21f8ec9d:1a030054137:-7dcd</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>geosteam:Bloques_Campos_petroleros</name>
+  <name>petroleros:Bloques_Campos_petroleros</name>
   <mimeFormats>
     <string>image/png</string>
     <string>image/jpeg</string>

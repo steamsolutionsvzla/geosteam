@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<roleRegistry xmlns="http://www.geoserver.org/security/roles" version="1.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<roleRegistry version="1.0" xmlns="http://www.geoserver.org/security/roles">
     <roleList>
         <role id="ADMIN"/>
         <role id="GROUP_ADMIN"/>

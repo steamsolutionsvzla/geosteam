@@ -2,7 +2,7 @@
   <id>LayerInfoImpl--21f8ec9d:1a030054137:-7db9</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>geosteam:t_200901_Lotes_petroleros_venezuela_WGS84</name>
+  <name>petroleros:t_200901_Lotes_petroleros_venezuela_WGS84</name>
   <mimeFormats>
     <string>image/png</string>
     <string>image/jpeg</string>

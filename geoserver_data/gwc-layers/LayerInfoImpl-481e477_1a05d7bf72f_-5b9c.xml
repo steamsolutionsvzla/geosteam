@@ -1,8 +1,8 @@
 <GeoServerTileLayer>
-  <id>LayerInfoImpl--21f8ec9d:1a030054137:-7dc3</id>
+  <id>LayerInfoImpl-481e477:1a05d7bf72f:-5b9c</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>petroleros:Fosas_plantas</name>
+  <name>Salud:Ambulatorios</name>
   <mimeFormats>
     <string>image/png</string>
     <string>image/jpeg</string>
