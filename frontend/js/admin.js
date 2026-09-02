@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Botón "Abrir GeoServer"
   if (btnGeoserver) {
-    btnGeoserver.href = window.GEOSTEAM_GEOSERVER_ADMIN_URL || 'http://localhost:8080/geoserver/web/';
+    btnGeoserver.href = window.GEOSTEAM_GEOSERVER_ADMIN_URL || 'http://10.106.0.1:8080/geoserver/web/';
   }
 
   // Toast para "próximamente"
@@ -122,7 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return workspaces.map(w => `<span class="ws-tag">${escapeHtml(w)}</span>`).join(' ');
   }
 
+  // Guardamos la última lista cargada para poder rellenar el modal de edición
+  // sin tener que volver a pedirla al backend.
+  let usuariosCache = [];
+
   function pintarUsuarios(usuarios) {
+    usuariosCache = usuarios;
+
     if (!usuarios.length) {
       usersTableBody.innerHTML = '<tr><td colspan="4" style="color:var(--mist);">Todavía no hay usuarios registrados.</td></tr>';
       return;
@@ -142,15 +148,21 @@ document.addEventListener('DOMContentLoaded', () => {
           <td>${renderRoles(u.roles)}</td>
           <td>${renderWorkspaces(u.workspaces)}</td>
           <td class="text-end">
-            ${!esUnoMismo 
-              ? `<button class="row-action btn-eliminar" data-id="${u.id}" title="Eliminar usuario">✕</button>` 
-              : `<span style="color: #93A6BC; font-size: 0.75rem; font-family: 'IBM Plex Mono', monospace;">(Tú)</span>`}
+            <span class="row-actions">
+              <button class="row-action btn-editar" data-id="${u.id}" title="Editar usuario">✎</button>
+              ${!esUnoMismo
+                ? `<button class="row-action btn-eliminar" data-id="${u.id}" title="Eliminar usuario">✕</button>`
+                : `<span style="color: #93A6BC; font-size: 0.75rem; font-family: 'IBM Plex Mono', monospace; align-self:center;">(Tú)</span>`}
+            </span>
           </td>
         </tr>`;
     }).join('');
 
     usersTableBody.querySelectorAll('.btn-eliminar').forEach((btn) => {
       btn.addEventListener('click', () => eliminarUsuario(btn.getAttribute('data-id')));
+    });
+    usersTableBody.querySelectorAll('.btn-editar').forEach((btn) => {
+      btn.addEventListener('click', () => abrirModalEditar(btn.getAttribute('data-id')));
     });
   }
 
@@ -189,33 +201,69 @@ document.addEventListener('DOMContentLoaded', () => {
   const createUserError = document.getElementById('createUserError');
   const btnCrearUsuario = document.getElementById('btnCrearUsuario');
 
-  // Función para cargar workspaces desde la API
- async function cargarWorkspaces() {
-  const select = document.getElementById('nuevoWorkspace');
-  if (!select) return;
-  try {
+  /* -------------------------------------------------------------- */
+  /* Selector visual de workspaces (chips clicables, sin Ctrl+clic)  */
+  /* -------------------------------------------------------------- */
+
+  // Cache de la lista de espacios (se reutiliza entre el modal de crear y el de editar)
+  let workspacesDisponibles = null;
+
+  async function obtenerWorkspacesDisponibles() {
+    if (workspacesDisponibles) return workspacesDisponibles;
     const response = await fetch(API_BASE + '/api/workspaces', { headers: authHeaders() });
     if (!response.ok) throw new Error('Error al cargar workspaces');
     const data = await response.json();
-    select.innerHTML = '';
-    // La API devuelve un array de objetos con { id, name, description, created_at }
-    const workspaces = Array.isArray(data) ? data : data.workspaces || [];
-    if (workspaces.length === 0) {
-      select.innerHTML = '<option value="">No hay espacios disponibles</option>';
-    } else {
-      workspaces.forEach(ws => {
-        const nombre = ws.name;   // ← Cambio aquí
-        const option = document.createElement('option');
-        option.value = nombre;
-        option.textContent = nombre;
-        select.appendChild(option);
-      });
-    }
-  } catch (error) {
-    console.error('Error cargando workspaces:', error);
-    select.innerHTML = '<option value="">Error al cargar espacios</option>';
+    workspacesDisponibles = Array.isArray(data) ? data : data.workspaces || [];
+    return workspacesDisponibles;
   }
-}
+
+  // Dibuja los chips de espacios de trabajo dentro de `container`,
+  // marcando como seleccionados los que estén en `seleccionados`.
+  function renderWorkspacePicker(container, workspaces, seleccionados) {
+    if (!container) return;
+    if (!workspaces.length) {
+      container.innerHTML = '<span class="ws-picker-msg">No hay espacios disponibles</span>';
+      return;
+    }
+    const seleccionadosSet = new Set(seleccionados || []);
+    container.innerHTML = workspaces.map((ws) => {
+      const nombre = ws.name;
+      const marcado = seleccionadosSet.has(nombre);
+      return `
+        <label class="ws-option${marcado ? ' is-checked' : ''}">
+          <input type="checkbox" value="${escapeHtml(nombre)}" ${marcado ? 'checked' : ''}>
+          <span class="ws-option-dot"></span>
+          <span class="ws-option-label">${escapeHtml(nombre)}</span>
+        </label>`;
+    }).join('');
+
+    container.querySelectorAll('.ws-option').forEach((label) => {
+      const checkbox = label.querySelector('input[type="checkbox"]');
+      checkbox.addEventListener('change', () => {
+        label.classList.toggle('is-checked', checkbox.checked);
+        container.classList.remove('is-invalid');
+      });
+    });
+  }
+
+  function workspacesSeleccionadosDe(container) {
+    if (!container) return [];
+    return Array.from(container.querySelectorAll('input[type="checkbox"]:checked')).map((c) => c.value);
+  }
+
+  async function cargarWorkspacesPicker(container, seleccionados) {
+    if (!container) return;
+    container.innerHTML = '<span class="ws-picker-msg">Cargando espacios…</span>';
+    try {
+      const workspaces = await obtenerWorkspacesDisponibles();
+      renderWorkspacePicker(container, workspaces, seleccionados);
+    } catch (error) {
+      console.error('Error cargando workspaces:', error);
+      container.innerHTML = '<span class="ws-picker-msg">Error al cargar espacios</span>';
+    }
+  }
+
+  const nuevoWorkspacePicker = document.getElementById('nuevoWorkspacePicker');
 
   // Limpiar modal al abrir y cargar workspaces
   const modalNuevoUsuario = document.getElementById('modalNuevoUsuario');
@@ -228,11 +276,9 @@ document.addEventListener('DOMContentLoaded', () => {
         form.querySelectorAll('input').forEach(input => {
           input.value = '';
         });
-        // Dejar selects en la primera opción (excepto el de workspaces, que se llenará luego)
+        // Dejar selects en la primera opción
         form.querySelectorAll('select').forEach(select => {
-          if (select.id !== 'nuevoWorkspace') {
-            select.selectedIndex = 0;
-          }
+          select.selectedIndex = 0;
         });
       }
       // Ocultar mensaje de error
@@ -247,8 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btnCrear.disabled = false;
         btnCrear.textContent = 'Crear usuario';
       }
-      // Cargar workspaces
-      cargarWorkspaces();
+      // Cargar workspaces (sin ninguno preseleccionado)
+      cargarWorkspacesPicker(nuevoWorkspacePicker, []);
     });
   }
 
@@ -260,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btnCrearUsuario.textContent = 'Creando…';
 
       const rolSeleccionado = document.getElementById('nuevoRol').value;
-      const workspaceSeleccionado = document.getElementById('nuevoWorkspace').value;
+      const workspacesSeleccionados = workspacesSeleccionadosDe(nuevoWorkspacePicker);
 
       let roles = [];
       if (rolSeleccionado === 'admin') {
@@ -269,20 +315,23 @@ document.addEventListener('DOMContentLoaded', () => {
         roles = ['ROLE_LECTOR'];
       }
 
-      // Si no selecciona workspace, usar 'geosteam' por defecto (o el que corresponda)
-      const workspaces = workspaceSeleccionado ? [workspaceSeleccionado] : ['geosteam'];
+      if (workspacesSeleccionados.length === 0) {
+        createUserError.textContent = 'Selecciona al menos un espacio de trabajo';
+        createUserError.classList.remove('d-none');
+        nuevoWorkspacePicker.classList.add('is-invalid');
+        btnCrearUsuario.disabled = false;
+        btnCrearUsuario.textContent = 'Crear usuario';
+        return;
+      }
 
       const payload = {
         nombre: document.getElementById('nuevoNombre').value.trim(),
         email: document.getElementById('nuevoEmail').value.trim(),
         password: document.getElementById('nuevoPassword').value,
         roles: roles,
-        workspaces: workspaces
+        workspaces: workspacesSeleccionados
       };
 
-      console.log('Token:', token);
-console.log('Headers:', authHeaders());
-console.log('Payload:', payload);
       fetch(API_BASE + '/api/users', {
         method: 'POST',
         headers: authHeaders(),
@@ -307,6 +356,94 @@ console.log('Payload:', payload);
         .finally(() => {
           btnCrearUsuario.disabled = false;
           btnCrearUsuario.textContent = 'Crear usuario';
+        });
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 3.b) Editar usuario al completo (nombre, email, contraseña, rol,   */
+  /*      workspaces) desde el modal "Editar usuario"                   */
+  /* ------------------------------------------------------------------ */
+  const formEditarUsuario = document.getElementById('formEditarUsuario');
+  const editUserError = document.getElementById('editUserError');
+  const btnGuardarEdicion = document.getElementById('btnGuardarEdicion');
+  const editarWorkspacePicker = document.getElementById('editarWorkspacePicker');
+  const modalEditarUsuarioEl = document.getElementById('modalEditarUsuario');
+  const modalEditarUsuario = modalEditarUsuarioEl ? new bootstrap.Modal(modalEditarUsuarioEl) : null;
+
+  function abrirModalEditar(userId) {
+    const usuario = usuariosCache.find((u) => String(u.id) === String(userId));
+    if (!usuario || !modalEditarUsuario) return;
+
+    editUserError.classList.add('d-none');
+    editUserError.textContent = '';
+    btnGuardarEdicion.disabled = false;
+    btnGuardarEdicion.textContent = 'Guardar cambios';
+
+    document.getElementById('editarUserId').value = usuario.id;
+    document.getElementById('editarNombre').value = usuario.nombre || '';
+    document.getElementById('editarEmail').value = usuario.email || '';
+    document.getElementById('editarPassword').value = '';
+    document.getElementById('editarRol').value = (usuario.roles || []).includes('ROLE_ADMIN') ? 'admin' : 'usuario';
+
+    cargarWorkspacesPicker(editarWorkspacePicker, usuario.workspaces || []);
+
+    modalEditarUsuario.show();
+  }
+
+  if (formEditarUsuario) {
+    formEditarUsuario.addEventListener('submit', (e) => {
+      e.preventDefault();
+      editUserError.classList.add('d-none');
+      btnGuardarEdicion.disabled = true;
+      btnGuardarEdicion.textContent = 'Guardando…';
+
+      const userId = document.getElementById('editarUserId').value;
+      const rolSeleccionado = document.getElementById('editarRol').value;
+      const workspacesSeleccionados = workspacesSeleccionadosDe(editarWorkspacePicker);
+
+      if (workspacesSeleccionados.length === 0) {
+        editUserError.textContent = 'Selecciona al menos un espacio de trabajo';
+        editUserError.classList.remove('d-none');
+        editarWorkspacePicker.classList.add('is-invalid');
+        btnGuardarEdicion.disabled = false;
+        btnGuardarEdicion.textContent = 'Guardar cambios';
+        return;
+      }
+
+      const payload = {
+        nombre: document.getElementById('editarNombre').value.trim(),
+        email: document.getElementById('editarEmail').value.trim(),
+        roles: rolSeleccionado === 'admin' ? ['ROLE_ADMIN'] : ['ROLE_LECTOR'],
+        workspaces: workspacesSeleccionados
+      };
+
+      const nuevaPassword = document.getElementById('editarPassword').value;
+      if (nuevaPassword) {
+        payload.password = nuevaPassword;
+      }
+
+      fetch(API_BASE + '/api/users/' + userId, {
+        method: 'PUT',
+        headers: authHeaders(),
+        body: JSON.stringify(payload)
+      })
+        .then(async (res) => {
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.detail || 'No se pudo actualizar el usuario');
+          return data;
+        })
+        .then(() => {
+          modalEditarUsuario.hide();
+          cargarUsuarios();
+        })
+        .catch((err) => {
+          editUserError.textContent = err.message;
+          editUserError.classList.remove('d-none');
+        })
+        .finally(() => {
+          btnGuardarEdicion.disabled = false;
+          btnGuardarEdicion.textContent = 'Guardar cambios';
         });
     });
   }

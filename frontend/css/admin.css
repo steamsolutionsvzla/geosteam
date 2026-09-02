@@ -324,7 +324,12 @@ body.admin-body {
   margin-bottom: 0.15rem;
 }
 
-/* Botón eliminar */
+/* Botones de acción (editar / eliminar) */
+.row-actions {
+  display: inline-flex;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
 .row-action {
   width: 30px;
   height: 30px;
@@ -343,6 +348,81 @@ body.admin-body {
   border-color: rgba(226, 99, 90, 0.4);
   background: rgba(226, 99, 90, 0.1);
   color: #E2635A;
+}
+.row-action.btn-editar:hover {
+  border-color: rgba(78, 205, 196, 0.45);
+  background: rgba(78, 205, 196, 0.1);
+  color: #4ECDC4;
+}
+
+/* ---------- Selector visual de espacios de trabajo (chips) ---------- */
+.ws-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid #2a3f5a;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  max-height: 190px;
+  overflow-y: auto;
+}
+.ws-picker-msg {
+  color: #93A6BC;
+  font-size: 0.85rem;
+  padding: 0.2rem;
+}
+.ws-option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.85rem 0.42rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #2a3f5a;
+  background: rgba(255, 255, 255, 0.03);
+  color: #EAF1F7;
+  font-size: 0.82rem;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+.ws-option:hover {
+  border-color: rgba(78, 205, 196, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+.ws-option input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.ws-option-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2a3f5a;
+  flex-shrink: 0;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+.ws-option.is-checked {
+  border-color: rgba(78, 205, 196, 0.55);
+  background: rgba(78, 205, 196, 0.14);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.ws-option.is-checked .ws-option-dot {
+  background: #4ECDC4;
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.18);
+}
+.ws-option:focus-within {
+  outline: none;
+  border-color: rgba(78, 205, 196, 0.6);
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+}
+.ws-picker.is-invalid {
+  border-color: rgba(226, 99, 90, 0.55);
 }
 
 /* Contenedor de la tabla: scroll horizontal si es necesario */

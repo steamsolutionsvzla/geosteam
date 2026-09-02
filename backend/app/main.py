@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 import os
-from fastapi import FastAPI, Depends, Request
+from fastapi import FastAPI, Depends, Request, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 import httpx
@@ -12,9 +12,12 @@ from app.db.database import connect_db, disconnect_db, init_db, get_pool
 from app.api.auth import router as auth_router
 from app.api.users import router as users_router
 from app.api.stats import router as stats_router
-from app.core.security import get_current_user
+from app.core.security import get_current_user, get_current_user_optional
 from starlette.middleware.base import BaseHTTPMiddleware
 import traceback
+
+# Workspace que se muestra a los usuarios NO logeados (modo invitado) en el geoportal.
+GUEST_WORKSPACE = "Salud"
 
 # --- CONFIGURACIÓN DE ENTORNO ---
 # URL interna de GeoServer (dentro de la red Docker)
@@ -87,21 +90,34 @@ app.include_router(workspaces.router)
 # ENDPOINTS PARA GESTIÓN DE CAPAS Y PROXY DE GEOSERVER
 # =========================================================
 @app.get("/api/mis-capas")
-async def get_mis_capas(current_user=Depends(get_current_user)):
-    # Obtener los workspaces asignados al usuario
-    try:
-        db_pool = get_pool()
-        async with db_pool.acquire() as connection:
-            rows = await connection.fetch("""
-                SELECT w.name 
-                FROM workspaces w
-                JOIN user_workspaces uw ON w.id = uw.workspace_id
-                WHERE uw.user_id = $1
-            """, current_user.id)
-            available_workspaces = [row["name"] for row in rows]
-    except Exception as e:
-        print(f"Error leyendo workspaces: {e}")
-        available_workspaces = ["petroleros"]
+async def get_mis_capas(current_user=Depends(get_current_user_optional)):
+    # Usuario invitado (sin token): solo ve el workspace público de Salud.
+    if current_user is None:
+        try:
+            db_pool = get_pool()
+            async with db_pool.acquire() as connection:
+                exists = await connection.fetchval(
+                    "SELECT 1 FROM workspaces WHERE name = $1", GUEST_WORKSPACE
+                )
+            available_workspaces = [GUEST_WORKSPACE] if exists else []
+        except Exception as e:
+            print(f"Error verificando workspace de invitado: {e}")
+            available_workspaces = [GUEST_WORKSPACE]
+    else:
+        # Obtener los workspaces asignados al usuario
+        try:
+            db_pool = get_pool()
+            async with db_pool.acquire() as connection:
+                rows = await connection.fetch("""
+                    SELECT w.name 
+                    FROM workspaces w
+                    JOIN user_workspaces uw ON w.id = uw.workspace_id
+                    WHERE uw.user_id = $1
+                """, current_user.id)
+                available_workspaces = [row["name"] for row in rows]
+        except Exception as e:
+            print(f"Error leyendo workspaces: {e}")
+            available_workspaces = ["petroleros"]
 
     if not available_workspaces:
         return {"workspace": "", "available_workspaces": [], "layers": []}
@@ -183,7 +199,7 @@ async def get_mis_capas(current_user=Depends(get_current_user)):
                         "workspace": workspace,
                         "geometryType": geom_type,
                         "color": get_esri_color(layer_name),
-                        "defaultVisible": False,
+                        "defaultVisible": current_user is None,
                         "opacity": 0.75,
                         "attributeLabels": {},
                         "demoData": { "type": "FeatureCollection", "features": [] }
@@ -201,7 +217,20 @@ async def get_mis_capas(current_user=Depends(get_current_user)):
 
 
 @app.api_route("/geoserver/{path:path}", methods=["GET", "POST", "OPTIONS"])
-async def geoserver_proxy(path: str, request: Request, current_user=Depends(get_current_user)):
+async def geoserver_proxy(
+    path: str,
+    request: Request,
+    current_user=Depends(get_current_user_optional),
+):
+    # Usuarios invitados (sin token) solo pueden consultar el workspace público.
+    if current_user is None:
+        primer_segmento = path.split("/", 1)[0]
+        if primer_segmento.lower() != GUEST_WORKSPACE.lower():
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Se requiere iniciar sesión para acceder a este espacio de trabajo",
+            )
+
     geoserver_url = f"{GEOSERVER_URL}/geoserver/{path}"
 
     body = await request.body()

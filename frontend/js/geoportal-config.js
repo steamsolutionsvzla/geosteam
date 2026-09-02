@@ -15,11 +15,11 @@ window.GEOSTEAM_LOAD_LAYERS = function(callback) {
   var token = localStorage.getItem('geosteam_token');
   var API_BASE = window.GEOSTEAM_API_BASE || ''; // Mismo dominio
 
-  fetch(API_BASE + '/api/mis-capas', {
-    headers: {
-      'Authorization': 'Bearer ' + token 
-    }
-  })
+  // Si no hay token (usuario invitado), no mandamos Authorization: el
+  // backend responde igualmente con las capas públicas (workspace Salud).
+  var headers = token ? { 'Authorization': 'Bearer ' + token } : {};
+
+  fetch(API_BASE + '/api/mis-capas', { headers: headers })
   .then(res => {
     if (!res.ok) throw new Error('Sin permisos');
     return res.json();

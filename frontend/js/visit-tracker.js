@@ -6,7 +6,7 @@
  */
 (function () {
   try {
-    var API_BASE = window.GEOSTEAM_API_BASE || 'http://localhost:8001';
+    var API_BASE = window.GEOSTEAM_API_BASE || '';  // ← Cambio aquí
     var payload = JSON.stringify({
       path: window.location.pathname.split('/').pop() || 'index.html',
       referrer: document.referrer || ''

@@ -26,6 +26,16 @@ class UserUpdateWorkspaces(BaseModel):
     workspaces: List[str]
 
 
+class UserUpdate(BaseModel):
+    """Edición completa de un usuario. Todos los campos son opcionales:
+    solo se actualiza lo que venga presente en el payload."""
+    nombre: Optional[str] = Field(None, min_length=2, max_length=120)
+    email: Optional[EmailStr] = None
+    password: Optional[str] = Field(None, min_length=6, max_length=72)
+    roles: Optional[List[str]] = None
+    workspaces: Optional[List[str]] = None
+
+
 def _serialize(row) -> dict:
     return {
         "id": row["id"],
@@ -161,6 +171,116 @@ async def create_user(payload: UserCreate, _: CurrentUser = Depends(require_admi
             status_code=500,
             detail=f"Error interno al crear usuario: {str(e)}"
         )
+@router.put("/{user_id}")
+async def update_user(
+    user_id: int,
+    payload: UserUpdate,
+    admin: CurrentUser = Depends(require_admin),
+):
+    """Edita un usuario al completo: nombre, email, contraseña, rol y
+    workspaces. Cada campo es opcional; solo se toca lo que venga en
+    el payload."""
+    pool = get_pool()
+    async with pool.acquire() as connection:
+        user = await connection.fetchrow("SELECT id FROM users WHERE id = $1", user_id)
+        if not user:
+            raise HTTPException(status_code=404, detail="Usuario no encontrado")
+
+        # 1. Validar roles (si vienen)
+        if payload.roles is not None:
+            role_rows = await connection.fetch(
+                "SELECT name FROM roles WHERE name = ANY($1)", payload.roles
+            )
+            found_roles = {r["name"] for r in role_rows}
+            missing_roles = set(payload.roles) - found_roles
+            if missing_roles:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Roles no encontrados: {', '.join(missing_roles)}"
+                )
+
+        # 2. Validar workspaces (si vienen)
+        if payload.workspaces is not None:
+            ws_rows = await connection.fetch(
+                "SELECT name FROM workspaces WHERE name = ANY($1)", payload.workspaces
+            )
+            found_ws = {w["name"] for w in ws_rows}
+            missing_ws = set(payload.workspaces) - found_ws
+            if missing_ws:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Workspaces no encontrados: {', '.join(missing_ws)}"
+                )
+
+        # 3. Validar email duplicado (si viene y pertenece a otro usuario)
+        if payload.email is not None:
+            existing = await connection.fetchval(
+                "SELECT id FROM users WHERE email = $1 AND id != $2",
+                payload.email, user_id,
+            )
+            if existing:
+                raise HTTPException(
+                    status_code=409,
+                    detail="Ya existe un usuario con ese correo",
+                )
+
+        # 4. Actualizar nombre / email / password (solo lo que venga)
+        campos, valores = [], []
+        if payload.nombre is not None:
+            campos.append(f"fullname = ${len(valores) + 1}")
+            valores.append(payload.nombre)
+        if payload.email is not None:
+            campos.append(f"email = ${len(valores) + 1}")
+            valores.append(payload.email)
+        if payload.password:
+            hashed = bcrypt.hashpw(payload.password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+            campos.append(f"password = ${len(valores) + 1}")
+            valores.append(hashed)
+
+        if campos:
+            valores.append(user_id)
+            query = f"UPDATE users SET {', '.join(campos)} WHERE id = ${len(valores)}"
+            await connection.execute(query, *valores)
+
+        # 5. Actualizar roles (reemplazo completo, si vienen)
+        if payload.roles is not None:
+            await connection.execute("DELETE FROM user_roles WHERE user_id = $1", user_id)
+            if payload.roles:
+                await connection.executemany(
+                    "INSERT INTO user_roles (user_id, role_id) VALUES ($1, (SELECT id FROM roles WHERE name = $2))",
+                    [(user_id, role_name) for role_name in payload.roles]
+                )
+
+        # 6. Actualizar workspaces (reemplazo completo, si vienen)
+        if payload.workspaces is not None:
+            await connection.execute("DELETE FROM user_workspaces WHERE user_id = $1", user_id)
+            if payload.workspaces:
+                await connection.executemany(
+                    "INSERT INTO user_workspaces (user_id, workspace_id) VALUES ($1, (SELECT id FROM workspaces WHERE name = $2))",
+                    [(user_id, ws_name) for ws_name in payload.workspaces]
+                )
+
+        # 7. Devolver el usuario ya actualizado
+        row = await connection.fetchrow(
+            """
+            SELECT
+                u.id, u.fullname, u.email, u.created_at,
+                array_agg(DISTINCT r.name) FILTER (WHERE r.name IS NOT NULL) AS roles,
+                array_agg(DISTINCT w.name) FILTER (WHERE w.name IS NOT NULL) AS workspaces
+            FROM users u
+            LEFT JOIN user_roles ur ON u.id = ur.user_id
+            LEFT JOIN roles r ON ur.role_id = r.id
+            LEFT JOIN user_workspaces uw ON u.id = uw.user_id
+            LEFT JOIN workspaces w ON uw.workspace_id = w.id
+            WHERE u.id = $1
+            GROUP BY u.id
+            """,
+            user_id,
+        )
+
+    return _serialize(row)
+
+
 @router.put("/{user_id}/roles")
 async def update_roles(
     user_id: int,

@@ -118,6 +118,21 @@ async def get_current_user(authorization: Optional[str] = Header(None)) -> Curre
     )
 
 
+async def get_current_user_optional(
+    authorization: Optional[str] = Header(None),
+) -> Optional[CurrentUser]:
+    """
+    Igual que get_current_user, pero para endpoints que también deben
+    funcionar sin sesión (modo invitado). Si no viene header
+    Authorization, devuelve None en lugar de lanzar 401. Si viene un
+    token pero es inválido/expirado, sí lanza 401 (para forzar
+    reautenticación en vez de degradar silenciosamente a invitado).
+    """
+    if not authorization or not authorization.lower().startswith("bearer "):
+        return None
+    return await get_current_user(authorization)
+
+
 async def require_admin(current_user: CurrentUser = Depends(get_current_user)) -> CurrentUser:
     if "ROLE_ADMIN" not in current_user.roles:
         raise HTTPException(

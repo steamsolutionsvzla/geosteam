@@ -184,17 +184,72 @@
               <option value="admin">Administrador</option>
             </select>
           </div>
-          <!-- ===== NUEVO CAMPO: ESPACIO DE TRABAJO ===== -->
+          <!-- ===== ESPACIOS DE TRABAJO (selección visual con chips) ===== -->
           <div class="mb-3">
-            <label for="nuevoWorkspace" class="form-label-geo">Espacio de trabajo</label>
-            <select id="nuevoWorkspace" class="form-select form-select-geo" required>
-              <option value="">Cargando espacios...</option>
-            </select>
+            <label class="form-label-geo">Espacios de trabajo</label>
+            <div class="ws-picker" id="nuevoWorkspacePicker">
+              <span class="ws-picker-msg">Cargando espacios…</span>
+            </div>
+            <div class="form-text" style="color:var(--mist);">
+              Haz clic sobre uno o varios espacios para asignarlos.
+            </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-line" data-bs-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-teal" id="btnCrearUsuario">Crear usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: EDITAR USUARIO ============ -->
+<div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modal-geo">
+      <form id="formEditarUsuario">
+        <input type="hidden" id="editarUserId">
+        <div class="modal-header">
+          <h5 class="modal-title font-display">Editar usuario</h5>
+          <button type="button" class="btn-close btn-close-geo" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div id="editUserError" class="alert alert-danger d-none" role="alert"></div>
+
+          <div class="mb-3">
+            <label for="editarNombre" class="form-label-geo">Nombre completo</label>
+            <input type="text" id="editarNombre" class="form-control form-control-geo" required minlength="2" placeholder="Nombre y apellido">
+          </div>
+          <div class="mb-3">
+            <label for="editarEmail" class="form-label-geo">Correo</label>
+            <input type="email" id="editarEmail" class="form-control form-control-geo" required placeholder="nombre@institucion.gob">
+          </div>
+          <div class="mb-3">
+            <label for="editarPassword" class="form-label-geo">Contraseña</label>
+            <input type="password" id="editarPassword" class="form-control form-control-geo" minlength="6" placeholder="Dejar en blanco para no cambiarla">
+            <div class="form-text" style="color:var(--mist);">Solo se actualiza si escribes una nueva.</div>
+          </div>
+          <div class="mb-3">
+            <label for="editarRol" class="form-label-geo">Rol</label>
+            <select id="editarRol" class="form-select form-select-geo">
+              <option value="usuario">Usuario</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label-geo">Espacios de trabajo</label>
+            <div class="ws-picker" id="editarWorkspacePicker">
+              <span class="ws-picker-msg">Cargando espacios…</span>
+            </div>
+            <div class="form-text" style="color:var(--mist);">
+              Haz clic sobre uno o varios espacios para asignarlos.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-line" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-teal" id="btnGuardarEdicion">Guardar cambios</button>
         </div>
       </form>
     </div>
