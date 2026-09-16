@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoSteam — Geoportal territorial | Steam Solutions</title>
+
+<!-- Bootstrap 5 (CDN) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/index.css">
+
+<!--
+  ETAPA 1 — Planeta 3D (Three.js)
+  ============================================================
+  Import map para cargar Three.js r186 (versión exacta 0.186.0)
+  como módulo ES nativo desde CDN, sin instalar nada localmente.
+  En la ETAPA 2 esto se moverá a src/components/Earth.astro,
+  donde Astro/Vite resolverá "three" como dependencia de npm
+  en vez de un import map manual.
+-->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+  }
+}
+</script>
+
+<style>
+  /* ------------------------------------------------------------
+     ETAPA 1 — Estilos nuevos de esta iteración.
+     Temporal: en ETAPA 2 pasarán a Earth.astro / al <style> del
+     layout del hero. No se tocó css/index.css.
+     ------------------------------------------------------------ */
+
+  /* Hero más amplio y espacioso: aprovecha el espacio que libera
+     la eliminación del "estado del sistema", la barra inferior y
+     la sección de capas. */
+  .hero{
+    padding-top:12rem !important;
+    padding-bottom:9rem !important;
+    min-height:86vh;
+    display:flex;
+    align-items:center;
+  }
+
+  .earth-hero-stage{
+    position:relative;
+    min-height:460px;
+    height:100%;
+    width:100%;
+  }
+  #earth-canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    cursor:grab;
+    /* Se revela con transición suave cuando la textura ya cargó */
+    opacity:0;
+    transition:opacity .6s ease;
+  }
+  #earth-canvas.is-ready{ opacity:1; }
+  #earth-canvas:active{ cursor:grabbing; }
+
+  /* Halo de fondo detrás del planeta para integrarlo con el hero */
+  .earth-hero-stage::before{
+    content:"";
+    position:absolute;
+    inset:-15%;
+    background:radial-gradient(circle at 50% 45%, rgba(78,205,196,0.16), transparent 65%);
+    pointer-events:none;
+  }
+
+  @media (max-width:767px){
+    .hero{ padding-top:8.5rem !important; padding-bottom:5rem !important; min-height:auto; }
+    .earth-hero-stage{ min-height:300px; margin-top:1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #earth-canvas{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+
+
+<!-- ============ NAV ============ -->
+<nav class="navbar navbar-expand-md navbar-geo fixed-top py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#top">
+      <svg width="30" height="27" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#4ECDC4"/>
+            <stop offset="0.6" stop-color="#4A7FC5"/>
+            <stop offset="1" stop-color="#1E3A5F"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+        <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+        <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+      </svg>
+      <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav gap-md-4 mb-3 mb-md-0">
+        <li class="nav-item"><a class="nav-link" href="#top">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#plataforma">Plataforma</a></li>
+        <li class="nav-item"><a class="nav-link" href="#flujo">Cómo funciona</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="d-flex gap-2 ms-md-4">
+        <a href="login.html" class="btn btn-outline-line">Iniciar sesión</a>
+        <a href="geoportal.html" class="btn btn-teal">Abrir geoportal</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero">
+  <div class="contour-bg">
+    <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4ECDC4"/>
+          <stop offset="0.5" stop-color="#4A7FC5"/>
+          <stop offset="1" stop-color="#1E3A5F"/>
+        </linearGradient>
+      </defs>
+      <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580"/>
+      <path d="M20,540 C220,460 340,640 590,560 C840,480 960,600 1180,520"/>
+      <path d="M-10,480 C190,400 330,580 580,500 C830,420 970,540 1210,460"/>
+      <path d="M-40,420 C160,340 320,520 570,440 C820,360 980,480 1240,400"/>
+      <path d="M-70,360 C130,280 310,460 560,380 C810,300 990,420 1270,340"/>
+      <path d="M-100,300 C100,220 300,400 550,320 C800,240 1000,360 1300,280"/>
+      <path d="M0,750 C220,680 380,820 620,740 C860,660 980,760 1200,700"/>
+    </svg>
+  </div>
+
+  <div class="container position-relative">
+    <div class="row align-items-center g-5">
+      <div class="col-md-7">
+        <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">Steam Solutions · Geoportal</p>
+        <h1 class="font-display fw-semibold display-4" style="line-height:1.05;">
+          El territorio,<br><span class="grad-text">legible en tiempo real.</span>
+        </h1>
+        <p class="mt-4 mb-4" style="color:var(--mist); max-width:32rem; font-size:1.1rem;">
+          GeoSteam reúne catastro, infraestructura y datos ambientales en un solo mapa vivo, para que cada decisión territorial parta de coordenadas exactas, no de suposiciones.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="geoportal.html" class="btn btn-teal">Abrir geoportal</a>
+          <!-- Antes apuntaba a #capas (sección eliminada en esta etapa).
+               Se re-apunta a #plataforma, que es donde ahora vive el
+               contenido relacionado con capas de datos. -->
+          <a href="#plataforma" class="btn btn-outline-line">Ver la plataforma</a>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <!--
+          ETAPA 1 — Planeta 3D del hero.
+          El texto principal vive en la columna izquierda (col-md-7),
+          así que el planeta ocupa el lado opuesto (esta columna).
+          Ya no hay status-card ni ningún otro elemento aquí: se
+          eliminó por completo, sin reemplazarlo por nada parecido.
+          En ETAPA 2 este bloque será <Earth client:visible /> dentro
+          de src/components/Earth.astro.
+        -->
+        <div class="earth-hero-stage" id="earth-stage">
+          <canvas id="earth-canvas" aria-hidden="true"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATAFORMA ============ -->
+<section id="plataforma" class="py-5" style="padding-top:6rem !important; padding-bottom:6rem !important; border-top:1px solid var(--line);">
+  <div class="container">
+    <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">La plataforma</p>
+    <h2 class="font-display fw-semibold mb-5" style="font-size:2.1rem; max-width:36rem;">
+      Todo lo que un equipo técnico necesita para leer su territorio.
+    </h2>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--teal),var(--teal-dark));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Visor cartográfico</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Navega por capas vectoriales y raster con tiempos de carga bajos, incluso con miles de predios activos a la vez.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#5FB8D9,var(--blue));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Alertas territoriales</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Define umbrales por capa y recibe avisos cuando un sensor, permiso o predio entra en un estado que requiere revisión.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--navy));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><path d="M4 19h16M7 15V9m5 6V5m5 10v-3"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Reportes exportables</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Convierte cualquier consulta en un reporte con mapas, tablas y filtros, listo para compartir fuera de la plataforma.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--teal),var(--blue));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Integración de fuentes</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Conecta bases catastrales, sensores IoT y sistemas municipales existentes a través de GeoServer, usando conectores estándar (WMS, WFS, REST).</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--teal-dark));">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Control de permisos</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Define quién ve, edita o descarga cada capa, con registro de auditoría por usuario y por consulta.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:linear-gradient(135deg,var(--navy),#0F1D2E);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="2"><path d="M4 4v16h16M8 16l3-4 3 3 4-6"/></svg>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mb-2">Histórico territorial</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Compara el estado de una capa entre dos fechas y observa cómo cambió el territorio con el tiempo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLUJO ============ -->
+<section id="flujo" class="py-5" style="padding-top:6rem !important; padding-bottom:6rem !important; border-top:1px solid var(--line);">
+  <div class="container">
+    <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">Cómo funciona</p>
+    <h2 class="font-display fw-semibold mb-5" style="font-size:2.1rem; max-width:34rem;">
+      De datos dispersos a un territorio en un solo lugar.
+    </h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3 class="font-display fw-semibold fs-5 mt-2 mb-2">Conecta tus fuentes</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Importa catastro, sensores y sistemas existentes. GeoSteam normaliza los formatos automáticamente.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3 class="font-display fw-semibold fs-5 mt-2 mb-2">Organiza en capas</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Cada fuente se apila como una capa independiente, con su propio control de acceso y actualización.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3 class="font-display fw-semibold fs-5 mt-2 mb-2">Decide con datos</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">Cruza capas, genera reportes y actúa sobre alertas, todo desde el mismo mapa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="contacto" class="cta-section py-5 text-center" style="padding-top:6rem !important; padding-bottom:6rem !important;">
+  <div class="contour-bg" style="opacity:0.5;">
+    <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580" stroke="url(#contourGrad)"/>
+      <path d="M-40,420 C160,340 320,520 570,440 C820,360 980,480 1240,400" stroke="url(#contourGrad)"/>
+    </svg>
+  </div>
+  <div class="container position-relative" style="max-width:640px;">
+    <h2 class="font-display fw-semibold" style="font-size:2.4rem;">Empieza a mapear<br><span class="grad-text">tu territorio.</span></h2>
+    <p class="mt-3 mb-4" style="color:var(--mist);">Agenda una demo con el equipo de Steam Solutions y te mostramos GeoSteam con datos de tu propia zona.</p>
+
+    <form class="d-flex flex-column flex-sm-row gap-3 justify-content-center" onsubmit="return false;">
+      <label for="email" class="visually-hidden">Correo institucional</label>
+      <input id="email" type="email" required placeholder="correo@institucion.gob" class="form-control form-control-geo" style="max-width:320px;">
+      <button type="submit" class="btn btn-teal">Solicitar demo</button>
+    </form>
+    <p class="font-mono small mt-3" style="color:var(--mist); opacity:0.7;">Sin compromiso · respuesta en 1 día hábil</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+    <div class="d-flex align-items-center gap-2">
+      <svg width="24" height="21" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)"/>
+        <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)"/>
+        <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)"/>
+      </svg>
+      <span style="color:var(--mist); font-size:0.85rem;">GeoSteam — un producto de <span class="text-white">Steam Solutions</span></span>
+    </div>
+    <div class="footer-links font-mono">
+      <a href="#plataforma">Plataforma</a>
+      <a href="#flujo">Cómo funciona</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <p class="font-mono small mb-0" style="color:var(--mist); opacity:0.5;">© 2026 Steam Solutions</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS (solo para el menú móvil) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/geosteam-config.js"></script>
+<script src="js/visit-tracker.js"></script>
+<script src="js/index.js"></script>
+
+<!--
+  ============================================================
+  ETAPA 1 — Planeta 3D del hero (Three.js r186 + OrbitControls)
+  ============================================================
+  Todo este <script type="module"> es temporal y autocontenido.
+  En la ETAPA 2 se migrará a src/components/Earth.astro como un
+  componente Astro con su propio script de cliente
+  (por ejemplo client:visible), y el import map de arriba
+  desaparecerá porque Vite/Astro resolverá "three" desde
+  node_modules.
+-->
+<script type="module">
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+  // --------------------------------------------------------------
+  // 🔑 MapTiler — API key (placeholder, NUNCA se sube una key real)
+  // Obtén la tuya gratis en: https://cloud.maptiler.com/account/keys/
+  //
+  // NOTA IMPORTANTE sobre por qué esta key NO se usa para texturizar
+  // la esfera 3D de abajo:
+  //
+  // Los tiles de MapTiler (raster, vectoriales o satelitales) se
+  // sirven en proyección Web Mercator (EPSG:3857), la misma que usan
+  // Google Maps / Leaflet / MapLibre para mapas planos. Esa proyección
+  // recorta los polos en ±85.06° y deforma la latitud de forma NO
+  // lineal (logarítmica). Un SphereGeometry de Three.js, en cambio,
+  // necesita una textura EQUIRECTANGULAR (2:1, latitud/longitud
+  // lineal) para que el mapeo UV quede correcto en toda la esfera,
+  // incluidos los polos.
+  //
+  // MapTiler no ofrece un endpoint que entregue esa textura
+  // equirectangular completa lista para usar (su propia guía de
+  // "globo virtual" de 2014 lo confirma: piden que TÚ aportes la
+  // textura equirectangular y ellos solo la convierten en tiles para
+  // visores 2D, no al revés). Usarla directamente sobre la esfera
+  // produciría un planeta con Groenlandia y la Antártida gigantes y
+  // mal alineadas.
+  //
+  // Por eso: para el GLOBO 3D usamos una textura equirectangular
+  // pública de dominio público (NASA Blue Marble, redistribuida por
+  // el propio proyecto Three.js), y dejamos esta key reservada para
+  // la ETAPA 2, donde sí tiene sentido: el mapa 2D real del geoportal
+  // (geoportal.html), que trabaja en Web Mercator de forma nativa.
+  //
+  // Cómo encajan MapTiler y GeoServer en el proyecto real:
+  // el backend de GeoSteam ya trae un GeoServer configurado
+  // (ver geoserver_data/ en el repo, con workspaces como
+  // "petroleros" y "Salud" sirviendo WMS/WFS). La idea a futuro es
+  // que MapTiler aporte el BASEMAP (calles, relieve, fondo) y
+  // GeoServer sirva las CAPAS propias de GeoSteam (catastro,
+  // infraestructura, ambiente) por encima, vía WMS/WFS. Eso también
+  // quedará como PUBLIC_MAPTILER_API_KEY en el .env de la ETAPA 2.
+  // --------------------------------------------------------------
+  const MAPTILER_API_KEY = "TU_MAPTILER_API_KEY_AQUI";
+
+  const stage = document.getElementById('earth-stage');
+  const canvas = document.getElementById('earth-canvas');
+
+  // Si el navegador no soporta WebGL, dejamos el fondo decorativo
+  // (radial-gradient del CSS) sin romper el hero.
+  const soportaWebGL = (() => {
+    try {
+      const c = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+    } catch (e) { return false; }
+  })();
+
+  if (stage && canvas && soportaWebGL) {
+    initEarth(stage, canvas);
+  }
+
+  function initEarth(stage, canvas) {
+    const escenaReduceMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ---- Escena, cámara y renderer -------------------------------
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.set(0, 0, 3.1);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    // ---- Iluminación (para que se vea moderno y con volumen) -----
+    const sol = new THREE.DirectionalLight(0xffffff, 2.4);      // luz principal tipo "sol"
+    sol.position.set(5, 2, 5);
+    scene.add(sol);
+
+    scene.add(new THREE.AmbientLight(0x24405f, 1.1));           // rellena el lado oscuro sin aplanar
+
+    const luzDeBorde = new THREE.DirectionalLight(0x4ecdc4, 0.55); // toque teal de la paleta, contraluz
+    luzDeBorde.position.set(-4, -1, -2);
+    scene.add(luzDeBorde);
+
+    // ---- Texturas equirectangulares (ver nota sobre MapTiler arriba) ----
+    // Fuente: assets de ejemplo oficiales de Three.js (NASA Blue Marble),
+    // dominio público, formato JPG < 1MB cada una.
+    const textureLoader = new THREE.TextureLoader();
+
+    const texturaColor = textureLoader.load(
+      'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'
+    );
+    texturaColor.colorSpace = THREE.SRGBColorSpace;
+
+    const texturaEspecular = textureLoader.load(
+      'https://threejs.org/examples/textures/planets/earth_specular_2048.jpg'
+    );
+
+    // Cuando la textura de color termina de cargar, mostramos el canvas
+    // con una transición suave (antes se ve el fondo radial del CSS).
+    texturaColor.onUpdate = () => canvas.classList.add('is-ready');
+
+    // ---- Geometría del planeta ------------------------------------
+    const geometria = new THREE.SphereGeometry(1, 64, 64);
+    const material = new THREE.MeshPhongMaterial({
+      map: texturaColor,
+      specularMap: texturaEspecular,   // los océanos brillan más que la tierra
+      specular: new THREE.Color(0x333333),
+      shininess: 12,
+    });
+    const tierra = new THREE.Mesh(geometria, material);
+    // Pequeña inclinación axial para que no se vea "de frente" y plano
+    tierra.rotation.z = THREE.MathUtils.degToRad(23.4);
+    scene.add(tierra);
+
+    // ---- Halo atmosférico sutil (fresnel simple) -------------------
+    const atmosfera = new THREE.Mesh(
+      new THREE.SphereGeometry(1.035, 64, 64),
+      new THREE.ShaderMaterial({
+        transparent: true,
+        side: THREE.BackSide,
+        vertexShader: `
+          varying vec3 vNormal;
+          void main () {
+            vNormal = normalize(normalMatrix * normal);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          varying vec3 vNormal;
+          void main () {
+            float intensidad = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);
+            gl_FragColor = vec4(0.31, 0.80, 0.77, 1.0) * intensidad;
+          }
+        `,
+      })
+    );
+    scene.add(atmosfera);
+
+    // ---- Controles: rotación automática + arrastre manual ----------
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableZoom = false;
+    controls.enablePan = false;
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.rotateSpeed = 0.6;
+    controls.minPolarAngle = Math.PI * 0.3;
+    controls.maxPolarAngle = Math.PI * 0.7;
+    controls.autoRotate = !escenaReduceMovimiento;
+    controls.autoRotateSpeed = 1.1;
+
+    // Al empezar a arrastrar, se detiene la rotación automática.
+    // Al soltar, la rotación automática vuelve sola.
+    controls.addEventListener('start', () => { controls.autoRotate = false; });
+    controls.addEventListener('end', () => {
+      if (!escenaReduceMovimiento) controls.autoRotate = true;
+    });
+
+    // ---- Responsive: el canvas sigue el tamaño de su contenedor ----
+    function ajustarTamano() {
+      const ancho = stage.clientWidth;
+      const alto = stage.clientHeight;
+      if (ancho === 0 || alto === 0) return;
+      camera.aspect = ancho / alto;
+      camera.updateProjectionMatrix();
+      renderer.setSize(ancho, alto, false);
+    }
+    new ResizeObserver(ajustarTamano).observe(stage);
+    ajustarTamano();
+
+    // ---- Loop de animación (se pausa si la pestaña no está visible) ----
+    let pestanaOculta = false;
+    document.addEventListener('visibilitychange', () => {
+      pestanaOculta = document.hidden;
+    });
+
+    renderer.setAnimationLoop(() => {
+      if (pestanaOculta) return;
+      controls.update();
+      renderer.render(scene, camera);
+    });
+  }
+</script>
+
+</body>
+</html>

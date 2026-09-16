@@ -1,0 +1,108 @@
+---
+// ============================================================
+// BareLayout — Layout base sin estilos específicos de página
+// ============================================================
+import '../styles/index.css';
+
+interface Props {
+  title?: string;
+  bodyClass?: string;
+  showFooter?: boolean;
+}
+
+const {
+  title = 'GeoSteam',
+  bodyClass = '',
+  showFooter = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Slot para <head> específico de cada página
+       (CSS/JS extra: MapLibre en geoportal, hojas de admin, etc.) -->
+  <slot name="head" />
+</head>
+
+<body class={bodyClass}>
+
+  <slot />
+
+  {showFooter && (
+    <footer>
+      <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <svg
+            width="24"
+            height="21"
+            viewBox="0 0 34 30"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient
+                id="footerMark"
+                x1="2"
+                y1="26"
+                x2="30"
+                y2="4"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0" stop-color="#4ECDC4" />
+                <stop offset="0.6" stop-color="#4A7FC5" />
+                <stop offset="1" stop-color="#1E3A5F" />
+              </linearGradient>
+            </defs>
+            <rect x="1"  y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)"  fill="url(#footerMark)" />
+            <rect x="10" y="6"  width="7" height="18" rx="3.5" transform="rotate(-35 10 6)"  fill="url(#footerMark)" />
+            <rect x="19" y="0"  width="7" height="14" rx="3.5" transform="rotate(-35 19 0)"  fill="url(#footerMark)" />
+          </svg>
+          <span style="color:var(--mist); font-size:0.85rem;">
+            GeoSteam — un producto de <span class="text-white">Steam Solutions</span>
+          </span>
+        </div>
+
+        <div class="footer-links font-mono">
+          <a href="/#plataforma">Plataforma</a>
+          <a href="/#capas">Capas</a>
+          <a href="/#flujo">Cómo funciona</a>
+          <a href="/#contacto">Contacto</a>
+        </div>
+
+        <p class="font-mono small mb-0" style="color:var(--mist); opacity:0.5;">
+          © 2026 Steam Solutions
+        </p>
+      </div>
+    </footer>
+  )}
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    defer
+  ></script>
+
+</body>
+</html>

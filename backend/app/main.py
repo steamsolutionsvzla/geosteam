@@ -24,8 +24,8 @@ GUEST_WORKSPACE = "Salud"
 GEOSERVER_URL = os.getenv("GEOSERVER_URL", "http://geoserver:8080")
 
 # Orígenes permitidos para CORS (leídos desde el .env, separados por comas)
-cors_origins_str = os.getenv("CORS_ORIGINS", "http://localhost:5500")
-cors_origins = [origin.strip() for origin in cors_origins_str.split(",") if origin.strip()]
+cors_origins_str = os.getenv("CORS_ORIGINS", "")
+cors_origins = [o.strip() for o in cors_origins_str.split(",") if o.strip()]
 
 # --- PALETA DE COLORES ESRI ---
 ESRI_COLORS = {
@@ -232,9 +232,19 @@ async def geoserver_proxy(
             )
 
     geoserver_url = f"{GEOSERVER_URL}/geoserver/{path}"
-
+    
     body = await request.body()
-    headers = dict(request.headers)
+
+   
+    HOP_BY_HOP = {
+        "host", "content-length", "connection", "keep-alive",
+        "transfer-encoding", "upgrade", "accept-encoding",
+        "authorization", "cookie",
+    }
+    headers = {
+        k: v for k, v in request.headers.items()
+        if k.lower() not in HOP_BY_HOP
+    }
     headers["Authorization"] = settings.GEOSERVER_AUTH_HEADER
 
     async with httpx.AsyncClient(timeout=60.0) as client:

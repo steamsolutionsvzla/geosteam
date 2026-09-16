@@ -92,5 +92,5 @@ async def init_db():
 
             print(
                 "🌱 Usuario administrador creado automáticamente -> "
-                f"email: {admin_email}  password: {settings.ADMIN_SEED_PASSWORD}"
+                f"email: {admin_email}"
             )

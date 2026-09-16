@@ -1,0 +1,338 @@
+---
+import BareLayout from '../layouts/BareLayout.astro';
+import '../styles/hub.css';
+---
+
+<BareLayout title="Espacio de trabajo | GeoSteam" bodyClass="hub-body">
+
+  <!-- ============ ORBES DECORATIVOS DE FONDO ============ -->
+  <div class="bg-orb bg-orb--teal" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--blue" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--navy" aria-hidden="true"></div>
+
+  <!-- ============ TOPBAR ============ -->
+  <header class="geo-topbar">
+
+    <!-- IZQUIERDA: Logo Steam Solutions + contexto -->
+    <a href="/" class="geo-brand" aria-label="Steam Solutions — inicio">
+      <svg class="brand-mark" width="30" height="27" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="brandMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#4ECDC4"/>
+            <stop offset="0.6" stop-color="#4A7FC5"/>
+            <stop offset="1" stop-color="#1E3A5F"/>
+          </linearGradient>
+        </defs>
+        <rect x="1"  y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)"  fill="url(#brandMark)"/>
+        <rect x="10" y="6"  width="7" height="18" rx="3.5" transform="rotate(-35 10 6)"  fill="url(#brandMark)"/>
+        <rect x="19" y="0"  width="7" height="14" rx="3.5" transform="rotate(-35 19 0)"  fill="url(#brandMark)"/>
+      </svg>
+
+      <span class="brand-name font-display fw-semibold">Steam Solutions</span>
+      <span class="brand-sep" aria-hidden="true">/</span>
+      <span class="brand-context font-display">Espacio de trabajo</span>
+    </a>
+
+    <!-- DERECHA: chip admin + usuario + logout -->
+    <div class="geo-topbar-actions">
+
+      <!-- Chip de acceso al panel de admin (solo visible para admins) -->
+      <a
+        href="/admin"
+        id="adminChip"
+        class="admin-chip d-none"
+        aria-label="Ir al panel de administrador"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <span class="admin-chip-text font-mono">Admin</span>
+      </a>
+
+      <!-- Contenedor del usuario -->
+      <div class="user-pill" id="userPill" aria-live="polite">
+        <span class="user-avatar font-display" id="userInitial" aria-hidden="true">·</span>
+        <span class="user-meta">
+          <span class="user-name" id="userName">Cargando…</span>
+          <span class="user-role font-mono" id="userRole">—</span>
+        </span>
+        <span class="user-status-dot" aria-hidden="true"></span>
+      </div>
+
+      <!-- Botón de cerrar sesión -->
+      <button
+        type="button"
+        id="logoutBtn"
+        class="logout-btn"
+        aria-label="Cerrar sesión"
+      >
+        <span class="logout-shimmer" aria-hidden="true"></span>
+        <svg class="logout-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span class="logout-text font-mono">Cerrar sesión</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ============ CONTENIDO ============ -->
+  <main class="hub-main">
+
+    <!-- Capas de fondo -->
+    <div class="contour-bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0"   stop-color="#4ECDC4"/>
+            <stop offset="0.5" stop-color="#4A7FC5"/>
+            <stop offset="1"   stop-color="#1E3A5F"/>
+          </linearGradient>
+        </defs>
+        <path class="contour-path" d="M50,600  C250,520 350,700 600,620 C850,540 950,660 1150,580"/>
+        <path class="contour-path" d="M-10,480 C190,400 330,580 580,500 C830,420 970,540 1210,460"/>
+        <path class="contour-path" d="M-70,360 C130,280 310,460 560,380 C810,300 990,420 1270,340"/>
+        <path class="contour-path" d="M20,760  C260,700 360,820 620,760 C880,700 1000,780 1180,720"/>
+      </svg>
+    </div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="stars-layer"  aria-hidden="true"></div>
+
+    <div class="container position-relative">
+
+      <!-- Chip de bienvenida -->
+      <div class="hub-chip reveal" style="--delay:.05s;">
+        <span class="chip-dot" aria-hidden="true"></span>
+        <span class="font-mono">Sesión iniciada</span>
+      </div>
+
+      <p class="hub-eyebrow font-mono reveal" style="--delay:.1s;">
+        Bienvenido de vuelta
+      </p>
+
+      <h1 class="hub-title font-display fw-semibold reveal" style="--delay:.18s;">
+        ¿A dónde quieres ir <span class="grad-text">hoy</span>?
+      </h1>
+
+      <p class="hub-subtitle reveal" style="--delay:.26s;">
+        Elige un espacio de trabajo. Puedes cambiar entre ellos cuando quieras.
+      </p>
+
+      <!-- ===== Barra de métricas ===== -->
+      <div class="hub-stats reveal" style="--delay:.34s;">
+        <div class="stat-card">
+          <span class="stat-label font-mono">Capas activas</span>
+          <span class="stat-value font-display" data-counter="17">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label font-mono">Workspaces</span>
+          <span class="stat-value font-display" data-counter="3">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label font-mono">Estado</span>
+          <span class="stat-value stat-value--ok font-display">Operativo</span>
+        </div>
+      </div>
+
+      <!-- ===== GRID DE TARJETAS ===== -->
+      <div class="row g-4 mt-2 hub-grid">
+
+        <!-- CARD 1: GEOPORTAL -->
+        <div class="col-lg-4 reveal" style="--delay:.45s;">
+          <a href="/geoportal" class="hub-card hub-card--active">
+            <span class="hub-badge hub-badge--live">
+              <span class="badge-dot" aria-hidden="true"></span>Disponible
+            </span>
+
+            <div class="hub-preview hub-preview--geoportal" aria-hidden="true">
+              <div class="preview-chrome">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="chrome-url font-mono">/geoportal</span>
+              </div>
+              <div class="preview-body">
+                <div class="preview-sidebar">
+                  <span class="bar w-70"></span>
+                  <span class="bar w-40"></span>
+                  <span class="bar w-55"></span>
+                  <span class="bar w-30"></span>
+                  <span class="bar w-45"></span>
+                </div>
+                <div class="preview-map">
+                  <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <path class="p-line" d="M-10,180 C90,140 150,210 260,170 C330,145 370,160 420,130"/>
+                    <path class="p-line" d="M-10,120 C100,80 170,150 280,110 C350,85 380,100 420,70"/>
+                    <path class="p-line" d="M-10,220 C110,190 160,240 270,215 C340,195 380,205 420,180"/>
+                  </svg>
+                  <span class="p-pin p-pin--teal" style="top:38%; left:32%;"></span>
+                  <span class="p-pin p-pin--blue" style="top:58%; left:55%;"></span>
+                  <span class="p-pin p-pin--teal" style="top:28%; left:70%;"></span>
+                  <span class="p-pin p-pin--navy" style="top:70%; left:22%;"></span>
+                  <span class="p-pin p-pin--blue" style="top:48%; left:82%;"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hub-card-body">
+              <h2 class="font-display fw-semibold">Geoportal</h2>
+              <p>Catastro, infraestructura y capas ambientales en un mapa vivo, listo para explorar.</p>
+              <span class="hub-cta font-mono">Abrir geoportal →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- CARD 2: DASHBOARD -->
+        <div class="col-lg-4 reveal" style="--delay:.55s;">
+          <button type="button" class="hub-card hub-card--soon" data-soon="Dashboard de mapas">
+            <span class="hub-badge hub-badge--soon">Próximamente</span>
+
+            <div class="hub-preview hub-preview--dashboard" aria-hidden="true">
+              <div class="preview-chrome">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="chrome-url font-mono">/dashboard</span>
+              </div>
+              <div class="preview-body preview-body--dash">
+                <div class="dash-kpi">
+                  <span class="bar w-40"></span>
+                  <span class="dash-kpi-num">—</span>
+                </div>
+                <div class="dash-kpi">
+                  <span class="bar w-40"></span>
+                  <span class="dash-kpi-num">—</span>
+                </div>
+                <div class="dash-chart">
+                  <span style="height:35%;"></span>
+                  <span style="height:60%;"></span>
+                  <span style="height:42%;"></span>
+                  <span style="height:78%;"></span>
+                  <span style="height:50%;"></span>
+                  <span style="height:65%;"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hub-card-body">
+              <h2 class="font-display fw-semibold">Dashboard de mapas</h2>
+              <p>Métricas y reportes territoriales en tableros configurables. En construcción.</p>
+              <span class="hub-cta hub-cta--soon font-mono">Disponible pronto</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- CARD 3: ADMIN (oculta hasta validar rol) -->
+        <div class="col-lg-4 d-none reveal" id="adminCardWrap" style="--delay:.65s;">
+          <a href="/admin" class="hub-card hub-card--active">
+            <span class="hub-badge hub-badge--live">
+              <span class="badge-dot" aria-hidden="true"></span>Admin
+            </span>
+
+            <div class="hub-preview hub-preview--dashboard" aria-hidden="true">
+              <div class="preview-chrome">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="chrome-url font-mono">/admin</span>
+              </div>
+              <div class="preview-body preview-body--dash">
+                <div class="dash-kpi">
+                  <span class="bar w-40"></span>
+                  <span class="dash-kpi-num" style="color:var(--teal);">128</span>
+                </div>
+                <div class="dash-kpi">
+                  <span class="bar w-40"></span>
+                  <span class="dash-kpi-num" style="color:var(--teal);">32</span>
+                </div>
+                <div class="dash-chart">
+                  <span style="height:35%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                  <span style="height:60%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                  <span style="height:42%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                  <span style="height:78%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                  <span style="height:50%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                  <span style="height:65%; background:linear-gradient(180deg, var(--teal), transparent); opacity:1;"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hub-card-body">
+              <h2 class="font-display fw-semibold">Panel de administrador</h2>
+              <p>Gestiona usuarios, revisa estadísticas de visitas y entra directo a GeoServer.</p>
+              <span class="hub-cta font-mono">Abrir panel →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- CARD 4: GEOLIBRE -->
+        <div class="col-lg-4 reveal" style="--delay:.75s;">
+          <button type="button" class="hub-card hub-card--soon" data-soon="GeoLibre">
+            <span class="hub-badge hub-badge--soon">Próximamente</span>
+
+            <div class="hub-preview hub-preview--earth" aria-hidden="true">
+              <div class="earth-stars"></div>
+              <div class="earth-globe">
+                <div class="earth-glow"></div>
+                <svg class="earth-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="oceanGrad" cx="35%" cy="30%" r="75%">
+                      <stop offset="0%"   stop-color="#5FB8D9"/>
+                      <stop offset="45%"  stop-color="#4A7FC5"/>
+                      <stop offset="100%" stop-color="#152B45"/>
+                    </radialGradient>
+                    <clipPath id="earthClip"><circle cx="100" cy="100" r="92"/></clipPath>
+                  </defs>
+                  <circle cx="100" cy="100" r="92" fill="url(#oceanGrad)"/>
+                  <g clip-path="url(#earthClip)" opacity="0.92">
+                    <path d="M30,60 C50,45 70,55 85,50 C100,45 95,65 80,72 C65,80 45,85 35,95 C25,80 22,68 30,60Z" fill="#2E9E93"/>
+                    <path d="M95,40 C120,35 140,50 135,68 C130,85 110,80 100,90 C90,78 85,55 95,40Z" fill="#3FB39E"/>
+                    <path d="M120,110 C145,105 160,120 155,140 C150,158 130,165 115,155 C108,140 105,120 120,110Z" fill="#2E9E93"/>
+                    <path d="M40,130 C58,125 68,140 60,155 C52,168 34,165 28,150 C26,140 30,133 40,130Z" fill="#3FB39E"/>
+                    <path d="M78,150 C95,145 108,158 100,170 C92,180 78,178 74,168 C72,160 74,153 78,150Z" fill="#2E9E93"/>
+                    <ellipse cx="100" cy="100" rx="92" ry="92" fill="none" stroke="#0A1420" stroke-opacity="0.25" stroke-width="1"/>
+                  </g>
+                  <circle cx="100" cy="100" r="92" fill="url(#oceanGrad)" opacity="0.06"/>
+                </svg>
+                <span class="earth-ring"></span>
+                <span class="earth-ring earth-ring--2"></span>
+                <span class="earth-satellite" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="hub-card-body">
+              <h2 class="font-display fw-semibold">GeoLibre</h2>
+              <p>Capas y datos geoespaciales abiertos, libres para consultar, cruzar y descargar.</p>
+              <span class="hub-cta hub-cta--soon font-mono">Disponible pronto</span>
+            </div>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ===== Pie con atajos ===== -->
+      <div class="hub-footnote reveal" style="--delay:.9s;">
+        <span class="footnote-icon" aria-hidden="true">⌘</span>
+        <span class="font-mono">
+          Pulsa <kbd>Esc</kbd> para salir de la sesión ·
+          ¿Necesitas ayuda? <a href="#">Documentación</a>
+        </span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============ TOAST "próximamente" ============ -->
+  <div id="soonToast" class="soon-toast font-mono" role="status" aria-live="polite">
+    <span class="toast-icon" aria-hidden="true">◷</span>
+    <span class="toast-text"></span>
+  </div>
+
+</BareLayout>
+
+<!-- ============================================================
+     Scripts globales (public/scripts)
+     ============================================================ -->
+<script is:inline src="/scripts/geosteam-config.js"></script>
+<script is:inline src="/scripts/visit-tracker.js"></script>
+<script is:inline src="/scripts/hub.js"></script>

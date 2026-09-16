@@ -1,0 +1,382 @@
+---
+// ============================================================
+// GEOPORTAL — Visor cartográfico (MapLibre GL + GeoServer)
+// ============================================================
+import BareLayout from '../layouts/BareLayout.astro';
+import '../styles/geoportal.css';
+---
+
+<BareLayout title="Geoportal | GeoSteam">
+
+  <!-- ============ LOADER OVERLAY ============ -->
+  <div class="geo-loader" id="geoLoader" aria-live="polite" aria-busy="true">
+    <div class="earth">
+      <div class="earth-loader">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+          <path transform="translate(100 100)"
+                d="M29.4,-17.4C33.1,1.8,27.6,16.1,11.5,31.6C-4.7,47,-31.5,63.6,-43,56C-54.5,48.4,-50.7,16.6,-41,-10.9C-31.3,-38.4,-15.6,-61.5,-1.4,-61C12.8,-60.5,25.7,-36.5,29.4,-17.4Z"
+                fill="var(--loader-land)"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+          <path transform="translate(100 100)"
+                d="M31.7,-55.8C40.3,-50,45.9,-39.9,49.7,-29.8C53.5,-19.8,55.5,-9.9,53.1,-1.4C50.6,7.1,43.6,14.1,41.8,27.6C40.1,41.1,43.4,61.1,37.3,67C31.2,72.9,15.6,64.8,1.5,62.2C-12.5,59.5,-25,62.3,-31.8,56.7C-38.5,51.1,-39.4,37.2,-49.3,26.3C-59.1,15.5,-78,7.7,-77.6,0.2C-77.2,-7.2,-57.4,-14.5,-49.3,-28.4C-41.2,-42.4,-44.7,-63,-38.5,-70.1C-32.2,-77.2,-16.1,-70.8,-2.3,-66.9C11.6,-63,23.1,-61.5,31.7,-55.8Z"
+                fill="var(--loader-land)"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+          <path transform="translate(100 100)"
+                d="M30.6,-49.2C42.5,-46.1,57.1,-43.7,67.6,-35.7C78.1,-27.6,84.6,-13.8,80.3,-2.4C76.1,8.9,61.2,17.8,52.5,29.1C43.8,40.3,41.4,53.9,33.7,64C26,74.1,13,80.6,2.2,76.9C-8.6,73.1,-17.3,59,-30.6,52.1C-43.9,45.3,-61.9,45.7,-74.1,38.2C-86.4,30.7,-92.9,15.4,-88.6,2.5C-84.4,-10.5,-69.4,-20.9,-60.7,-34.6C-52.1,-48.3,-49.8,-65.3,-40.7,-70C-31.6,-74.8,-15.8,-67.4,-3.2,-61.8C9.3,-56.1,18.6,-52.3,30.6,-49.2Z"
+                fill="var(--loader-land)"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+          <path transform="translate(100 100)"
+                d="M39.4,-66C48.6,-62.9,51.9,-47.4,52.9,-34.3C53.8,-21.3,52.4,-10.6,54.4,1.1C56.3,12.9,61.7,25.8,57.5,33.2C53.2,40.5,39.3,42.3,28.2,46C17,49.6,8.5,55.1,1.3,52.8C-5.9,50.5,-11.7,40.5,-23.6,37.2C-35.4,34,-53.3,37.5,-62,32.4C-70.7,27.4,-70.4,13.7,-72.4,-1.1C-74.3,-15.9,-78.6,-31.9,-73.3,-43C-68.1,-54.2,-53.3,-60.5,-39.5,-60.9C-25.7,-61.4,-12.9,-56,1.1,-58C15.1,-59.9,30.2,-69.2,39.4,-66Z"
+                fill="var(--loader-land)"></path>
+        </svg>
+      </div>
+      <p>Cargando visor…</p>
+    </div>
+  </div>
+
+  <div class="geo-app">
+
+    <!-- ============ TOPBAR ============ -->
+    <header class="geo-topbar">
+      <div class="geo-topbar-left">
+              <a href="/hub" class="back-to-hub" id="btnBackToHub"
+           title="Volver al espacio de trabajo">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+               stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5" />
+            <path d="M12 19l-7-7 7-7" />
+          </svg>
+          <span class="back-label">Hub</span>
+        </a>
+
+        <a href="/" class="geo-brand">
+          <svg class="brand-mark" width="26" height="23" viewBox="0 0 34 30"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4ECDC4"/>
+                <stop offset="0.6" stop-color="#4A7FC5"/>
+                <stop offset="1" stop-color="#1E3A5F"/>
+              </linearGradient>
+            </defs>
+            <rect x="1"  y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)"  fill="url(#navMark)"/>
+            <rect x="10" y="6"  width="7" height="18" rx="3.5" transform="rotate(-35 10 6)"  fill="url(#navMark)"/>
+            <rect x="19" y="0"  width="7" height="14" rx="3.5" transform="rotate(-35 19 0)"  fill="url(#navMark)"/>
+          </svg>
+          <span class="brand-name font-display">GeoSteam</span>
+          <span class="brand-sep" aria-hidden="true">/</span>
+          <span class="brand-context font-display">Geoportal</span>
+        </a>
+      </div>
+
+      <div class="geo-topbar-actions">
+        <div class="user-pill" id="sessionBadge" aria-live="polite">
+          <span class="user-avatar is-guest" aria-hidden="true">·</span>
+          <span class="user-info">
+            <span class="user-name">Cargando…</span>
+          </span>
+        </div>
+
+        <button type="button" class="icon-btn" id="btnToggleLayers"
+                title="Capas" aria-label="Mostrar capas">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ============ BODY ============ -->
+    <div class="geo-body">
+      <aside class="geo-sidebar" id="layerSidebar">
+        <p class="sidebar-eyebrow font-mono">Capas de datos</p>
+        <h1 class="sidebar-title font-display fw-semibold">Geoportal territorial</h1>
+        <p class="sidebar-hint">
+          Activa o desactiva cada capa y ajusta su opacidad. Las capas se sirven
+          desde GeoServer (WFS); si una capa aún no tiene datos publicados, se
+          muestra con datos de demostración.
+        </p>
+
+        <div id="layerList"></div>
+
+        <p class="sidebar-legend-note">
+          <b>●</b> punto &nbsp; <b>—</b> línea &nbsp; <b>▮</b> polígono.
+          Haz click sobre un elemento del mapa para ver sus atributos en un popup,
+          o pulsa el icono ⓘ de una capa para ver sus metadatos.
+        </p>
+      </aside>
+
+      <!-- Botón para colapsar/expandir el sidebar -->
+      <button type="button" class="sidebar-collapse-btn" id="btnCollapseSidebar"
+              title="Ocultar panel de capas" aria-label="Ocultar panel de capas">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+             stroke="currentColor" stroke-width="2.6"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+
+      <div class="geo-map-wrap">
+        <div id="map"></div>
+        <div id="coord-readout" class="font-mono">LAT 00.0000°  LON 00.0000°</div>
+
+        <div class="map-controls">
+          <button class="icon-btn compass-btn" id="btnCompass"
+                  title="Restablecer vista" aria-label="Restablecer vista">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.2" opacity="0.35"/>
+              <polygon points="12,2.5 14.5,12 12,10.7 9.5,12" fill="#4ECDC4"/>
+              <polygon points="12,21.5 14.5,12 12,13.3 9.5,12" fill="currentColor" opacity="0.55"/>
+            </svg>
+          </button>
+
+          <button class="icon-btn" id="btnTerrain"
+                  title="Alternar relieve 3D" aria-label="Alternar relieve 3D">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 3 22 20 2 20" />
+              <polyline points="8 15 12 11 16 15" />
+            </svg>
+          </button>
+
+          <button class="icon-btn" id="btnZoomIn"  title="Acercar"  aria-label="Acercar">+</button>
+          <button class="icon-btn" id="btnZoomOut" title="Alejar"   aria-label="Alejar">−</button>
+          <button class="icon-btn" id="btnFitVenezuela" title="Centrar en Venezuela"
+                  aria-label="Centrar en Venezuela">⤢</button>
+        </div>
+
+        <div class="basemap-control" id="basemapControl">
+          <div class="basemap-menu" id="basemapMenu" role="menu" aria-label="Mapa base">
+            <button type="button" class="basemap-option active" data-base="claro" role="menuitem">
+              <span class="basemap-dot" aria-hidden="true"></span>
+              <span>Claro</span>
+            </button>
+            <button type="button" class="basemap-option" data-base="oscuro" role="menuitem">
+              <span class="basemap-dot" aria-hidden="true"></span>
+              <span>Oscuro</span>
+            </button>
+            <button type="button" class="basemap-option" data-base="satelite" role="menuitem">
+              <span class="basemap-dot" aria-hidden="true"></span>
+              <span>Satélite</span>
+            </button>
+            <button type="button" class="basemap-option" data-base="osm" role="menuitem">
+              <span class="basemap-dot" aria-hidden="true"></span>
+              <span>OSM</span>
+            </button>
+          </div>
+
+          <button type="button" class="basemap-trigger" id="basemapTrigger"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="basemapMenu"
+                  title="Cambiar mapa base">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+            <span class="basemap-trigger-label" id="basemapTriggerLabel">Claro</span>
+            <svg class="basemap-caret" viewBox="0 0 24 24" width="12" height="12"
+                 fill="none" stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 15 12 9 18 15"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <aside class="geo-feature-panel" id="featurePanel" aria-live="polite">
+        <div class="feature-panel-head">
+          <h2 class="font-display" id="featurePanelTitle">Metadatos</h2>
+          <button class="icon-btn" id="btnCloseFeaturePanel" aria-label="Cerrar">×</button>
+        </div>
+        <div class="feature-panel-body" id="featurePanelBody">
+          <div class="feature-empty">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="12" y1="10.5" x2="12" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="12" cy="7.3" r="1" fill="currentColor"/>
+            </svg>
+            <p class="empty-title">Sin capa seleccionada</p>
+            <p class="empty-hint">
+              Pulsa el icono ⓘ junto a cualquier capa del panel izquierdo
+              para ver aquí sus metadatos.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="geo-footer">
+      <div class="geo-footer-brand">
+        <svg width="20" height="18" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="1"  y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)"  fill="url(#navMark)"/>
+          <rect x="10" y="6"  width="7" height="18" rx="3.5" transform="rotate(-35 10 6)"  fill="url(#navMark)"/>
+          <rect x="19" y="0"  width="7" height="14" rx="3.5" transform="rotate(-35 19 0)"  fill="url(#navMark)"/>
+        </svg>
+        <span>GeoSteam — un producto de <b>Steam Solutions</b></span>
+      </div>
+      <div class="geo-footer-links font-mono">
+        <a href="/#plataforma">Plataforma</a>
+        <a href="/#capas">Capas</a>
+        <a href="/#contacto">Contacto</a>
+      </div>
+      <p class="geo-footer-copy font-mono">© 2026 Steam Solutions</p>
+    </footer>
+  </div>
+
+</BareLayout>
+
+  <!-- Ocultar el botón "Volver al Hub" si el usuario es invitado -->
+   <script is:inline>
+    (function () {
+
+      /* ============================================================ */
+      /* 1. Ocultar "Volver al Hub" si el usuario es invitado         */
+      /* ============================================================ */
+
+      function updateHubVisibility() {
+        var badge = document.getElementById('sessionBadge');
+        var btn   = document.getElementById('btnBackToHub');
+        if (!badge || !btn) return;
+
+        var avatar = badge.querySelector('.user-avatar');
+        var isGuestByClass = avatar && avatar.classList.contains('is-guest');
+        var hasToken = false;
+        try {
+          hasToken = !!localStorage.getItem('geosteam_token');
+        } catch (e) { /* noop */ }
+
+        var isGuest = isGuestByClass || !hasToken;
+
+        if (isGuest) {
+          btn.removeAttribute('data-allow');
+          btn.setAttribute('aria-hidden', 'true');
+          btn.setAttribute('tabindex', '-1');
+        } else {
+          btn.setAttribute('data-allow', 'true');
+          btn.removeAttribute('aria-hidden');
+          btn.removeAttribute('tabindex');
+        }
+      }
+
+      /* ============================================================ */
+      /* 2. Redirigir a "/" cuando se cierra la sesión                */
+      /* ============================================================ */
+
+      var REDIRECT_URL = '/';   // = index.astro
+      var redirecting = false;
+
+      function goHome() {
+        if (redirecting) return;
+        redirecting = true;
+        window.location.href = REDIRECT_URL;
+      }
+
+      function tokenIsGone() {
+        try {
+          return !localStorage.getItem('geosteam_token');
+        } catch (e) {
+          return true;   // si el storage está bloqueado, asumimos logout
+        }
+      }
+
+      /* 2a. Click en el botón de cerrar sesión (dentro del user pill) */
+      document.addEventListener('click', function (e) {
+        var logoutBtn = e.target.closest && e.target.closest('.user-logout');
+        if (!logoutBtn) return;
+
+        // Damos tiempo a que session.js borre el token y haga lo suyo
+        var checks = 0;
+        var maxChecks = 20;   // ~2 segundos como máximo
+        var iv = setInterval(function () {
+          checks++;
+          if (tokenIsGone()) {
+            clearInterval(iv);
+            goHome();
+          } else if (checks >= maxChecks) {
+            // Aún con token: forzamos el logout manual por si session.js falló
+            try { localStorage.removeItem('geosteam_token'); } catch (err) { /* noop */ }
+            clearInterval(iv);
+            goHome();
+          }
+        }, 100);
+      }, true);   // capture para adelantarnos a otros listeners
+
+      /* 2b. Si session.js emite un evento custom, lo escuchamos */
+      window.addEventListener('geosteam:logout', function () {
+        goHome();
+      });
+
+      /* 2c. Logout desde otra pestaña: detecta cuando el token desaparece */
+      window.addEventListener('storage', function (e) {
+        if (e.key === 'geosteam_token' && !e.newValue) {
+          goHome();
+        }
+      });
+
+      /* ============================================================ */
+      /* 3. Enganches iniciales                                       */
+      /* ============================================================ */
+
+      document.addEventListener('DOMContentLoaded', updateHubVisibility);
+
+      var badge = document.getElementById('sessionBadge');
+      if (badge && typeof MutationObserver !== 'undefined') {
+        var mo = new MutationObserver(updateHubVisibility);
+        mo.observe(badge, {
+          attributes: true,
+          childList: true,
+          subtree: true,
+          attributeFilter: ['class']
+        });
+      }
+
+      setTimeout(updateHubVisibility, 1000);
+    })();
+  </script>
+<!-- CSS de MapLibre GL -->
+<style is:global>
+  @import 'maplibre-gl/dist/maplibre-gl.css';
+</style>
+
+<!-- Carga ordenada de scripts + inyección de la API key -->
+<script>
+  import * as maplibregl from 'maplibre-gl';
+
+  const MAPTILER_KEY = import.meta.env.PUBLIC_MAPTILER_KEY || '';
+
+  if (!MAPTILER_KEY) {
+    console.error('[GeoSteam] Falta PUBLIC_MAPTILER_KEY. Añádela en frontend/.env');
+  }
+
+  (window as any).maplibregl = maplibregl;
+  (window as any).MAPTILER_API_KEY = MAPTILER_KEY;
+
+  const scripts: string[] = [
+    '/scripts/geosteam-config.js',
+    '/scripts/visit-tracker.js',
+    '/scripts/geoportal-session.js',
+    '/scripts/geoportal-config.js',
+    '/scripts/geoportal-map.js',
+  ];
+
+  for (const src of scripts) {
+    await new Promise<void>((resolve, reject) => {
+      const el = document.createElement('script');
+      el.src = src;
+      el.async = false;
+      el.onload = () => resolve();
+      el.onerror = () => reject(new Error('No se pudo cargar: ' + src));
+      document.head.appendChild(el);
+    });
+  }
+</script>

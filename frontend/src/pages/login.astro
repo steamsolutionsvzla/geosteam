@@ -1,0 +1,413 @@
+---
+// Login del geoportal. Panel de marca (izq) + form flotante estilo KhelVers (der).
+import '../styles/login.css';
+
+const title = 'Iniciar sesión | GeoSteam';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="navbar navbar-expand-md navbar-geo fixed-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="/#top">
+        <svg width="30" height="27" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#4ECDC4" />
+              <stop offset="0.6" stop-color="#4A7FC5" />
+              <stop offset="1" stop-color="#1E3A5F" />
+            </linearGradient>
+          </defs>
+          <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)" />
+          <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)" />
+          <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)" />
+        </svg>
+        <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav gap-md-4 mb-3 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="/#top">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#plataforma">Plataforma</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#capas">Capas</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#flujo">Cómo funciona</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#contacto">Contacto</a></li>
+        </ul>
+        <div class="d-flex gap-2 ms-md-4 mt-2 mt-md-0">
+          <a href="/geoportal" class="btn btn-teal btn-sm-nav">Abrir geoportal</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <main class="auth-wrap">
+    <div class="auth-grid">
+
+      <!-- ============================================
+           PANEL IZQUIERDO (marca) — SE CONSERVA COMPLETO
+           ============================================ -->
+      <aside class="brand-panel">
+        <div class="contour-bg" aria-hidden="true">
+          <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4ECDC4" />
+                <stop offset="0.5" stop-color="#4A7FC5" />
+                <stop offset="1" stop-color="#1E3A5F" />
+              </linearGradient>
+            </defs>
+            <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580" />
+            <path d="M-10,480 C190,400 330,580 580,500 C830,420 970,540 1210,460" />
+            <path d="M-70,360 C130,280 310,460 560,380 C810,300 990,420 1270,340" />
+            <path d="M-130,240 C70,160 290,340 540,260 C790,180 1010,300 1330,220" />
+            <path d="M0,750 C220,680 380,820 620,740 C860,660 980,760 1200,700" />
+          </svg>
+        </div>
+
+        <a href="/" class="brand-logo">
+          <svg width="34" height="30" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="navMarkA" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4ECDC4" />
+                <stop offset="0.6" stop-color="#4A7FC5" />
+                <stop offset="1" stop-color="#1E3A5F" />
+              </linearGradient>
+            </defs>
+            <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMarkA)" />
+            <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMarkA)" />
+            <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMarkA)" />
+          </svg>
+          <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
+        </a>
+
+        <div class="brand-copy">
+          <p class="font-mono eyebrow">Acceso al geoportal</p>
+          <h1 class="font-display hero-title">
+            Tu territorio,<br /><span class="grad-text">a una sesión de distancia.</span>
+          </h1>
+          <p class="hero-sub">
+            Ingresa con tu cuenta institucional para ver catastro, infraestructura y capas ambientales en un solo mapa.
+          </p>
+
+          <div class="status-card font-mono">
+            <div class="row-line">
+              <span>ESTADO DEL SISTEMA</span>
+              <span class="val" style="color:var(--teal);">● EN LÍNEA</span>
+            </div>
+            <hr />
+            <div class="row-line"><span>Capas activas</span><span class="val">128</span></div>
+            <div class="row-line"><span>Disponibilidad</span><span class="val">99.9%</span></div>
+          </div>
+        </div>
+
+        <p class="font-mono copyright">© 2026 Steam Solutions</p>
+      </aside>
+
+      <!-- ============================================
+           PANEL DERECHO (form estilo KhelVers)
+           ============================================ -->
+      <section class="form-panel">
+
+        <!-- Alerta general -->
+        <div id="alertBox" class="alert" role="alert"></div>
+
+        <div id="Container">
+
+          <!-- Rayos detrás del form -->
+          <div id="rays" aria-hidden="true">
+            <svg
+              fill="none"
+              viewBox="0 0 299 152"
+              height="10em"
+              width="22em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="url(#raysGrad)"
+                d="M149.5 152H133.42L9.53674e-07 4.70132e-06H149.5L299 4.70132e-06L165.58 152H149.5Z"
+              ></path>
+              <defs>
+                <linearGradient
+                  gradientUnits="userSpaceOnUse"
+                  y2="12.1981"
+                  x2="150.12"
+                  y1="152"
+                  x1="149.5"
+                  id="raysGrad"
+                >
+                  <stop stop-color="#4ECDC4"></stop>
+                  <stop stop-opacity="0" stop-color="#4A7FC5" offset="1"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <!-- Formulario -->
+          <form class="form" id="loginForm" novalidate>
+
+            <div class="form-head">
+              <h2 class="form-title font-display">Iniciar sesión</h2>
+              <p class="form-sub">Accede al geoportal con tu cuenta de Steam Solutions.</p>
+            </div>
+
+            <!-- Email -->
+            <div class="field">
+              <label class="form-label-geo" for="email">Correo institucional</label>
+              <div class="input-wrap">
+                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <input
+                  class="form-content"
+                  id="email"
+                  type="email"
+                  placeholder="nombre@institucion.gob"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+              <div id="emailError" class="invalid-feedback"></div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="field">
+              <div class="label-row">
+                <label class="form-label-geo" for="password">Contraseña</label>
+                <a href="#" class="forgot-link font-mono">¿Olvidaste tu contraseña?</a>
+              </div>
+              <div class="input-wrap">
+                <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <input
+                  class="form-content"
+                  id="password"
+                  type="password"
+                  placeholder="Ingresar contraseña"
+                  autocomplete="current-password"
+                  required
+                />
+                <button type="button" id="togglePass" class="toggle-pass font-mono" aria-label="Mostrar contraseña">MOSTRAR</button>
+              </div>
+              <div id="passwordError" class="invalid-feedback"></div>
+            </div>
+
+            <!-- Recordar sesión -->
+            <label class="remember-row" for="remember">
+              <input class="remember-check" type="checkbox" id="remember" />
+              <span>Mantener sesión iniciada</span>
+            </label>
+
+            <!-- Botón -->
+            <button type="submit" id="btnLogin">
+              <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+              <span id="btnText">Iniciar sesión</span>
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+            <!-- Signup -->
+            <p class="signup-row">
+              ¿No tienes cuenta? <a href="#" class="link-teal">Solicita acceso</a>
+            </p>
+
+            <!-- Trust badges -->
+            <div class="trust-row font-mono">
+              <span class="trust-brand">
+                <svg width="14" height="13" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="trustMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-color="#4ECDC4" />
+                      <stop offset="0.6" stop-color="#4A7FC5" />
+                      <stop offset="1" stop-color="#1E3A5F" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#trustMark)" />
+                  <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#trustMark)" />
+                  <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#trustMark)" />
+                </svg>
+                Steam Solutions
+              </span>
+
+              <span class="trust-sep" aria-hidden="true">·</span>
+
+              <span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/>
+                </svg>
+                ISO 27001
+              </span>
+            </div>
+          </form>
+
+          <!-- Emisor (nave) -->
+          <div id="emiter" aria-hidden="true">
+            <svg
+              fill="none"
+              viewBox="0 0 160 61"
+              height="61"
+              width="160"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g filter="url(#filter0_di_geo)">
+                <path
+                  fill="#0F2338"
+                  d="M80 27.9997C121.974 27.9997 156 22.4032 156 15.4996L156 40.4998C156 47.4034 121.974 52.9998 80 52.9998C38.0265 52.9998 4.00028 47.4034 4 40.4998V40.4998V15.51C4.0342 22.4089 38.0474 27.9997 80 27.9997Z"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                ></path>
+              </g>
+              <ellipse
+                fill="url(#paint0_radial_geo)"
+                ry="4.80773"
+                rx="28.3956"
+                cy="17.4236"
+                cx="80"
+              ></ellipse>
+              <g filter="url(#filter1_i_geo)">
+                <path
+                  fill="#1E3A5F"
+                  d="M80 28.0002C121.974 28.0002 156 22.4037 156 15.5001C156 8.59648 121.974 3 80 3C38.0264 3 4 8.59648 4 15.5001C4 22.4037 38.0264 28.0002 80 28.0002ZM80.0001 20.308C96.1438 20.308 109.231 18.1555 109.231 15.5002C109.231 12.845 96.1438 10.6925 80.0001 10.6925C63.8564 10.6925 50.7693 12.845 50.7693 15.5002C50.7693 18.1555 63.8564 20.308 80.0001 20.308Z"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                ></path>
+              </g>
+              <g filter="url(#filter2_di_geo)">
+                <path
+                  fill="#2E9E93"
+                  d="M106.725 17.4505C108.336 16.8543 109.231 16.1943 109.231 15.4999C109.231 12.8446 96.1438 10.6921 80.0001 10.6921C63.8564 10.6921 50.7693 12.8446 50.7693 15.4999C50.7693 16.1943 51.6645 16.8543 53.2752 17.4504C53.275 17.4414 53.2748 17.4323 53.2748 17.4232C53.2748 14.768 65.2401 12.6155 80.0001 12.6155C94.7601 12.6155 106.725 14.768 106.725 17.4232C106.725 17.4323 106.725 17.4414 106.725 17.4505Z"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                ></path>
+              </g>
+              <defs>
+                <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="45.5002" width="160" y="15.4996" x="0" id="filter0_di_geo">
+                  <feFlood result="BackgroundImageFix" flood-opacity="0"></feFlood>
+                  <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha"></feColorMatrix>
+                  <feOffset dy="4"></feOffset>
+                  <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                  <feComposite operator="out" in2="hardAlpha"></feComposite>
+                  <feColorMatrix values="0 0 0 0 0.62 0 0 0 0 0.62 0 0 0 0 0.62 0 0 0 0.25 0" type="matrix"></feColorMatrix>
+                  <feBlend result="effect1_dropShadow_geo" in2="BackgroundImageFix" mode="normal"></feBlend>
+                  <feBlend result="shape" in2="effect1_dropShadow_geo" in="SourceGraphic" mode="normal"></feBlend>
+                  <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha"></feColorMatrix>
+                  <feOffset></feOffset>
+                  <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+                  <feComposite k3="1" k2="-1" operator="arithmetic" in2="hardAlpha"></feComposite>
+                  <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" type="matrix"></feColorMatrix>
+                  <feBlend result="effect2_innerShadow_geo" in2="shape" mode="normal"></feBlend>
+                </filter>
+                <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25.0002" width="152" y="3" x="4" id="filter1_i_geo">
+                  <feFlood result="BackgroundImageFix" flood-opacity="0"></feFlood>
+                  <feBlend result="shape" in2="BackgroundImageFix" in="SourceGraphic" mode="normal"></feBlend>
+                  <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha"></feColorMatrix>
+                  <feMorphology result="effect1_innerShadow_geo" in="SourceAlpha" operator="erode" radius="3"></feMorphology>
+                  <feOffset></feOffset>
+                  <feGaussianBlur stdDeviation="6.5"></feGaussianBlur>
+                  <feComposite k3="1" k2="-1" operator="arithmetic" in2="hardAlpha"></feComposite>
+                  <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" type="matrix"></feColorMatrix>
+                  <feBlend result="effect1_innerShadow_geo" in2="shape" mode="normal"></feBlend>
+                </filter>
+                <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="26.7583" width="78.4615" y="0.692139" x="40.7693" id="filter2_di_geo">
+                  <feFlood result="BackgroundImageFix" flood-opacity="0"></feFlood>
+                  <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha"></feColorMatrix>
+                  <feMorphology result="effect1_dropShadow_geo" in="SourceAlpha" operator="dilate" radius="2"></feMorphology>
+                  <feOffset></feOffset>
+                  <feGaussianBlur stdDeviation="4"></feGaussianBlur>
+                  <feComposite operator="out" in2="hardAlpha"></feComposite>
+                  <feColorMatrix values="0 0 0 0 0 0 0 0 0 0.94 0 0 0 0 1 0 0 0 1 0" type="matrix"></feColorMatrix>
+                  <feBlend result="effect1_dropShadow_geo" in2="BackgroundImageFix" mode="color-dodge"></feBlend>
+                  <feBlend result="shape" in2="effect1_dropShadow_geo" in="SourceGraphic" mode="normal"></feBlend>
+                  <feColorMatrix result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" type="matrix" in="SourceAlpha"></feColorMatrix>
+                  <feMorphology result="effect2_innerShadow_geo" in="SourceAlpha" operator="erode" radius="1"></feMorphology>
+                  <feOffset></feOffset>
+                  <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                  <feComposite k3="1" k2="-1" operator="arithmetic" in2="hardAlpha"></feComposite>
+                  <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.52 0" type="matrix"></feColorMatrix>
+                  <feBlend result="effect2_innerShadow_geo" in2="shape" mode="normal"></feBlend>
+                </filter>
+                <radialGradient
+                  gradientTransform="translate(80 17.4236) rotate(90) scale(6.25004 36.9143)"
+                  gradientUnits="userSpaceOnUse"
+                  r="1"
+                  cy="0"
+                  cx="0"
+                  id="paint0_radial_geo"
+                >
+                  <stop stop-color="#4ECDC4"></stop>
+                  <stop stop-color="#1E3A5F" offset="0.901042"></stop>
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <svg width="24" height="21" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)" />
+          <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)" />
+          <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)" />
+        </svg>
+        <span style="font-size:0.85rem;">
+          GeoSteam — un producto de <span class="text-white">Steam Solutions</span>
+        </span>
+      </div>
+      <div class="footer-links font-mono">
+        <a href="/#plataforma">Plataforma</a>
+        <a href="/#capas">Capas</a>
+        <a href="/#flujo">Cómo funciona</a>
+        <a href="/#contacto">Contacto</a>
+      </div>
+      <p class="font-mono small mb-0" style="opacity:0.5;">© 2026 Steam Solutions</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script is:inline src="/scripts/geosteam-config.js"></script>
+  <script is:inline src="/scripts/visit-tracker.js"></script>
+  <script is:inline src="/scripts/login.js"></script>
+
+</body>
+</html>

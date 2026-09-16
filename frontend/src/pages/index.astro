@@ -1,0 +1,367 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Earth from '../components/Earth.astro';
+---
+
+<BaseLayout title="GeoSteam — Geoportal territorial | Steam Solutions">
+  <!-- ============ HERO ============ -->
+  <section id="top" class="hero">
+    <div class="contour-bg">
+      <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#4ECDC4" />
+            <stop offset="0.5" stop-color="#4A7FC5" />
+            <stop offset="1" stop-color="#1E3A5F" />
+          </linearGradient>
+        </defs>
+        <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580" />
+        <path d="M20,540 C220,460 340,640 590,560 C840,480 960,600 1180,520" />
+        <path d="M-10,480 C190,400 330,580 580,500 C830,420 970,540 1210,460" />
+        <path d="M-40,420 C160,340 320,520 570,440 C820,360 980,480 1240,400" />
+        <path d="M-70,360 C130,280 310,460 560,380 C810,300 990,420 1270,340" />
+        <path d="M-100,300 C100,220 300,400 550,320 C800,240 1000,360 1300,280" />
+        <path d="M0,750 C220,680 380,820 620,740 C860,660 980,760 1200,700" />
+      </svg>
+    </div>
+
+    <div class="container position-relative">
+      <div class="row align-items-center g-5">
+        <div class="col-md-7">
+          <p class="font-mono small text-uppercase mb-3" style="color:var(--teal); letter-spacing:.25em;">
+            Steam Solutions · Geoportal
+          </p>
+          <h1 class="font-display fw-semibold display-4" style="line-height:1.05;">
+            El territorio,<br /><span class="grad-text">legible en tiempo real.</span>
+          </h1>
+          <p class="mt-4 mb-4" style="color:var(--mist); max-width:32rem; font-size:1.1rem;">
+            GeoSteam reúne catastro, infraestructura y datos ambientales en un solo mapa vivo,
+            para que cada decisión territorial parta de coordenadas exactas, no de suposiciones.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="/geoportal" class="btn btn-teal">Abrir geoportal</a>
+            <a href="/#plataforma" class="btn btn-outline-line">Ver la plataforma</a>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <Earth />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLATAFORMA ============ -->
+  <section
+    id="plataforma"
+    class="py-5"
+    style="padding-top:6rem !important; padding-bottom:6rem !important; border-top:1px solid var(--line);"
+  >
+    <div class="container">
+      <p class="font-mono small text-uppercase mb-3 reveal" style="color:var(--teal); letter-spacing:.25em;">
+        La plataforma
+      </p>
+      <h2 class="font-display fw-semibold mb-5 reveal" style="font-size:2.1rem; max-width:36rem;">
+        Todo lo que un equipo técnico necesita para leer su territorio.
+      </h2>
+
+      <div class="row g-4 reveal-group">
+        <div class="col-md-4">
+          <div class="feature-card reveal">
+            <div class="feature-icon" style="background:linear-gradient(135deg,var(--teal),var(--teal-dark));">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+                <path d="M3 12l9-9 9 9M5 10v10h14V10" />
+              </svg>
+            </div>
+            <h3 class="font-display fw-semibold fs-5 mb-2">Visor cartográfico</h3>
+            <p style="color:var(--mist); font-size:0.9rem;">
+              Navega por capas vectoriales y raster con tiempos de carga bajos, incluso con miles de predios activos a la vez.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card reveal">
+            <div class="feature-icon" style="background:linear-gradient(135deg,#5FB8D9,var(--blue));">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+                <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 3" />
+              </svg>
+            </div>
+            <h3 class="font-display fw-semibold fs-5 mb-2">Alertas territoriales</h3>
+            <p style="color:var(--mist); font-size:0.9rem;">
+              Define umbrales por capa y recibe avisos cuando un sensor, permiso o predio entra en un estado que requiere revisión.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card reveal">
+            <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--navy));">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+                <path d="M4 19h16M7 15V9m5 6V5m5 10v-3" />
+              </svg>
+            </div>
+            <h3 class="font-display fw-semibold fs-5 mb-2">Reportes exportables</h3>
+            <p style="color:var(--mist); font-size:0.9rem;">
+              Convierte cualquier consulta en un reporte con mapas, tablas y filtros, listo para compartir fuera de la plataforma.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card reveal">
+            <div class="feature-icon" style="background:linear-gradient(135deg,var(--teal),var(--blue));">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg>
+            </div>
+            <h3 class="font-display fw-semibold fs-5 mb-2">Integración de fuentes</h3>
+            <p style="color:var(--mist); font-size:0.9rem;">
+              Conecta bases catastrales, sensores IoT y sistemas municipales existentes a través de GeoServer, usando conectores estándar (WMS, WFS, REST).
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card reveal">
+            <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--teal-dark));">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+                <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z" />
+              </svg>
+            </div>
+            <h3 class="font-display fw-semibold fs-5 mb-2">Control de permisos</h3>
+            <p style="color:var(--mist); font-size:0.9rem;">
+              Define quién ve, edita o descarga cada capa, con registro de auditoría por usuario y por consulta.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card reveal">
+            <div class="feature-icon" style="background:linear-gradient(135deg,var(--navy),#0F1D2E);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="2">
+                <path d="M4 4v16h16M8 16l3-4 3 3 4-6" />
+              </svg>
+            </div>
+            <h3 class="font-display fw-semibold fs-5 mb-2">Histórico territorial</h3>
+            <p style="color:var(--mist); font-size:0.9rem;">
+              Compara el estado de una capa entre dos fechas y observa cómo cambió el territorio con el tiempo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAPAS ============ -->
+  <section
+    id="capas"
+    class="py-5 py-md-5"
+    style="padding-top:6rem !important; padding-bottom:6rem !important; border-top:1px solid var(--line);"
+  >
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-md-5">
+          <p class="font-mono small text-uppercase mb-3 reveal" style="color:var(--teal); letter-spacing:.25em;">
+            Capas que se conectan
+          </p>
+          <h2 class="font-display fw-semibold reveal" style="font-size:2.1rem;">
+            Un mapa,<br />tantas capas como necesites.
+          </h2>
+          <p class="mt-3 reveal" style="color:var(--mist); max-width:28rem;">
+            Cada fuente de datos entra como una capa propia: parcelas, redes, sensores, permisos. GeoSteam las apila, las cruza y te deja consultarlas juntas sin perder el origen de cada una.
+          </p>
+          <ul class="list-unstyled mt-4 reveal-group">
+            <li class="d-flex mb-3 reveal">
+              <span class="dot" style="background:var(--teal);"></span>
+              <span><strong>Catastro digital</strong> — parcelas, propietarios y usos de suelo, actualizados desde la fuente oficial.</span>
+            </li>
+            <li class="d-flex mb-3 reveal">
+              <span class="dot" style="background:#5FB8D9;"></span>
+              <span><strong>Infraestructura urbana</strong> — redes de agua, energía y vialidad, superpuestas y auditables.</span>
+            </li>
+            <li class="d-flex mb-3 reveal">
+              <span class="dot" style="background:var(--blue);"></span>
+              <span><strong>Monitoreo ambiental</strong> — sensores y alertas de riesgo integrados en tiempo real.</span>
+            </li>
+            <li class="d-flex mb-3 reveal">
+              <span class="dot" style="background:var(--navy);"></span>
+              <span><strong>Analítica territorial</strong> — cruces de datos y reportes exportables, sin escribir código.</span>
+            </li>
+            <li class="d-flex mb-3 reveal">
+              <span class="dot" style="background:#7BD4C9;"></span>
+              <span><strong>Salud y red asistencial</strong> — hospitales, clínicas y ambulatorios del territorio nacional, georreferenciados y caracterizados por nivel de atención y capacidad operativa.</span>
+            </li>
+          </ul>
+          <a href="/geoportal" class="btn btn-teal mt-2 reveal">Explorar el geoportal</a>
+        </div>
+        <div class="col-md-7">
+          <div class="layer-stack reveal">
+            <div class="layer-card">01 · Catastro</div>
+            <div class="layer-card">02 · Infraestructura</div>
+            <div class="layer-card">03 · Ambiente</div>
+            <div class="layer-card">04 · Analítica territorial</div>
+            <div class="layer-card">05 · Salud</div>
+          </div>
+          <p class="text-center font-mono small mt-3 reveal" style="color:var(--mist); opacity:.7;">
+            pasa el cursor para separar las capas
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLUJO ============ -->
+  <section
+    id="flujo"
+    class="py-5"
+    style="padding-top:6rem !important; padding-bottom:6rem !important; border-top:1px solid var(--line);"
+  >
+    <div class="container">
+      <p class="font-mono small text-uppercase mb-3 reveal" style="color:var(--teal); letter-spacing:.25em;">
+        Cómo funciona
+      </p>
+      <h2 class="font-display fw-semibold mb-3 reveal" style="font-size:2.1rem; max-width:34rem;">
+        De datos dispersos a un territorio en un solo lugar.
+      </h2>
+      <p class="mb-5 reveal" style="color:var(--mist); max-width:42rem; font-size:0.95rem;">
+        GeoSteam no reemplaza tus sistemas: los conecta. Los datos siguen viviendo donde siempre, y GeoServer se encarga de exponerlos como servicios estándar para que el geoportal los consuma sin fricción.
+      </p>
+
+      <!-- -------- Pasos del flujo -------- -->
+      <div class="flow-steps reveal-group">
+        <div class="flow-step reveal">
+          <div class="flow-step-head">
+            <span class="flow-step-num font-mono">01</span>
+            <span class="flow-step-dot"></span>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mt-3 mb-2">Conecta tus fuentes</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">
+            PostGIS, shapefiles, servicios externos y sensores IoT. GeoSteam se apoya en GeoServer para leer cada fuente en su formato nativo, sin migraciones ni copias intermedias.
+          </p>
+        </div>
+
+        <div class="flow-step reveal">
+          <div class="flow-step-head">
+            <span class="flow-step-num font-mono">02</span>
+            <span class="flow-step-dot"></span>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mt-3 mb-2">Publica como capas</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">
+            Cada fuente se expone como servicio estándar (<span class="font-mono" style="color:var(--teal);">WMS</span>, <span class="font-mono" style="color:var(--teal);">WFS</span>, <span class="font-mono" style="color:var(--teal);">WMTS</span>) con su propio estilo y control de acceso por usuario o rol.
+          </p>
+        </div>
+
+        <div class="flow-step reveal">
+          <div class="flow-step-head">
+            <span class="flow-step-num font-mono">03</span>
+            <span class="flow-step-dot"></span>
+          </div>
+          <h3 class="font-display fw-semibold fs-5 mt-3 mb-2">Decide con datos</h3>
+          <p style="color:var(--mist); font-size:0.9rem;">
+            El geoportal consume esas capas, las apila, las cruza y genera reportes. Todo desde el mismo mapa, en tiempo real y sin salir del navegador.
+          </p>
+        </div>
+      </div>
+
+      <!-- -------- Banda GeoServer -------- -->
+      <div class="geoserver-band reveal">
+        <div class="geoserver-logo">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="gsGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#6DB3D9" />
+                <stop offset="1" stop-color="#1E3A5F" />
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="28" fill="url(#gsGrad)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
+            <ellipse cx="32" cy="32" rx="28" ry="11" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" />
+            <ellipse cx="32" cy="32" rx="11" ry="28" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" />
+            <ellipse cx="32" cy="32" rx="21" ry="28" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" />
+            <ellipse cx="32" cy="32" rx="28" ry="21" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" />
+            <line x1="4" y1="32" x2="60" y2="32" stroke="rgba(255,255,255,0.45)" stroke-width="1" />
+            <line x1="32" y1="4" x2="32" y2="60" stroke="rgba(255,255,255,0.45)" stroke-width="1" />
+          </svg>
+        </div>
+
+        <div class="geoserver-text">
+          <p class="font-mono small text-uppercase mb-1" style="color:var(--teal); letter-spacing:.22em;">
+            Motor geoespacial
+          </p>
+          <h3 class="font-display fw-semibold mb-2" style="font-size:1.5rem;">
+            Impulsado por GeoServer
+          </h3>
+          <p style="color:var(--mist); font-size:0.92rem; max-width:46rem;">
+            GeoSteam monta sobre <strong class="text-white">GeoServer</strong>, el servidor de código abierto de referencia para publicar datos geoespaciales. Eso significa interoperabilidad real con cualquier SIG del mercado.
+          </p>
+
+          <ul class="geoserver-list">
+            <li>
+              <span class="geoserver-check">✓</span>
+              <span><strong class="text-white">Estándares OGC</strong> — WMS, WFS, WCS y WMTS listos para QGIS, ArcGIS y cualquier cliente compatible.</span>
+            </li>
+            <li>
+              <span class="geoserver-check">✓</span>
+              <span><strong class="text-white">Multi-fuente</strong> — PostGIS, Oracle, SQL Server, shapefiles, GeoTIFF, servicios remotos.</span>
+            </li>
+            <li>
+              <span class="geoserver-check">✓</span>
+              <span><strong class="text-white">Seguridad por capa</strong> — reglas de acceso por usuario, rol y workspace, integradas con el JWT de GeoSteam.</span>
+            </li>
+            <li>
+              <span class="geoserver-check">✓</span>
+              <span><strong class="text-white">Sin licencias</strong> — software libre bajo GPL. Sin costes por usuario ni por servidor.</span>
+            </li>
+          </ul>
+
+          <a
+            href="https://geoserver.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="geoserver-link font-mono"
+          >
+            geoserver.org
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 17L17 7M9 7h8v8" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section
+    id="contacto"
+    class="cta-section py-5 text-center"
+    style="padding-top:6rem !important; padding-bottom:6rem !important;"
+  >
+    <div class="contour-bg" style="opacity:0.5;">
+      <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580" stroke="url(#contourGrad)" />
+        <path d="M-40,420 C160,340 320,520 570,440 C820,360 980,480 1240,400" stroke="url(#contourGrad)" />
+      </svg>
+    </div>
+    <div class="container position-relative" style="max-width:640px;">
+      <h2 class="font-display fw-semibold reveal" style="font-size:2.4rem;">
+        Empieza a mapear<br /><span class="grad-text">tu territorio.</span>
+      </h2>
+      <p class="mt-3 mb-4 reveal" style="color:var(--mist);">
+        Agenda una demo con el equipo de Steam Solutions y te mostramos GeoSteam con datos de tu propia zona.
+      </p>
+
+      <form class="d-flex flex-column flex-sm-row gap-3 justify-content-center reveal" onsubmit="return false;">
+        <label for="email" class="visually-hidden">Correo institucional</label>
+        <input
+          id="email"
+          type="email"
+          required
+          placeholder="correo@institucion.gob"
+          class="form-control form-control-geo"
+          style="max-width:320px;"
+        />
+        <button type="submit" class="btn btn-teal">Solicitar demo</button>
+      </form>
+      <p class="font-mono small mt-3 reveal" style="color:var(--mist); opacity:0.7;">
+        Sin compromiso · respuesta en 1 día hábil
+      </p>
+    </div>
+  </section>
+</BaseLayout>

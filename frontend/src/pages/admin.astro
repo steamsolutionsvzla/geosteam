@@ -1,0 +1,294 @@
+---
+// ============================================================
+//  ADMIN — Panel de administrador (post-login, solo ROLE_ADMIN)
+// ============================================================
+import BareLayout from '../layouts/BareLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import '../styles/hub.css';   // topbar + user-pill + logout styles
+import '../styles/admin.css'; // específicos del panel
+---
+
+<BareLayout title="Panel de administrador | GeoSteam" bodyClass="admin-body">
+
+  <!-- Orbes de fondo (mismo lenguaje que el hub) -->
+  <div class="bg-orb bg-orb--teal" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb--blue" aria-hidden="true"></div>
+
+  <!-- Topbar reutilizable con botón de GeoServer -->
+  <Topbar context="Panel de administrador" showGeoserver={true} />
+
+  <main class="admin-main">
+    <div class="container">
+
+      <!-- ============ HERO ============ -->
+      <p class="font-mono small text-uppercase mb-2 admin-eyebrow reveal" style="--delay:.05s;">
+        Espacio de trabajo · Administración
+      </p>
+      <h1 class="font-display fw-semibold admin-title reveal" style="--delay:.12s;">
+        Panel de administrador
+      </h1>
+      <p class="mt-2 admin-subtitle reveal" style="--delay:.2s;">
+        Gestiona las cuentas que pueden entrar al geoportal, revisa el tráfico del sitio
+        y accede directamente a las demás áreas de GeoSteam.
+      </p>
+
+      <!-- ============ ACCESOS RÁPIDOS ============ -->
+      <div class="access-row reveal" style="--delay:.28s;">
+        <a href="/hub" class="access-chip">
+          <span class="dot" style="background:var(--blue);"></span>Espacio de trabajo
+        </a>
+        <a href="/geoportal" class="access-chip">
+          <span class="dot" style="background:var(--teal);"></span>Geoportal
+        </a>
+        <span class="access-chip is-soon" data-soon="Dashboard de mapas">
+          <span class="dot" style="background:var(--mist);"></span>Dashboard de mapas
+        </span>
+        <span class="access-chip is-soon" data-soon="GeoLibre">
+          <span class="dot" style="background:var(--mist);"></span>GeoLibre
+        </span>
+      </div>
+
+      <!-- ============ KPIs ============ -->
+      <div class="row g-3 kpi-row">
+        <div class="col-6 col-md-3 reveal" style="--delay:.35s;">
+          <div class="kpi-card">
+            <div class="kpi-card-head">
+              <p class="kpi-label mb-0">Usuarios totales</p>
+              <span class="kpi-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </span>
+            </div>
+            <p class="kpi-value teal mb-0" id="kpiUsuarios">—</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 reveal" style="--delay:.42s;">
+          <div class="kpi-card">
+            <div class="kpi-card-head">
+              <p class="kpi-label mb-0">Administradores</p>
+              <span class="kpi-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/>
+                </svg>
+              </span>
+            </div>
+            <p class="kpi-value mb-0" id="kpiAdmins">—</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 reveal" style="--delay:.49s;">
+          <div class="kpi-card">
+            <div class="kpi-card-head">
+              <p class="kpi-label mb-0">Visitas hoy</p>
+              <span class="kpi-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12h4l3-9 4 18 3-9h4"/>
+                </svg>
+              </span>
+            </div>
+            <p class="kpi-value teal mb-0" id="kpiVisitasHoy">—</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 reveal" style="--delay:.56s;">
+          <div class="kpi-card">
+            <div class="kpi-card-head">
+              <p class="kpi-label mb-0">Visitas históricas</p>
+              <span class="kpi-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </span>
+            </div>
+            <p class="kpi-value mb-0" id="kpiVisitasTotal">—</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ GRÁFICO + TOP PÁGINAS ============ -->
+      <div class="row g-4 mt-1">
+        <div class="col-lg-7 reveal" style="--delay:.63s;">
+          <div class="admin-panel h-100">
+            <div class="admin-panel-head">
+              <h2 class="font-display">Visitas del sitio</h2>
+              <select id="rangoDias" class="form-select form-select-geo form-select-sm" style="width:auto;">
+                <option value="7">Últimos 7 días</option>
+                <option value="14" selected>Últimos 14 días</option>
+                <option value="30">Últimos 30 días</option>
+              </select>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="visitsChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 reveal" style="--delay:.7s;">
+          <div class="admin-panel h-100">
+            <div class="admin-panel-head">
+              <h2 class="font-display">Páginas más visitadas</h2>
+            </div>
+            <ul class="list-unstyled mb-0 top-pages" id="topPaginas">
+              <li class="top-page-skeleton">Cargando…</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ GESTIÓN DE USUARIOS ============ -->
+      <div class="admin-panel mt-5 reveal" style="--delay:.77s;">
+        <div class="admin-panel-head">
+          <h2 class="font-display">Usuarios</h2>
+          <button type="button" class="btn btn-teal btn-sm" data-bs-toggle="modal" data-bs-target="#modalNuevoUsuario">
+            + Nuevo usuario
+          </button>
+        </div>
+
+        <div id="usersError" class="alert alert-danger d-none" role="alert"></div>
+
+        <div class="table-responsive">
+          <table class="table table-geo">
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Rol</th>
+                <th>Espacio de trabajo</th>
+                <th class="text-end">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody">
+              <tr><td colspan="4" style="color:var(--mist);">Cargando usuarios…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============ MODAL: NUEVO USUARIO ============ -->
+  <div class="modal fade" id="modalNuevoUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-geo">
+        <form id="formNuevoUsuario">
+          <div class="modal-header">
+            <h5 class="modal-title font-display">Nuevo usuario</h5>
+            <button type="button" class="btn-close btn-close-geo" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div id="createUserError" class="alert alert-danger d-none" role="alert"></div>
+
+            <div class="mb-3">
+              <label for="nuevoNombre" class="form-label-geo">Nombre completo</label>
+              <input type="text" id="nuevoNombre" class="form-control form-control-geo" required minlength="2" placeholder="Nombre y apellido">
+            </div>
+            <div class="mb-3">
+              <label for="nuevoEmail" class="form-label-geo">Correo</label>
+              <input type="email" id="nuevoEmail" class="form-control form-control-geo" required placeholder="nombre@institucion.gob">
+            </div>
+            <div class="mb-3">
+              <label for="nuevoPassword" class="form-label-geo">Contraseña</label>
+              <input type="password" id="nuevoPassword" class="form-control form-control-geo" required minlength="6" placeholder="Mínimo 6 caracteres">
+            </div>
+            <div class="mb-3">
+              <label for="nuevoRol" class="form-label-geo">Rol</label>
+              <select id="nuevoRol" class="form-select form-select-geo">
+                <option value="usuario" selected>Usuario</option>
+                <option value="admin">Administrador</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label-geo">Espacios de trabajo</label>
+              <div class="ws-picker" id="nuevoWorkspacePicker">
+                <span class="ws-picker-msg">Cargando espacios…</span>
+              </div>
+              <div class="form-text" style="color:var(--mist);">
+                Haz clic sobre uno o varios espacios para asignarlos.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-line" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-teal" id="btnCrearUsuario">Crear usuario</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: EDITAR USUARIO ============ -->
+  <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-geo">
+        <form id="formEditarUsuario">
+          <input type="hidden" id="editarUserId">
+          <div class="modal-header">
+            <h5 class="modal-title font-display">Editar usuario</h5>
+            <button type="button" class="btn-close btn-close-geo" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div id="editUserError" class="alert alert-danger d-none" role="alert"></div>
+
+            <div class="mb-3">
+              <label for="editarNombre" class="form-label-geo">Nombre completo</label>
+              <input type="text" id="editarNombre" class="form-control form-control-geo" required minlength="2" placeholder="Nombre y apellido">
+            </div>
+            <div class="mb-3">
+              <label for="editarEmail" class="form-label-geo">Correo</label>
+              <input type="email" id="editarEmail" class="form-control form-control-geo" required placeholder="nombre@institucion.gob">
+            </div>
+            <div class="mb-3">
+              <label for="editarPassword" class="form-label-geo">Contraseña</label>
+              <input type="password" id="editarPassword" class="form-control form-control-geo" minlength="6" placeholder="Dejar en blanco para no cambiarla">
+              <div class="form-text" style="color:var(--mist);">Solo se actualiza si escribes una nueva.</div>
+            </div>
+            <div class="mb-3">
+              <label for="editarRol" class="form-label-geo">Rol</label>
+              <select id="editarRol" class="form-select form-select-geo">
+                <option value="usuario">Usuario</option>
+                <option value="admin">Administrador</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label-geo">Espacios de trabajo</label>
+              <div class="ws-picker" id="editarWorkspacePicker">
+                <span class="ws-picker-msg">Cargando espacios…</span>
+              </div>
+              <div class="form-text" style="color:var(--mist);">
+                Haz clic sobre uno o varios espacios para asignarlos.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-line" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-teal" id="btnGuardarEdicion">Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="soonToast" class="soon-toast font-mono" role="status" aria-live="polite">
+    <span class="toast-icon" aria-hidden="true">◷</span>
+    <span class="toast-text"></span>
+  </div>
+
+</BareLayout>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<!-- Scripts propios -->
+<script is:inline src="/scripts/geosteam-config.js"></script>
+<script is:inline src="/scripts/admin.js"></script>
