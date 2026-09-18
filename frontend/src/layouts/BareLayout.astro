@@ -3,6 +3,7 @@
 // BareLayout — Layout base sin estilos específicos de página
 // ============================================================
 import '../styles/index.css';
+import logo from '../../public/images/logo.png';
 
 interface Props {
   title?: string;
@@ -38,11 +39,10 @@ const {
     rel="stylesheet"
   />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Favicon (usa el logo PNG) -->
+  <link rel="icon" type="image/png" href="/images/logo.png" />
 
-  <!-- Slot para <head> específico de cada página
-       (CSS/JS extra: MapLibre en geoportal, hojas de admin, etc.) -->
+  <!-- Slot para <head> específico de cada página -->
   <slot name="head" />
 </head>
 
@@ -54,31 +54,8 @@ const {
     <footer>
       <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
         <div class="d-flex align-items-center gap-2">
-          <svg
-            width="24"
-            height="21"
-            viewBox="0 0 34 30"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient
-                id="footerMark"
-                x1="2"
-                y1="26"
-                x2="30"
-                y2="4"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0" stop-color="#4ECDC4" />
-                <stop offset="0.6" stop-color="#4A7FC5" />
-                <stop offset="1" stop-color="#1E3A5F" />
-              </linearGradient>
-            </defs>
-            <rect x="1"  y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)"  fill="url(#footerMark)" />
-            <rect x="10" y="6"  width="7" height="18" rx="3.5" transform="rotate(-35 10 6)"  fill="url(#footerMark)" />
-            <rect x="19" y="0"  width="7" height="14" rx="3.5" transform="rotate(-35 19 0)"  fill="url(#footerMark)" />
-          </svg>
+          <!-- LOGO PNG (Footer) -->
+          <img src={logo.src} alt="GeoSteam" class="footer-logo" />
           <span style="color:var(--mist); font-size:0.85rem;">
             GeoSteam — un producto de <span class="text-white">Steam Solutions</span>
           </span>

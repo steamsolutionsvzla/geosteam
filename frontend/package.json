@@ -8,18 +8,19 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "cp node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs node_modules/maplibre-gl/dist/maplibre-gl-shared.mjs dist/_astro/",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.2",
-    "maplibre-gl": "^6.10.0",
-    "three": "^0.186.0"
+    "astro": "7.3.2",
+    "maplibre-gl": "6.10.0",
+    "three": "0.186.0"
   },
   "allowScripts": {
     "esbuild": true
   },
   "devDependencies": {
-    "@types/three": "^0.186.0"
+    "@types/three": "0.186.0"
   }
 }

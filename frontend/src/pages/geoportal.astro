@@ -4,37 +4,19 @@
 // ============================================================
 import BareLayout from '../layouts/BareLayout.astro';
 import '../styles/geoportal.css';
+import logo from '../../public/images/logo.png';
+import EarthLoader from '../components/EarthLoader.astro'; 
 ---
 
 <BareLayout title="Geoportal | GeoSteam">
 
-  <!-- ============ LOADER OVERLAY ============ -->
+   <!-- ============ LOADER OVERLAY ============ -->
   <div class="geo-loader" id="geoLoader" aria-live="polite" aria-busy="true">
-    <div class="earth">
-      <div class="earth-loader">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-          <path transform="translate(100 100)"
-                d="M29.4,-17.4C33.1,1.8,27.6,16.1,11.5,31.6C-4.7,47,-31.5,63.6,-43,56C-54.5,48.4,-50.7,16.6,-41,-10.9C-31.3,-38.4,-15.6,-61.5,-1.4,-61C12.8,-60.5,25.7,-36.5,29.4,-17.4Z"
-                fill="var(--loader-land)"></path>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-          <path transform="translate(100 100)"
-                d="M31.7,-55.8C40.3,-50,45.9,-39.9,49.7,-29.8C53.5,-19.8,55.5,-9.9,53.1,-1.4C50.6,7.1,43.6,14.1,41.8,27.6C40.1,41.1,43.4,61.1,37.3,67C31.2,72.9,15.6,64.8,1.5,62.2C-12.5,59.5,-25,62.3,-31.8,56.7C-38.5,51.1,-39.4,37.2,-49.3,26.3C-59.1,15.5,-78,7.7,-77.6,0.2C-77.2,-7.2,-57.4,-14.5,-49.3,-28.4C-41.2,-42.4,-44.7,-63,-38.5,-70.1C-32.2,-77.2,-16.1,-70.8,-2.3,-66.9C11.6,-63,23.1,-61.5,31.7,-55.8Z"
-                fill="var(--loader-land)"></path>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-          <path transform="translate(100 100)"
-                d="M30.6,-49.2C42.5,-46.1,57.1,-43.7,67.6,-35.7C78.1,-27.6,84.6,-13.8,80.3,-2.4C76.1,8.9,61.2,17.8,52.5,29.1C43.8,40.3,41.4,53.9,33.7,64C26,74.1,13,80.6,2.2,76.9C-8.6,73.1,-17.3,59,-30.6,52.1C-43.9,45.3,-61.9,45.7,-74.1,38.2C-86.4,30.7,-92.9,15.4,-88.6,2.5C-84.4,-10.5,-69.4,-20.9,-60.7,-34.6C-52.1,-48.3,-49.8,-65.3,-40.7,-70C-31.6,-74.8,-15.8,-67.4,-3.2,-61.8C9.3,-56.1,18.6,-52.3,30.6,-49.2Z"
-                fill="var(--loader-land)"></path>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-          <path transform="translate(100 100)"
-                d="M39.4,-66C48.6,-62.9,51.9,-47.4,52.9,-34.3C53.8,-21.3,52.4,-10.6,54.4,1.1C56.3,12.9,61.7,25.8,57.5,33.2C53.2,40.5,39.3,42.3,28.2,46C17,49.6,8.5,55.1,1.3,52.8C-5.9,50.5,-11.7,40.5,-23.6,37.2C-35.4,34,-53.3,37.5,-62,32.4C-70.7,27.4,-70.4,13.7,-72.4,-1.1C-74.3,-15.9,-78.6,-31.9,-73.3,-43C-68.1,-54.2,-53.3,-60.5,-39.5,-60.9C-25.7,-61.4,-12.9,-56,1.1,-58C15.1,-59.9,30.2,-69.2,39.4,-66Z"
-                fill="var(--loader-land)"></path>
-        </svg>
-      </div>
-      <p>Cargando visor…</p>
+    <div class="loader-earth-wrap">
+      <div class="loader-earth-glow" aria-hidden="true"></div>
+      <EarthLoader />
     </div>
+    <p>Cargando visor…</p>
   </div>
 
   <div class="geo-app">
@@ -42,7 +24,7 @@ import '../styles/geoportal.css';
     <!-- ============ TOPBAR ============ -->
     <header class="geo-topbar">
       <div class="geo-topbar-left">
-              <a href="/hub" class="back-to-hub" id="btnBackToHub"
+        <a href="/hub" class="back-to-hub" id="btnBackToHub"
            title="Volver al espacio de trabajo">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
                stroke="currentColor" stroke-width="2.2"
@@ -54,19 +36,7 @@ import '../styles/geoportal.css';
         </a>
 
         <a href="/" class="geo-brand">
-          <svg class="brand-mark" width="26" height="23" viewBox="0 0 34 30"
-               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#4ECDC4"/>
-                <stop offset="0.6" stop-color="#4A7FC5"/>
-                <stop offset="1" stop-color="#1E3A5F"/>
-              </linearGradient>
-            </defs>
-            <rect x="1"  y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)"  fill="url(#navMark)"/>
-            <rect x="10" y="6"  width="7" height="18" rx="3.5" transform="rotate(-35 10 6)"  fill="url(#navMark)"/>
-            <rect x="19" y="0"  width="7" height="14" rx="3.5" transform="rotate(-35 19 0)"  fill="url(#navMark)"/>
-          </svg>
+          <img src={logo.src} alt="GeoSteam" class="brand-logo" />
           <span class="brand-name font-display">GeoSteam</span>
           <span class="brand-sep" aria-hidden="true">/</span>
           <span class="brand-context font-display">Geoportal</span>
@@ -113,7 +83,6 @@ import '../styles/geoportal.css';
         </p>
       </aside>
 
-      <!-- Botón para colapsar/expandir el sidebar -->
       <button type="button" class="sidebar-collapse-btn" id="btnCollapseSidebar"
               title="Ocultar panel de capas" aria-label="Ocultar panel de capas">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
@@ -132,7 +101,7 @@ import '../styles/geoportal.css';
                   title="Restablecer vista" aria-label="Restablecer vista">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
               <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.2" opacity="0.35"/>
-              <polygon points="12,2.5 14.5,12 12,10.7 9.5,12" fill="#4ECDC4"/>
+              <polygon points="12,2.5 14.5,12 12,10.7 9.5,12" fill="#5dc5c3"/>
               <polygon points="12,21.5 14.5,12 12,13.3 9.5,12" fill="currentColor" opacity="0.55"/>
             </svg>
           </button>
@@ -217,11 +186,7 @@ import '../styles/geoportal.css';
 
     <footer class="geo-footer">
       <div class="geo-footer-brand">
-        <svg width="20" height="18" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="1"  y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)"  fill="url(#navMark)"/>
-          <rect x="10" y="6"  width="7" height="18" rx="3.5" transform="rotate(-35 10 6)"  fill="url(#navMark)"/>
-          <rect x="19" y="0"  width="7" height="14" rx="3.5" transform="rotate(-35 19 0)"  fill="url(#navMark)"/>
-        </svg>
+        <img src={logo.src} alt="GeoSteam" class="footer-logo" />
         <span>GeoSteam — un producto de <b>Steam Solutions</b></span>
       </div>
       <div class="geo-footer-links font-mono">
@@ -235,114 +200,219 @@ import '../styles/geoportal.css';
 
 </BareLayout>
 
-  <!-- Ocultar el botón "Volver al Hub" si el usuario es invitado -->
-   <script is:inline>
-    (function () {
+<!-- ============================================================
+     SCRIPT: Logout + redirección a index.astro (/)
+     Detecta el cierre de sesión por múltiples vías para garantizar
+     que SIEMPRE se redirija a la landing (/).
+     ============================================================ -->
 
-      /* ============================================================ */
-      /* 1. Ocultar "Volver al Hub" si el usuario es invitado         */
-      /* ============================================================ */
+<!-- ============================================================
+     SCRIPT: Logout + redirección a index.astro (/)
+     - Si el usuario es INVITADO → nunca redirige.
+     - Si el usuario ESTABA LOGUEADO y cierra sesión → redirige a /.
+     ============================================================ -->
+<script is:inline>
+  (function () {
+    'use strict';
 
-      function updateHubVisibility() {
-        var badge = document.getElementById('sessionBadge');
-        var btn   = document.getElementById('btnBackToHub');
-        if (!badge || !btn) return;
+    var HOME_URL = '/';           // index.astro
+    var TOKEN_KEY = 'geosteam_token';
+    var redirecting = false;
 
-        var avatar = badge.querySelector('.user-avatar');
-        var isGuestByClass = avatar && avatar.classList.contains('is-guest');
-        var hasToken = false;
+    /* -------------------------------------------------------------
+       Estado: ¿el usuario ESTABA logueado al cargar la página?
+       Se detecta observando el badge durante los primeros segundos.
+       ------------------------------------------------------------- */
+    var userWasLoggedIn = false;
+    var initialStateChecked = false;
+
+    function hasToken() {
+      try { return !!localStorage.getItem(TOKEN_KEY); }
+      catch (e) { return false; }
+    }
+
+    function clearToken() {
+      try { localStorage.removeItem(TOKEN_KEY); } catch (e) {}
+    }
+
+    function isGuestByBadge() {
+      var badge = document.getElementById('sessionBadge');
+      if (!badge) return true;
+      var avatar = badge.querySelector('.user-avatar');
+      return !!(avatar && avatar.classList.contains('is-guest'));
+    }
+
+    function goHome() {
+      // Solo redirigimos si el usuario ESTABA logueado
+      if (!userWasLoggedIn) return;
+      if (redirecting) return;
+      redirecting = true;
+      try { window.location.replace(HOME_URL); }
+      catch (e) { window.location.href = HOME_URL; }
+    }
+
+    /* -------------------------------------------------------------
+       1. Determinar el estado inicial (logueado vs invitado)
+          Damos hasta 3 s para que geoportal-session.js pinte el badge.
+       ------------------------------------------------------------- */
+    var initialChecks = 0;
+    var initialInterval = setInterval(function () {
+      initialChecks++;
+      var badge = document.getElementById('sessionBadge');
+      if (!badge) return;
+
+      var userName = badge.querySelector('.user-name');
+      var text = userName ? (userName.textContent || '').trim() : '';
+
+      // El badge se considera "resuelto" cuando ya no dice "Cargando…"
+      if (text && text.toLowerCase() !== 'cargando…' && text.toLowerCase() !== 'cargando...') {
+        clearInterval(initialInterval);
+
+        var guest = isGuestByBadge() || !hasToken();
+        userWasLoggedIn = !guest;
+        initialStateChecked = true;
+
+        // Guardamos el estado para comparar después
         try {
-          hasToken = !!localStorage.getItem('geosteam_token');
-        } catch (e) { /* noop */ }
+          sessionStorage.setItem('geosteam_was_logged_in', userWasLoggedIn ? '1' : '0');
+        } catch (e) {}
+        return;
+      }
 
-        var isGuest = isGuestByClass || !hasToken;
+      // Fallback: tras 3 s, decidimos con lo que haya
+      if (initialChecks >= 30) {
+        clearInterval(initialInterval);
+        var guest = isGuestByBadge() || !hasToken();
+        userWasLoggedIn = !guest;
+        initialStateChecked = true;
+      }
+    }, 100);
 
-        if (isGuest) {
-          btn.removeAttribute('data-allow');
-          btn.setAttribute('aria-hidden', 'true');
-          btn.setAttribute('tabindex', '-1');
-        } else {
-          btn.setAttribute('data-allow', 'true');
-          btn.removeAttribute('aria-hidden');
-          btn.removeAttribute('tabindex');
+    /* -------------------------------------------------------------
+       2. Detección por CLICK en botón de logout
+       ------------------------------------------------------------- */
+    var LOGOUT_SELECTORS = [
+      '.user-logout',
+      '[data-action="logout"]',
+      '[data-logout]',
+      '#btnLogout',
+      '#logoutBtn',
+      'button[aria-label*="Cerrar sesión"]',
+      'button[title*="Cerrar sesión"]',
+      'button[aria-label*="Salir"]',
+      'button[title*="Salir"]',
+      'a[href="/logout"]'
+    ];
+
+    document.addEventListener('click', function (e) {
+      // Ignoramos si el usuario es invitado desde el inicio
+      if (!userWasLoggedIn) return;
+
+      var target = e.target;
+      if (!target || !target.closest) return;
+
+      for (var i = 0; i < LOGOUT_SELECTORS.length; i++) {
+        var btn = target.closest(LOGOUT_SELECTORS[i]);
+        if (btn) {
+          // Esperamos a que el script de sesión borre el token (máx 1.5s)
+          var checks = 0;
+          var iv = setInterval(function () {
+            checks++;
+            if (!hasToken()) {
+              clearInterval(iv);
+              goHome();
+            } else if (checks >= 15) {
+              clearInterval(iv);
+              clearToken();
+              goHome();
+            }
+          }, 100);
+
+          // Red de seguridad: redirigir sí o sí a los 2s
+          setTimeout(function () { goHome(); }, 2000);
+          return;
         }
       }
+    }, true);
 
-      /* ============================================================ */
-      /* 2. Redirigir a "/" cuando se cierra la sesión                */
-      /* ============================================================ */
+    /* -------------------------------------------------------------
+       3. Evento custom 'geosteam:logout'
+       ------------------------------------------------------------- */
+    window.addEventListener('geosteam:logout', function () {
+      if (!userWasLoggedIn) return;
+      clearToken();
+      goHome();
+    });
 
-      var REDIRECT_URL = '/';   // = index.astro
-      var redirecting = false;
+    /* -------------------------------------------------------------
+       4. Storage event (otra pestaña borra el token)
+       ------------------------------------------------------------- */
+    window.addEventListener('storage', function (e) {
+      if (!userWasLoggedIn) return;
+      if (e.key === TOKEN_KEY && !e.newValue) goHome();
+    });
 
-      function goHome() {
-        if (redirecting) return;
-        redirecting = true;
-        window.location.href = REDIRECT_URL;
-      }
+    /* -------------------------------------------------------------
+       5. MutationObserver sobre el badge:
+          solo redirige si ANTES estaba logueado y AHORA es invitado
+       ------------------------------------------------------------- */
+    var badge = document.getElementById('sessionBadge');
+    if (badge && typeof MutationObserver !== 'undefined') {
+      var mo = new MutationObserver(function () {
+        if (!initialStateChecked) return;
+        if (!userWasLoggedIn) return;
 
-      function tokenIsGone() {
-        try {
-          return !localStorage.getItem('geosteam_token');
-        } catch (e) {
-          return true;   // si el storage está bloqueado, asumimos logout
-        }
-      }
-
-      /* 2a. Click en el botón de cerrar sesión (dentro del user pill) */
-      document.addEventListener('click', function (e) {
-        var logoutBtn = e.target.closest && e.target.closest('.user-logout');
-        if (!logoutBtn) return;
-
-        // Damos tiempo a que session.js borre el token y haga lo suyo
-        var checks = 0;
-        var maxChecks = 20;   // ~2 segundos como máximo
-        var iv = setInterval(function () {
-          checks++;
-          if (tokenIsGone()) {
-            clearInterval(iv);
-            goHome();
-          } else if (checks >= maxChecks) {
-            // Aún con token: forzamos el logout manual por si session.js falló
-            try { localStorage.removeItem('geosteam_token'); } catch (err) { /* noop */ }
-            clearInterval(iv);
-            goHome();
-          }
-        }, 100);
-      }, true);   // capture para adelantarnos a otros listeners
-
-      /* 2b. Si session.js emite un evento custom, lo escuchamos */
-      window.addEventListener('geosteam:logout', function () {
-        goHome();
-      });
-
-      /* 2c. Logout desde otra pestaña: detecta cuando el token desaparece */
-      window.addEventListener('storage', function (e) {
-        if (e.key === 'geosteam_token' && !e.newValue) {
+        // Si el badge pasó a "is-guest" → logout
+        if (isGuestByBadge()) {
+          clearToken();
           goHome();
         }
       });
 
-      /* ============================================================ */
-      /* 3. Enganches iniciales                                       */
-      /* ============================================================ */
+      mo.observe(badge, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+        attributeFilter: ['class']
+      });
+    }
 
-      document.addEventListener('DOMContentLoaded', updateHubVisibility);
+    /* -------------------------------------------------------------
+       6. Ocultar "Volver al Hub" si es invitado
+       ------------------------------------------------------------- */
+    function updateHubVisibility() {
+      var b = document.getElementById('sessionBadge');
+      var btn = document.getElementById('btnBackToHub');
+      if (!b || !btn) return;
 
-      var badge = document.getElementById('sessionBadge');
-      if (badge && typeof MutationObserver !== 'undefined') {
-        var mo = new MutationObserver(updateHubVisibility);
-        mo.observe(badge, {
-          attributes: true,
-          childList: true,
-          subtree: true,
-          attributeFilter: ['class']
-        });
+      var avatar = b.querySelector('.user-avatar');
+      var isGuestByClass = avatar && avatar.classList.contains('is-guest');
+      var isGuest = isGuestByClass || !hasToken();
+
+      if (isGuest) {
+        btn.removeAttribute('data-allow');
+        btn.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('tabindex', '-1');
+      } else {
+        btn.setAttribute('data-allow', 'true');
+        btn.removeAttribute('aria-hidden');
+        btn.removeAttribute('tabindex');
       }
+    }
 
-      setTimeout(updateHubVisibility, 1000);
-    })();
-  </script>
+    document.addEventListener('DOMContentLoaded', updateHubVisibility);
+
+    if (badge && typeof MutationObserver !== 'undefined') {
+      var mo2 = new MutationObserver(updateHubVisibility);
+      mo2.observe(badge, {
+        attributes: true, childList: true, subtree: true,
+        attributeFilter: ['class']
+      });
+    }
+
+    setTimeout(updateHubVisibility, 1000);
+  })();
+</script>
 <!-- CSS de MapLibre GL -->
 <style is:global>
   @import 'maplibre-gl/dist/maplibre-gl.css';

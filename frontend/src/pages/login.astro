@@ -1,6 +1,7 @@
 ---
 // Login del geoportal. Panel de marca (izq) + form flotante estilo KhelVers (der).
 import '../styles/login.css';
+import logo from '../../public/images/logo.png';
 
 const title = 'Iniciar sesión | GeoSteam';
 ---
@@ -24,7 +25,7 @@ const title = 'Iniciar sesión | GeoSteam';
     rel="stylesheet"
   />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/images/logo.png" />
 </head>
 <body>
 
@@ -32,18 +33,8 @@ const title = 'Iniciar sesión | GeoSteam';
   <nav class="navbar navbar-expand-md navbar-geo fixed-top py-3">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="/#top">
-        <svg width="30" height="27" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#4ECDC4" />
-              <stop offset="0.6" stop-color="#4A7FC5" />
-              <stop offset="1" stop-color="#1E3A5F" />
-            </linearGradient>
-          </defs>
-          <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)" />
-          <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)" />
-          <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)" />
-        </svg>
+        <!-- LOGO PNG -->
+        <img src={logo.src} alt="Steam Solutions" class="brand-logo" />
         <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
       </a>
 
@@ -71,16 +62,16 @@ const title = 'Iniciar sesión | GeoSteam';
     <div class="auth-grid">
 
       <!-- ============================================
-           PANEL IZQUIERDO (marca) — SE CONSERVA COMPLETO
+           PANEL IZQUIERDO (marca)
            ============================================ -->
       <aside class="brand-panel">
         <div class="contour-bg" aria-hidden="true">
           <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#4ECDC4" />
-                <stop offset="0.5" stop-color="#4A7FC5" />
-                <stop offset="1" stop-color="#1E3A5F" />
+                <stop offset="0" stop-color="#5dc5c3" />
+                <stop offset="0.5" stop-color="#577bbd" />
+                <stop offset="1" stop-color="#0e2443" />
               </linearGradient>
             </defs>
             <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580" />
@@ -91,19 +82,9 @@ const title = 'Iniciar sesión | GeoSteam';
           </svg>
         </div>
 
-        <a href="/" class="brand-logo">
-          <svg width="34" height="30" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="navMarkA" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#4ECDC4" />
-                <stop offset="0.6" stop-color="#4A7FC5" />
-                <stop offset="1" stop-color="#1E3A5F" />
-              </linearGradient>
-            </defs>
-            <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMarkA)" />
-            <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMarkA)" />
-            <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMarkA)" />
-          </svg>
+        <a href="/" class="d-flex align-items-center gap-2">
+          <!-- LOGO PNG -->
+          <img src={logo.src} alt="Steam Solutions" class="brand-logo" />
           <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
         </a>
 
@@ -131,7 +112,7 @@ const title = 'Iniciar sesión | GeoSteam';
       </aside>
 
       <!-- ============================================
-           PANEL DERECHO (form estilo KhelVers)
+           PANEL DERECHO (form)
            ============================================ -->
       <section class="form-panel">
 
@@ -162,8 +143,8 @@ const title = 'Iniciar sesión | GeoSteam';
                   x1="149.5"
                   id="raysGrad"
                 >
-                  <stop stop-color="#4ECDC4"></stop>
-                  <stop stop-opacity="0" stop-color="#4A7FC5" offset="1"></stop>
+                  <stop stop-color="#5dc5c3"></stop>
+                  <stop stop-opacity="0" stop-color="#577bbd" offset="1"></stop>
                 </linearGradient>
               </defs>
             </svg>
@@ -244,31 +225,11 @@ const title = 'Iniciar sesión | GeoSteam';
               ¿No tienes cuenta? <a href="#" class="link-teal">Solicita acceso</a>
             </p>
 
-            <!-- Trust badges -->
+            <!-- Trust badges (Logo PNG, sin ISO) -->
             <div class="trust-row font-mono">
               <span class="trust-brand">
-                <svg width="14" height="13" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="trustMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
-                      <stop offset="0" stop-color="#4ECDC4" />
-                      <stop offset="0.6" stop-color="#4A7FC5" />
-                      <stop offset="1" stop-color="#1E3A5F" />
-                    </linearGradient>
-                  </defs>
-                  <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#trustMark)" />
-                  <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#trustMark)" />
-                  <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#trustMark)" />
-                </svg>
+                <img src={logo.src} alt="Steam Solutions" class="trust-logo" />
                 Steam Solutions
-              </span>
-
-              <span class="trust-sep" aria-hidden="true">·</span>
-
-              <span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/>
-                </svg>
-                ISO 27001
               </span>
             </div>
           </form>
@@ -284,7 +245,7 @@ const title = 'Iniciar sesión | GeoSteam';
             >
               <g filter="url(#filter0_di_geo)">
                 <path
-                  fill="#0F2338"
+                  fill="#0e2443"
                   d="M80 27.9997C121.974 27.9997 156 22.4032 156 15.4996L156 40.4998C156 47.4034 121.974 52.9998 80 52.9998C38.0265 52.9998 4.00028 47.4034 4 40.4998V40.4998V15.51C4.0342 22.4089 38.0474 27.9997 80 27.9997Z"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
@@ -299,7 +260,7 @@ const title = 'Iniciar sesión | GeoSteam';
               ></ellipse>
               <g filter="url(#filter1_i_geo)">
                 <path
-                  fill="#1E3A5F"
+                  fill="#0e2443"
                   d="M80 28.0002C121.974 28.0002 156 22.4037 156 15.5001C156 8.59648 121.974 3 80 3C38.0264 3 4 8.59648 4 15.5001C4 22.4037 38.0264 28.0002 80 28.0002ZM80.0001 20.308C96.1438 20.308 109.231 18.1555 109.231 15.5002C109.231 12.845 96.1438 10.6925 80.0001 10.6925C63.8564 10.6925 50.7693 12.845 50.7693 15.5002C50.7693 18.1555 63.8564 20.308 80.0001 20.308Z"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
@@ -307,7 +268,7 @@ const title = 'Iniciar sesión | GeoSteam';
               </g>
               <g filter="url(#filter2_di_geo)">
                 <path
-                  fill="#2E9E93"
+                  fill="#3d9a98"
                   d="M106.725 17.4505C108.336 16.8543 109.231 16.1943 109.231 15.4999C109.231 12.8446 96.1438 10.6921 80.0001 10.6921C63.8564 10.6921 50.7693 12.8446 50.7693 15.4999C50.7693 16.1943 51.6645 16.8543 53.2752 17.4504C53.275 17.4414 53.2748 17.4323 53.2748 17.4232C53.2748 14.768 65.2401 12.6155 80.0001 12.6155C94.7601 12.6155 106.725 14.768 106.725 17.4232C106.725 17.4323 106.725 17.4414 106.725 17.4505Z"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
@@ -367,8 +328,8 @@ const title = 'Iniciar sesión | GeoSteam';
                   cx="0"
                   id="paint0_radial_geo"
                 >
-                  <stop stop-color="#4ECDC4"></stop>
-                  <stop stop-color="#1E3A5F" offset="0.901042"></stop>
+                  <stop stop-color="#5dc5c3"></stop>
+                  <stop stop-color="#0e2443" offset="0.901042"></stop>
                 </radialGradient>
               </defs>
             </svg>
@@ -384,11 +345,8 @@ const title = 'Iniciar sesión | GeoSteam';
   <footer>
     <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
       <div class="d-flex align-items-center gap-2">
-        <svg width="24" height="21" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)" />
-          <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)" />
-          <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)" />
-        </svg>
+        <!-- LOGO PNG (Footer) -->
+        <img src={logo.src} alt="Steam Solutions" class="footer-logo" />
         <span style="font-size:0.85rem;">
           GeoSteam — un producto de <span class="text-white">Steam Solutions</span>
         </span>

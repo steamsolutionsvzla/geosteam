@@ -1,0 +1,282 @@
+---
+// ============================================================
+//  EarthLoader — Planeta 3D para el overlay de carga
+//  Polos blancos · Mar azul claro · Continentes verdes
+//  Con despeckle para eliminar ríos/lagos mal clasificados
+// ============================================================
+---
+
+<div class="earth-loader-stage" id="earth-loader-stage">
+  <canvas id="earth-loader-canvas" aria-hidden="true"></canvas>
+</div>
+
+<script>
+  import * as THREE from 'three';
+
+  const stage = document.getElementById('earth-loader-stage');
+  const canvas = document.getElementById('earth-loader-canvas') as HTMLCanvasElement | null;
+
+  const soportaWebGL = (() => {
+    try {
+      const c = document.createElement('canvas');
+      return !!(
+        window.WebGLRenderingContext &&
+        (c.getContext('webgl') || c.getContext('experimental-webgl'))
+      );
+    } catch {
+      return false;
+    }
+  })();
+
+  if (stage && canvas && soportaWebGL) {
+    initEarthLoader(stage, canvas);
+  } else if (stage) {
+    stage.classList.add('no-webgl');
+  }
+
+  function initEarthLoader(stage: HTMLElement, canvas: HTMLCanvasElement) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.set(0, 0, 3.1);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+
+    // ---- Iluminación blanca pura ----
+    scene.add(new THREE.AmbientLight(0xffffff, 1.5));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x3a5560, 0.9));
+
+    const sol = new THREE.DirectionalLight(0xffffff, 3.0);
+    sol.position.set(5, 2, 5);
+    scene.add(sol);
+
+    const relleno = new THREE.DirectionalLight(0xffffff, 1.0);
+    relleno.position.set(-5, -1, -3);
+    scene.add(relleno);
+
+    // ---- Material base ----
+    const material = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      roughness: 0.9,
+      metalness: 0.0,
+    });
+
+    // ---- Esfera ----
+    const geometria = new THREE.SphereGeometry(1, 64, 64);
+    const tierra = new THREE.Mesh(geometria, material);
+    tierra.rotation.z = THREE.MathUtils.degToRad(23.4);
+    scene.add(tierra);
+
+    // ---- Cargar textura y preprocesarla ----
+    const loader = new THREE.TextureLoader();
+    loader.crossOrigin = 'anonymous';
+
+       loader.load(
+      'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg',
+      (texturaOriginal) => {
+        const img = texturaOriginal.image as HTMLImageElement;
+
+        const tCanvas = document.createElement('canvas');
+        tCanvas.width = img.width;
+        tCanvas.height = img.height;
+        const ctx = tCanvas.getContext('2d');
+        if (!ctx) return;
+
+        ctx.drawImage(img, 0, 0);
+        const imageData = ctx.getImageData(0, 0, tCanvas.width, tCanvas.height);
+        const data = imageData.data;
+        const W = tCanvas.width;
+        const H = tCanvas.height;
+
+        // ========================================================
+        // PASO 1: Clasificar cada píxel
+        //   0 = tierra · 1 = agua · 2 = nieve/polo
+        // ========================================================
+        const classes = new Uint8Array(W * H);
+
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+
+          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+          const pixelIndex = i / 4;
+          const y = Math.floor(pixelIndex / W);
+          const isPolarBand = (y < H * 0.13) || (y > H * 0.87);
+
+          // En earth_atmos_2048.jpg los océanos son azul oscuro (~10,30,70).
+          // El azul domina claramente sobre rojo y verde.
+          const blueDom = b - Math.max(r, g);
+
+          // Agua: azul dominante (umbral bajo para capturar mares oscuros)
+          const isWater = blueDom > 20;
+
+          // Nieve: muy brillante y sin dominancia azul
+          const isSnow = lum > 175 && blueDom < 15;
+
+          if (isSnow || (isPolarBand && lum > 130 && !isWater)) {
+            classes[pixelIndex] = 2;
+          } else if (isWater) {
+            classes[pixelIndex] = 1;
+          } else {
+            classes[pixelIndex] = 0;
+          }
+        }
+
+        // ========================================================
+        // PASO 2: Despeckle ligero (radio 1, umbral alto)
+        //   Solo elimina píxeles de agua MUY aislados dentro de
+        //   continentes (ríos finos, artefactos). No toca los mares.
+        // ========================================================
+        const classes2 = new Uint8Array(classes);
+        const RADIUS = 1;
+        const LAND_THRESHOLD = 0.90; // 90% de vecinos tierra → convertir
+
+        for (let y = 0; y < H; y++) {
+          for (let x = 0; x < W; x++) {
+            const idx = y * W + x;
+            if (classes[idx] !== 1) continue;
+
+            let landCount = 0;
+            let total = 0;
+
+            for (let dy = -RADIUS; dy <= RADIUS; dy++) {
+              for (let dx = -RADIUS; dx <= RADIUS; dx++) {
+                if (dx === 0 && dy === 0) continue;
+                const nx = (x + dx + W) % W;
+                const ny = y + dy;
+                if (ny < 0 || ny >= H) continue;
+
+                const n = classes[ny * W + nx];
+                if (n !== 1) landCount++;
+                total++;
+              }
+            }
+
+            if (total > 0 && landCount / total >= LAND_THRESHOLD) {
+              classes2[idx] = 0;
+            }
+          }
+        }
+
+        // ========================================================
+        // PASO 3: Aplicar colores según la clase final
+        // ========================================================
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+
+          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+          const cls = classes2[i / 4];
+
+          if (cls === 2) {
+            // NIEVE / POLO → blanco con ligera variación
+            const shade = 0.92 + (lum / 255) * 0.08;
+            data[i]     = Math.min(255, Math.round(245 * shade));
+            data[i + 1] = Math.min(255, Math.round(250 * shade));
+            data[i + 2] = Math.min(255, Math.round(255 * shade));
+          } else if (cls === 1) {
+            // MAR → azul claro y luminoso
+            const variacion = (lum / 255 - 0.5) * 25;
+            data[i]     = Math.max(0, Math.min(255, Math.round(74  + variacion * 0.4)));
+            data[i + 1] = Math.max(0, Math.min(255, Math.round(150 + variacion * 0.6)));
+            data[i + 2] = Math.max(0, Math.min(255, Math.round(214 + variacion)));
+          } else {
+            // TIERRA → verde vegetación
+            const shade = 0.80 + (lum / 255) * 0.35;
+            data[i]     = Math.min(255, Math.round(46  * shade));
+            data[i + 1] = Math.min(255, Math.round(150 * shade));
+            data[i + 2] = Math.min(255, Math.round(66  * shade));
+          }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+
+        const texturaProcesada = new THREE.CanvasTexture(tCanvas);
+        texturaProcesada.colorSpace = THREE.SRGBColorSpace;
+        texturaProcesada.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+        material.map = texturaProcesada;
+        material.needsUpdate = true;
+
+        canvas.classList.add('is-ready');
+        texturaOriginal.dispose();
+      },
+      undefined,
+      (err) => {
+        console.warn('[EarthLoader] No se pudo cargar la textura:', err);
+        material.color.set(0x577bbd);
+        canvas.classList.add('is-ready');
+      }
+    );
+
+    // ---- Atmósfera ----
+    const atmosfera = new THREE.Mesh(
+      new THREE.SphereGeometry(1.045, 48, 48),
+      new THREE.ShaderMaterial({
+        transparent: true,
+        side: THREE.BackSide,
+        depthWrite: false,
+        vertexShader: `
+          varying vec3 vNormal;
+          void main () {
+            vNormal = normalize(normalMatrix * normal);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          varying vec3 vNormal;
+          void main () {
+            float intensidad = pow(max(0.5 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 0.0), 2.5);
+            gl_FragColor = vec4(0.36, 0.77, 0.76, 1.0) * intensidad * 0.9;
+          }
+        `,
+      })
+    );
+    scene.add(atmosfera);
+
+    // ---- Responsive ----
+    function ajustarTamano() {
+      const ancho = stage.clientWidth;
+      const alto = stage.clientHeight;
+      if (ancho === 0 || alto === 0) return;
+      camera.aspect = ancho / alto;
+      camera.updateProjectionMatrix();
+      renderer.setSize(ancho, alto, false);
+    }
+    new ResizeObserver(ajustarTamano).observe(stage);
+    ajustarTamano();
+
+    let hidden = false;
+    document.addEventListener('visibilitychange', () => {
+      hidden = document.hidden;
+    });
+
+    // ---- Loop ----
+    renderer.setAnimationLoop(() => {
+      if (!document.contains(canvas)) {
+        renderer.setAnimationLoop(null);
+        renderer.dispose();
+        geometria.dispose();
+        material.dispose();
+        if (material.map) material.map.dispose();
+        return;
+      }
+
+      if (hidden) return;
+
+      if (!reduceMotion) {
+        tierra.rotation.y -= 0.0035;
+        atmosfera.rotation.y -= 0.0035;
+      }
+
+      renderer.render(scene, camera);
+    });
+  }
+</script>

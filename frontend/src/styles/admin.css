@@ -1,11 +1,12 @@
 /* ============================================
    ADMIN — Panel de administrador
+   Paleta actualizada según manual de marca
    ============================================ */
 
 .admin-body {
   min-height: 100vh;
-  background: #0B1A2E;
-  color: #EAF1F7;
+  background: var(--ink);
+  color: #ffffff;
   overflow-x: hidden;
 }
 
@@ -20,7 +21,7 @@
    HERO
    ============================================================ */
 .admin-eyebrow {
-  color: #4ECDC4;
+  color: var(--teal);
   letter-spacing: 0.25em;
 }
 .admin-title {
@@ -29,12 +30,12 @@
   color: #fff;
 }
 .admin-subtitle {
-  color: #93A6BC;
+  color: var(--mist);
   max-width: 40rem;
 }
 
 /* ============================================================
-   BOTÓN "ABRIR GEOSERVER" (solo en admin)
+   BOTÓN "ABRIR GEOSERVER"
    ============================================================ */
 .btn-geoserver {
   display: inline-flex;
@@ -42,8 +43,8 @@
   gap: 0.5rem;
   padding: 0.45rem 1rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, #4ECDC4, #4A7FC5);
-  color: #0A1420;
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: var(--ink);
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.72rem;
   font-weight: 600;
@@ -51,18 +52,18 @@
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  border: 1px solid rgba(78, 205, 196, 0.35);
+  border: 1px solid rgba(93, 197, 195, 0.35);
   transition: transform .18s ease, box-shadow .25s ease, filter .2s ease;
 }
 .btn-geoserver:hover,
 .btn-geoserver:focus-visible {
   transform: translateY(-1px);
   box-shadow:
-    0 10px 24px -12px rgba(78, 205, 196, 0.65),
-    0 0 0 3px rgba(78, 205, 196, 0.15);
+    0 10px 24px -12px rgba(93, 197, 195, 0.65),
+    0 0 0 3px rgba(93, 197, 195, 0.15);
   filter: brightness(1.05);
   outline: none;
-  color: #0A1420;
+  color: var(--ink);
 }
 
 .btn-geoserver .geoserver-logo {
@@ -88,57 +89,87 @@
 .access-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem;
   margin-top: 1.5rem;
 }
+
 .access-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  border: 1px solid #2a3f5a;
+  display: inline-flex;
+  align-items: center;      /* Centra verticalmente punto + texto */
+  justify-content: center;  /* Centra horizontalmente el contenido */
+  gap: 0.5rem;
+  border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.03);
   border-radius: 999px;
-  padding: 0.5rem 1rem 0.5rem 0.6rem;
-  color: #EAF1F7;
+  padding: 0.55rem 1.1rem;
+  color: #ffffff;
   font-size: 0.85rem;
+  font-weight: 500;
   text-decoration: none;
   position: relative;
   overflow: hidden;
+  /* CLAVE: normaliza la altura de línea para que el centrado sea exacto */
+  line-height: 1;
+  height: 34px;             /* Altura fija para que TODOS midan igual */
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, color 0.2s ease;
 }
+
 .access-chip::before {
   content: '';
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
-    rgba(78, 205, 196, 0.15), transparent 60%);
+    rgba(93, 197, 195, 0.15), transparent 60%);
   opacity: 0;
   transition: opacity .3s ease;
   pointer-events: none;
 }
+
 .access-chip:hover {
-  border-color: rgba(78, 205, 196, 0.45);
+  border-color: rgba(93, 197, 195, 0.45);
   background: rgba(255, 255, 255, 0.06);
   transform: translateY(-2px);
   color: #fff;
 }
 .access-chip:hover::before { opacity: 1; }
+
+/* Punto: tamaño fijo y sin flex-shrink para que nunca se deforme */
 .access-chip .dot {
+  display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
+  flex-shrink: 0;
+  margin: 0;                 /* Elimina cualquier margen residual */
   position: relative;
+  top: 0;                    /* Sin desplazamiento vertical */
   z-index: 1;
 }
+
+/* Texto: sin márgenes ni padding que rompan el centrado */
+.access-chip .chip-text {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Colores de los puntos */
+.dot--blue { background: var(--blue); }
+.dot--teal { background: var(--teal); }
+.dot--mist { background: var(--mist); }
+
+/* Estado "Próximamente" */
 .access-chip.is-soon {
   opacity: 0.55;
   cursor: default;
 }
 .access-chip.is-soon:hover {
   transform: none;
-  border-color: #2a3f5a;
+  border-color: var(--line);
 }
-
 /* ============================================================
    KPIs
    ============================================================ */
@@ -146,7 +177,7 @@
 
 .kpi-card {
   position: relative;
-  border: 1px solid #2a3f5a;
+  border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   padding: 1.2rem 1.4rem;
@@ -161,14 +192,14 @@
   inset: -1px;
   border-radius: inherit;
   background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(78, 205, 196, 0.12), transparent 50%);
+    rgba(93, 197, 195, 0.12), transparent 50%);
   opacity: 0;
   transition: opacity .3s ease;
   pointer-events: none;
   z-index: -1;
 }
 .kpi-card:hover {
-  border-color: rgba(78, 205, 196, 0.4);
+  border-color: rgba(93, 197, 195, 0.4);
   background: rgba(255, 255, 255, 0.045);
   transform: translateY(-3px);
 }
@@ -187,9 +218,9 @@
   width: 26px;
   height: 26px;
   border-radius: 8px;
-  background: rgba(78, 205, 196, 0.08);
-  border: 1px solid rgba(78, 205, 196, 0.2);
-  color: #4ECDC4;
+  background: rgba(93, 197, 195, 0.08);
+  border: 1px solid rgba(93, 197, 195, 0.2);
+  color: var(--teal);
   flex-shrink: 0;
 }
 
@@ -197,7 +228,7 @@
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: #93A6BC;
+  color: var(--mist);
   text-transform: uppercase;
   margin: 0;
 }
@@ -209,7 +240,7 @@
   color: #fff;
   line-height: 1;
 }
-.kpi-value.teal { color: #4ECDC4; }
+.kpi-value.teal { color: var(--teal); }
 
 /* Pop cuando el valor llega del backend */
 .kpi-value.is-loaded {
@@ -226,7 +257,7 @@
    ============================================================ */
 .admin-panel {
   position: relative;
-  border: 1px solid #2a3f5a;
+  border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.025);
   border-radius: 18px;
   padding: 1.6rem;
@@ -234,8 +265,8 @@
   transition: border-color .3s ease, box-shadow .3s ease;
 }
 .admin-panel:hover {
-  border-color: rgba(78, 205, 196, 0.25);
-  box-shadow: 0 20px 40px -30px rgba(78, 205, 196, 0.35);
+  border-color: rgba(93, 197, 195, 0.25);
+  box-shadow: 0 20px 40px -30px rgba(93, 197, 195, 0.35);
 }
 .admin-panel-head {
   display: flex;
@@ -258,27 +289,36 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
-  color: #EAF1F7;
+  color: #1e293b; /* Texto oscuro para fondo blanco */
 }
+
 .table-geo thead th {
   text-align: left;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
-  font-weight: 500;
+  color: #ffff; 
+  font-weight: 600;
   padding: 0.7rem 0.9rem;
-  border-bottom: 1px solid #F8FAFC;
-  background: #1E293B;
+  border-bottom: 1px solid #e2e8f0;
+  background: var(--navy);
 }
+
 .table-geo tbody td {
   padding: 0.8rem 0.9rem;
   vertical-align: middle;
   font-size: 0.88rem;
   word-break: break-word;
   overflow-wrap: break-word;
-  background: #fff;
+  background: #ffffff; /* Fondo blanco para las celdas */
+  color: #1e293b; /* Texto oscuro */
+  border-bottom: 1px solid #e2e8f0; /* Borde sutil entre filas */
+}
+
+/* Quita el borde de la última fila para un acabado más limpio */
+.table-geo tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .table-geo th:nth-child(1), .table-geo td:nth-child(1) { width: 40%; }
@@ -300,7 +340,6 @@
 
 /* ============================================================
    CELDA DE USUARIO — SCOPEADA a .table-geo
-   (evita pisar el user-pill del topbar)
    ============================================================ */
 .table-geo .user-info { display: block; }
 
@@ -314,30 +353,30 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #4ECDC4, #4A7FC5);
-  color: #fff;
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: #ffffff;
   margin-right: 0.7rem;
   vertical-align: middle;
-  box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.12);
+  box-shadow: 0 0 0 2px rgba(93, 197, 195, 0.2);
 }
 
 .table-geo .user-name {
   display: inline-block;
-  font-weight: 500;
-  color: #334155;
+  font-weight: 600;
+  color: #1e293b; /* Texto oscuro */
   vertical-align: middle;
 }
 
 .table-geo .user-email {
   display: block;
   font-size: 0.78rem;
-  color: #64748B;
+  color: #64748b; /* Gris oscuro */
   margin-top: 2px;
   word-break: break-word;
 }
 
 /* ============================================================
-   BADGES DE ROL
+   BADGES DE ROL (Ajustados para fondo blanco)
    ============================================================ */
 .role-tag {
   display: inline-flex;
@@ -356,19 +395,19 @@
   border-radius: 50%;
 }
 .role-tag.role-admin {
-  color: #0F766E;
-  border-color: rgba(78, 205, 196, 0.35);
-  background: rgba(78, 205, 196, 0.1);
+  color: #0f766e;
+  border-color: rgba(93, 197, 195, 0.4);
+  background: rgba(93, 197, 195, 0.12);
 }
-.role-tag.role-admin::before { background: #4ECDC4; }
+.role-tag.role-admin::before { background: var(--teal); }
 .role-tag.role-lector {
-  color: #334155;
-  border-color: rgba(159, 180, 206, 0.3);
-  background: rgba(159, 180, 206, 0.08);
+  color: #475569;
+  border-color: rgba(100, 116, 139, 0.3);
+  background: rgba(100, 116, 139, 0.08);
 }
-.role-tag.role-lector::before { background: #9FB4CE; }
+.role-tag.role-lector::before { background: #64748b; }
 
-/* Workspaces */
+/* Workspaces (Ajustados para fondo blanco) */
 .ws-tag {
   display: inline-block;
   padding: 0.2rem 0.6rem;
@@ -376,13 +415,13 @@
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.72rem;
   color: #334155;
-  background: rgba(78, 205, 196, 0.06);
-  border: 1px solid rgba(78, 205, 196, 0.2);
+  background: rgba(93, 197, 195, 0.1);
+  border: 1px solid rgba(93, 197, 195, 0.3);
   margin-right: 0.25rem;
   margin-bottom: 0.15rem;
 }
 
-/* Acciones fila */
+/* Acciones fila (Ajustados para fondo blanco) */
 .row-actions {
   display: inline-flex;
   gap: 0.4rem;
@@ -392,9 +431,9 @@
   width: 30px;
   height: 30px;
   border-radius: 8px;
-  border: 1px solid #2a3f5a;
+  border: 1px solid #cbd5e1; /* Borde gris claro */
   background: transparent;
-  color: #64748B;
+  color: #64748b; /* Icono gris oscuro */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -403,15 +442,15 @@
   font-size: 0.85rem;
 }
 .row-action:hover {
-  border-color: rgba(226, 99, 90, 0.4);
-  background: rgba(226, 99, 90, 0.08);
-  color: #E2635A;
+  border-color: rgba(224, 82, 82, 0.5);
+  background: rgba(224, 82, 82, 0.1);
+  color: var(--danger);
   transform: scale(1.08);
 }
 .row-action.btn-editar:hover {
-  border-color: rgba(78, 205, 196, 0.5);
-  background: rgba(78, 205, 196, 0.1);
-  color: #0F766E;
+  border-color: rgba(93, 197, 195, 0.6);
+  background: rgba(93, 197, 195, 0.15);
+  color: #0f766e;
 }
 
 /* ============================================================
@@ -422,14 +461,14 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.75rem;
-  border: 1px solid #2a3f5a;
+  border: 1px solid var(--line);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.02);
   max-height: 190px;
   overflow-y: auto;
   transition: border-color .25s ease;
 }
-.ws-picker-msg { color: #93A6BC; font-size: 0.85rem; padding: 0.2rem; }
+.ws-picker-msg { color: var(--mist); font-size: 0.85rem; padding: 0.2rem; }
 .ws-option {
   position: relative;
   display: inline-flex;
@@ -437,16 +476,16 @@
   gap: 0.5rem;
   padding: 0.42rem 0.85rem 0.42rem 0.6rem;
   border-radius: 999px;
-  border: 1px solid #2a3f5a;
+  border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.03);
-  color: #EAF1F7;
+  color: #ffffff;
   font-size: 0.82rem;
   cursor: pointer;
   user-select: none;
   transition: border-color .15s ease, background .15s ease, transform .15s ease;
 }
 .ws-option:hover {
-  border-color: rgba(78, 205, 196, 0.4);
+  border-color: rgba(93, 197, 195, 0.4);
   background: rgba(255, 255, 255, 0.06);
 }
 .ws-option input[type="checkbox"] {
@@ -458,39 +497,39 @@
 .ws-option-dot {
   width: 9px; height: 9px;
   border-radius: 50%;
-  background: #2a3f5a;
+  background: var(--line);
   flex-shrink: 0;
   transition: background .15s ease, box-shadow .15s ease;
 }
 .ws-option.is-checked {
-  border-color: rgba(78, 205, 196, 0.55);
-  background: rgba(78, 205, 196, 0.14);
+  border-color: rgba(93, 197, 195, 0.55);
+  background: rgba(93, 197, 195, 0.14);
   color: #fff;
   transform: translateY(-1px);
 }
 .ws-option.is-checked .ws-option-dot {
-  background: #4ECDC4;
-  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.18);
+  background: var(--teal);
+  box-shadow: 0 0 0 3px rgba(93, 197, 195, 0.18);
 }
 .ws-option:focus-within {
   outline: none;
-  border-color: rgba(78, 205, 196, 0.6);
-  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+  border-color: rgba(93, 197, 195, 0.6);
+  box-shadow: 0 0 0 3px rgba(93, 197, 195, 0.15);
 }
-.ws-picker.is-invalid { border-color: rgba(226, 99, 90, 0.55); }
+.ws-picker.is-invalid { border-color: rgba(224, 82, 82, 0.55); }
 
 /* ============================================================
    FORMULARIOS + MODALES
    ============================================================ */
 .form-label-geo {
   font-size: 0.85rem;
-  color: #93A6BC;
+  color: var(--mist);
   margin-bottom: 0.3rem;
 }
 .form-control-geo,
 .form-select-geo {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid #2a3f5a;
+  border: 1px solid var(--line);
   color: #fff;
   border-radius: 10px;
   padding: 0.55rem 0.8rem;
@@ -499,21 +538,21 @@
 .form-control-geo:focus,
 .form-select-geo:focus {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(78, 205, 196, 0.5);
+  border-color: rgba(93, 197, 195, 0.5);
   color: #fff;
-  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+  box-shadow: 0 0 0 3px rgba(93, 197, 195, 0.15);
 }
-.form-control-geo::placeholder { color: rgba(183, 198, 217, 0.5); }
+.form-control-geo::placeholder { color: rgba(179, 179, 179, 0.5); }
 
 .modal-content.modal-geo {
-  background: #152437;
-  border: 1px solid #2a3f5a;
+  background: var(--navy);
+  border: 1px solid var(--line);
   border-radius: 16px;
-  color: #EAF1F7;
+  color: #ffffff;
   overflow: hidden;
 }
 .modal-geo .modal-header,
-.modal-geo .modal-footer { border-color: #2a3f5a; }
+.modal-geo .modal-footer { border-color: var(--line); }
 .btn-close-geo { filter: invert(1) grayscale(1) brightness(1.6); }
 
 /* Modal: entrada con fade + scale */
@@ -526,13 +565,13 @@
 }
 
 .modal-geo .form-select-geo option {
-  background-color: #152437;
-  color: #EAF1F7;
+  background-color: var(--navy);
+  color: #ffffff;
   padding: 4px 8px;
 }
 .modal-geo .form-select-geo option:hover,
 .modal-geo .form-select-geo option:checked {
-  background-color: #2a3f5a;
+  background-color: rgba(93, 197, 195, 0.2);
   color: #fff;
 }
 
@@ -553,7 +592,7 @@
 }
 .top-page-skeleton {
   padding: 0.6rem 0;
-  color: #93A6BC;
+  color: var(--mist);
   position: relative;
   overflow: hidden;
 }
@@ -562,7 +601,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg,
-    transparent 0%, rgba(78, 205, 196, 0.08) 50%, transparent 100%);
+    transparent 0%, rgba(93, 197, 195, 0.08) 50%, transparent 100%);
   animation: shimmer 1.6s ease-in-out infinite;
   pointer-events: none;
 }
@@ -579,9 +618,9 @@
   left: 50%;
   bottom: 1.6rem;
   transform: translate(-50%, 20px);
-  background: rgba(16, 28, 44, 0.96);
-  border: 1px solid rgba(78, 205, 196, 0.35);
-  color: #EAF1F7;
+  background: rgba(14, 36, 67, 0.96);
+  border: 1px solid rgba(93, 197, 195, 0.35);
+  color: #ffffff;
   padding: 0.7rem 1.1rem;
   border-radius: 10px;
   font-size: 0.82rem;
@@ -598,7 +637,7 @@
   opacity: 1;
   transform: translate(-50%, 0);
 }
-.toast-icon { color: #4ECDC4; font-size: .95rem; }
+.toast-icon { color: var(--teal); font-size: .95rem; }
 
 /* ============================================================
    RESPONSIVE

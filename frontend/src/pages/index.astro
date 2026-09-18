@@ -10,9 +10,9 @@ import Earth from '../components/Earth.astro';
       <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#4ECDC4" />
-            <stop offset="0.5" stop-color="#4A7FC5" />
-            <stop offset="1" stop-color="#1E3A5F" />
+            <stop offset="0" stop-color="#5dc5c3" />
+            <stop offset="0.5" stop-color="#577bbd" />
+            <stop offset="1" stop-color="#0e2443" />
           </linearGradient>
         </defs>
         <path d="M50,600 C250,520 350,700 600,620 C850,540 950,660 1150,580" />
@@ -68,7 +68,7 @@ import Earth from '../components/Earth.astro';
         <div class="col-md-4">
           <div class="feature-card reveal">
             <div class="feature-icon" style="background:linear-gradient(135deg,var(--teal),var(--teal-dark));">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07172e" stroke-width="2">
                 <path d="M3 12l9-9 9 9M5 10v10h14V10" />
               </svg>
             </div>
@@ -80,8 +80,8 @@ import Earth from '../components/Earth.astro';
         </div>
         <div class="col-md-4">
           <div class="feature-card reveal">
-            <div class="feature-icon" style="background:linear-gradient(135deg,#5FB8D9,var(--blue));">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+            <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--blue));">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07172e" stroke-width="2">
                 <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 3" />
               </svg>
             </div>
@@ -94,7 +94,7 @@ import Earth from '../components/Earth.astro';
         <div class="col-md-4">
           <div class="feature-card reveal">
             <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--navy));">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07172e" stroke-width="2">
                 <path d="M4 19h16M7 15V9m5 6V5m5 10v-3" />
               </svg>
             </div>
@@ -107,7 +107,7 @@ import Earth from '../components/Earth.astro';
         <div class="col-md-4">
           <div class="feature-card reveal">
             <div class="feature-icon" style="background:linear-gradient(135deg,var(--teal),var(--blue));">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07172e" stroke-width="2">
                 <rect x="3" y="3" width="7" height="7" rx="1" />
                 <rect x="14" y="3" width="7" height="7" rx="1" />
                 <rect x="3" y="14" width="7" height="7" rx="1" />
@@ -123,7 +123,7 @@ import Earth from '../components/Earth.astro';
         <div class="col-md-4">
           <div class="feature-card reveal">
             <div class="feature-icon" style="background:linear-gradient(135deg,var(--blue),var(--teal-dark));">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1420" stroke-width="2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07172e" stroke-width="2">
                 <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z" />
               </svg>
             </div>
@@ -135,8 +135,8 @@ import Earth from '../components/Earth.astro';
         </div>
         <div class="col-md-4">
           <div class="feature-card reveal">
-            <div class="feature-icon" style="background:linear-gradient(135deg,var(--navy),#0F1D2E);">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="2">
+            <div class="feature-icon" style="background:linear-gradient(135deg,var(--navy),var(--ink));">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5dc5c3" stroke-width="2">
                 <path d="M4 4v16h16M8 16l3-4 3 3 4-6" />
               </svg>
             </div>
@@ -169,24 +169,24 @@ import Earth from '../components/Earth.astro';
             Cada fuente de datos entra como una capa propia: parcelas, redes, sensores, permisos. GeoSteam las apila, las cruza y te deja consultarlas juntas sin perder el origen de cada una.
           </p>
           <ul class="list-unstyled mt-4 reveal-group">
-            <li class="d-flex mb-3 reveal">
+            <li class="d-flex mb-3 reveal layer-list-item">
               <span class="dot" style="background:var(--teal);"></span>
               <span><strong>Catastro digital</strong> — parcelas, propietarios y usos de suelo, actualizados desde la fuente oficial.</span>
             </li>
-            <li class="d-flex mb-3 reveal">
-              <span class="dot" style="background:#5FB8D9;"></span>
+            <li class="d-flex mb-3 reveal layer-list-item">
+              <span class="dot" style="background:var(--blue);"></span>
               <span><strong>Infraestructura urbana</strong> — redes de agua, energía y vialidad, superpuestas y auditables.</span>
             </li>
-            <li class="d-flex mb-3 reveal">
-              <span class="dot" style="background:var(--blue);"></span>
+            <li class="d-flex mb-3 reveal layer-list-item">
+              <span class="dot" style="background:var(--teal-dark);"></span>
               <span><strong>Monitoreo ambiental</strong> — sensores y alertas de riesgo integrados en tiempo real.</span>
             </li>
-            <li class="d-flex mb-3 reveal">
-              <span class="dot" style="background:var(--navy);"></span>
+            <li class="d-flex mb-3 reveal layer-list-item">
+              <span class="dot" style="background:var(--mist);"></span>
               <span><strong>Analítica territorial</strong> — cruces de datos y reportes exportables, sin escribir código.</span>
             </li>
-            <li class="d-flex mb-3 reveal">
-              <span class="dot" style="background:#7BD4C9;"></span>
+            <li class="d-flex mb-3 reveal layer-list-item">
+              <span class="dot" style="background:#8ca9d4;"></span>
               <span><strong>Salud y red asistencial</strong> — hospitales, clínicas y ambulatorios del territorio nacional, georreferenciados y caracterizados por nivel de atención y capacidad operativa.</span>
             </li>
           </ul>
@@ -200,9 +200,7 @@ import Earth from '../components/Earth.astro';
             <div class="layer-card">04 · Analítica territorial</div>
             <div class="layer-card">05 · Salud</div>
           </div>
-          <p class="text-center font-mono small mt-3 reveal" style="color:var(--mist); opacity:.7;">
-            pasa el cursor para separar las capas
-          </p>
+      
         </div>
       </div>
     </div>
@@ -267,8 +265,8 @@ import Earth from '../components/Earth.astro';
           <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <linearGradient id="gsGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#6DB3D9" />
-                <stop offset="1" stop-color="#1E3A5F" />
+                <stop offset="0" stop-color="#5dc5c3" />
+                <stop offset="1" stop-color="#0e2443" />
               </linearGradient>
             </defs>
             <circle cx="32" cy="32" r="28" fill="url(#gsGrad)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />

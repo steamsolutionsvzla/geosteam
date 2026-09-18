@@ -1,36 +1,7 @@
 /**
  * GEOSTEAM — Visor cartográfico (MapLibre GL + GeoServer)
  * -----------------------------------------------------------------------
- * - Cada capa del catálogo (geoportal-config.js) se pide por WFS a
- *   GeoServer como GeoJSON (CRS84 / lon,lat). Si el servidor no responde,
- *   la capa muestra datos de demostración con la misma estructura.
- * - El panel lateral permite activar/desactivar cada capa. El slider de
- *   opacidad solo se muestra en capas de tipo Polygon.
- * - Click sobre el mapa → POPUP flotante (compacto, cerrable) con los
- *   atributos de la feature. Los campos tipo ID se omiten.
- * - El panel derecho se reserva para METADATOS de la capa. Se abre con el
- *   botón ⓘ que acompaña a cada capa en el sidebar.
- * - Las capas de puntos pueden usar íconos SVG (registrados en canvas).
- *   La capa "Ambulatorios" usa automáticamente el ícono de hospital.
- * - CLUSTERING: las capas de puntos se agrupan en clusters a zoom bajo
- *   (radio 50px, max zoom 12). Click en un cluster hace zoom in para
- *   expandirlo. A zoom >= 12 se ven los puntos individuales.
- * - SANITIZACIÓN: se descartan features con coordenadas inválidas
- *   (Inf, NaN, fuera de rango lon/lat) antes de pasarlas a la fuente.
- * - La brújula (arriba a la derecha) rota con el mapa y devuelve la vista
- *   al estado inicial (Venezuela) al hacer click.
- * - MAPTILER (vía MapLibre GL directo): se usan estilos vectoriales de
- *   MapTiler (STREETS, DATAVIZ_DARK, HYBRID, OPEN_STREET_MAP) pasando la
- *   URL del estilo con la API key. El satélite incluye etiquetas (HYBRID).
- * - RELIEVE 3D: el botón ⛰ del panel de controles alterna el terreno 3D
- *   (elevación real, exageración 1.4). Se re-aplica al cambiar de basemap.
- * - SIDEBAR COLAPSABLE: el botón chevron en el borde derecho del sidebar
- *   lo oculta/muestra en escritorio. El estado se conserva en localStorage.
- *
- * NOTA: la sesión (user pill #sessionBadge) vive en geoportal-session.js.
- * Este archivo solo lee el token para autorizar peticiones WFS.
- * -----------------------------------------------------------------------
- */
+ **/
 
 (function () {
   'use strict';
@@ -1067,6 +1038,31 @@
       className: 'geo-attr-popup'
     });
 
+    // <-- NUEVO: calcula cuánto espacio hay realmente alrededor del punto
+    // de click dentro del contenedor del mapa, para que el popup nunca
+    // intente dibujarse más grande que ese espacio (evita que se recorte
+    // o que sobresalga del mapa, sin importar cuántos atributos/capas
+    // traiga la consulta).
+    function computePopupBudget(point) {
+      var mapEl = map.getContainer();
+      var contW = mapEl.clientWidth;
+      var contH = mapEl.clientHeight;
+      var margin = 40; // tip del popup + offset(16) + aire de respiro
+
+      var roomAbove = point.y;
+      var roomBelow = contH - point.y;
+      var roomLeft = point.x;
+      var roomRight = contW - point.x;
+
+      var maxHeight = Math.max(roomAbove, roomBelow) - margin;
+      var maxWidth = Math.max(roomLeft, roomRight) - margin;
+
+      return {
+        height: Math.max(140, Math.min(maxHeight, 420)),
+        width: Math.max(220, Math.min(maxWidth, 320))
+      };
+    }
+
     function formatValue(v) {
       if (v === null || v === undefined || v === '') return '—';
       if (typeof v === 'object') {
@@ -1075,9 +1071,15 @@
       return String(v);
     }
 
-    function buildPopupContent(hits) {
+    // <-- CAMBIO: nuevo segundo parámetro "maxBodyHeight" (px). Si viene
+    // informado, limita el alto del cuerpo scrollable del popup a ese
+    // valor, calculado en cada click según el espacio real disponible.
+    function buildPopupContent(hits, maxBodyHeight) {
       var body = document.createElement('div');
       body.className = 'geo-attr-popup-body';
+      if (maxBodyHeight) {
+        body.style.maxHeight = maxBodyHeight + 'px';
+      }
 
       var header = document.createElement('div');
       header.className = 'geo-attr-popup-header';
@@ -1180,9 +1182,15 @@
           return;
         }
 
+        // <-- CAMBIO: se calcula el presupuesto de tamaño disponible para
+        // este click concreto y se aplica tanto al ancho (setMaxWidth)
+        // como al alto del cuerpo del popup (segundo argumento de
+        // buildPopupContent), antes de añadirlo al mapa.
+        var budget = computePopupBudget(evt.point);
         attrPopup
+          .setMaxWidth(budget.width + 'px')
           .setLngLat(evt.lngLat)
-          .setDOMContent(buildPopupContent(hits))
+          .setDOMContent(buildPopupContent(hits, budget.height))
           .addTo(map);
       });
 

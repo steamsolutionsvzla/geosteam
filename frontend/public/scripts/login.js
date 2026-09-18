@@ -1,5 +1,13 @@
 /* ============================================================
    LOGIN — Autenticación de usuarios GeoSteam
+   ------------------------------------------------------------
+   IMPORTANTE:
+   - Tras login exitoso se redirige SIEMPRE por ROL:
+       · ROLE_ADMIN → /admin
+       · resto      → /hub
+   - Se IGNORA cualquier ?next= o ?redirect= que venga en la URL.
+   - Se usa window.location.replace() para no dejar el login
+     en el historial del navegador.
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +27,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const alertBox      = document.getElementById('alertBox');
 
   const API_BASE = window.GEOSTEAM_API_BASE || '';
+
+
+  /* ==========================================================
+     1.1) LIMPIEZA DE PARÁMETROS DE URL
+     Si alguien llega a /login?next=/geoportal o ?redirect=/geoportal,
+     borramos esos parámetros para que no queden "pegados" y evitar
+     cualquier confusión posterior. No se usan para nada.
+     ========================================================== */
+  try {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('next') || url.searchParams.has('redirect')) {
+      url.searchParams.delete('next');
+      url.searchParams.delete('redirect');
+      window.history.replaceState({}, '', url.pathname);
+    }
+  } catch (e) { /* noop */ }
+
+
+  /* ==========================================================
+     1.2) SI YA HAY TOKEN, REDIRIGIR POR ROL DE UNA VEZ
+     Evita que un usuario logueado vuelva a ver el formulario.
+     ========================================================== */
+  try {
+    const existingToken = localStorage.getItem('geosteam_token');
+    if (existingToken) {
+      const rolGuardado = localStorage.getItem('userRole') || 'usuario';
+      const destinoYa   = rolGuardado === 'admin' ? '/admin' : '/hub';
+      window.location.replace(destinoYa);
+      return;
+    }
+  } catch (e) { /* noop */ }
 
 
   /* ==========================================================
@@ -111,22 +150,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ==========================================================
-     6) DESTINO POST-LOGIN
+     6) DESTINO POST-LOGIN  (CORREGIDO)
+     ----------------------------------------------------------
+     Regla: NUNCA se respeta ?next= ni ?redirect=.
+     Siempre:
+       · ROLE_ADMIN → /admin
+       · resto      → /hub
      ========================================================== */
   function calcularDestino(usuario) {
-  const params  = new URLSearchParams(window.location.search);
-  const next    = params.get('next');
-  const roles   = usuario?.roles || [];
-  const esAdmin = roles.includes('ROLE_ADMIN');
+    const roles   = (usuario && usuario.roles) || [];
+    const esAdmin = roles.includes('ROLE_ADMIN');
 
-  // Admin va directo al panel de administración; usuario normal al hub.
-  let destino = esAdmin ? '/admin' : '/hub';
-
-  // Si viene ?next=... respetamos ese destino (útil para login obligatorio)
-  if (next) destino = next;
-
-  return destino;
-}
+    // Sin excepciones: admin a /admin, todos los demás a /hub.
+    return esAdmin ? '/admin' : '/hub';
+  }
 
 
   /* ==========================================================
@@ -211,8 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
       redirigiendo = true;
 
       setTimeout(() => {
-        window.location.href = destino;
-      }, 1200);
+        // replace() en lugar de href → el login no queda en el historial
+        window.location.replace(destino);
+      }, 800);
 
     } catch (err) {
       /* ---- 7.8 Error de red ---- */

@@ -1,9 +1,10 @@
 ---
 import BareLayout from '../layouts/BareLayout.astro';
 import '../styles/hub.css';
+import logo from '../../public/images/logo.png';
 ---
 
-<BareLayout title="Espacio de trabajo | GeoSteam" bodyClass="hub-body">
+<BareLayout title="Espacio de trabajo | GeoSteam" bodyClass="hub-body" showFooter={true}>
 
   <!-- ============ ORBES DECORATIVOS DE FONDO ============ -->
   <div class="bg-orb bg-orb--teal" aria-hidden="true"></div>
@@ -13,22 +14,12 @@ import '../styles/hub.css';
   <!-- ============ TOPBAR ============ -->
   <header class="geo-topbar">
 
-    <!-- IZQUIERDA: Logo Steam Solutions + contexto -->
-    <a href="/" class="geo-brand" aria-label="Steam Solutions — inicio">
-      <svg class="brand-mark" width="30" height="27" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="brandMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#4ECDC4"/>
-            <stop offset="0.6" stop-color="#4A7FC5"/>
-            <stop offset="1" stop-color="#1E3A5F"/>
-          </linearGradient>
-        </defs>
-        <rect x="1"  y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)"  fill="url(#brandMark)"/>
-        <rect x="10" y="6"  width="7" height="18" rx="3.5" transform="rotate(-35 10 6)"  fill="url(#brandMark)"/>
-        <rect x="19" y="0"  width="7" height="14" rx="3.5" transform="rotate(-35 19 0)"  fill="url(#brandMark)"/>
-      </svg>
+    <!-- IZQUIERDA: Logo GeoSteam + contexto -->
+    <a href="/" class="geo-brand" aria-label="GeoSteam — inicio">
+      <!-- LOGO PNG -->
+      <img src={logo.src} alt="GeoSteam" class="brand-logo" />
 
-      <span class="brand-name font-display fw-semibold">Steam Solutions</span>
+      <span class="brand-name font-display fw-semibold">GeoSteam</span>
       <span class="brand-sep" aria-hidden="true">/</span>
       <span class="brand-context font-display">Espacio de trabajo</span>
     </a>
@@ -91,9 +82,9 @@ import '../styles/hub.css';
       <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="contourGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0"   stop-color="#4ECDC4"/>
-            <stop offset="0.5" stop-color="#4A7FC5"/>
-            <stop offset="1"   stop-color="#1E3A5F"/>
+            <stop offset="0"   stop-color="#5dc5c3"/>
+            <stop offset="0.5" stop-color="#577bbd"/>
+            <stop offset="1"   stop-color="#0e2443"/>
           </linearGradient>
         </defs>
         <path class="contour-path" d="M50,600  C250,520 350,700 600,620 C850,540 950,660 1150,580"/>
@@ -277,20 +268,20 @@ import '../styles/hub.css';
                 <svg class="earth-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <radialGradient id="oceanGrad" cx="35%" cy="30%" r="75%">
-                      <stop offset="0%"   stop-color="#5FB8D9"/>
-                      <stop offset="45%"  stop-color="#4A7FC5"/>
-                      <stop offset="100%" stop-color="#152B45"/>
+                      <stop offset="0%"   stop-color="#7dd8d6"/>
+                      <stop offset="45%"  stop-color="#577bbd"/>
+                      <stop offset="100%" stop-color="#0e2443"/>
                     </radialGradient>
                     <clipPath id="earthClip"><circle cx="100" cy="100" r="92"/></clipPath>
                   </defs>
                   <circle cx="100" cy="100" r="92" fill="url(#oceanGrad)"/>
                   <g clip-path="url(#earthClip)" opacity="0.92">
-                    <path d="M30,60 C50,45 70,55 85,50 C100,45 95,65 80,72 C65,80 45,85 35,95 C25,80 22,68 30,60Z" fill="#2E9E93"/>
-                    <path d="M95,40 C120,35 140,50 135,68 C130,85 110,80 100,90 C90,78 85,55 95,40Z" fill="#3FB39E"/>
-                    <path d="M120,110 C145,105 160,120 155,140 C150,158 130,165 115,155 C108,140 105,120 120,110Z" fill="#2E9E93"/>
-                    <path d="M40,130 C58,125 68,140 60,155 C52,168 34,165 28,150 C26,140 30,133 40,130Z" fill="#3FB39E"/>
-                    <path d="M78,150 C95,145 108,158 100,170 C92,180 78,178 74,168 C72,160 74,153 78,150Z" fill="#2E9E93"/>
-                    <ellipse cx="100" cy="100" rx="92" ry="92" fill="none" stroke="#0A1420" stroke-opacity="0.25" stroke-width="1"/>
+                    <path d="M30,60 C50,45 70,55 85,50 C100,45 95,65 80,72 C65,80 45,85 35,95 C25,80 22,68 30,60Z" fill="#3d9a98"/>
+                    <path d="M95,40 C120,35 140,50 135,68 C130,85 110,80 100,90 C90,78 85,55 95,40Z" fill="#4db0ae"/>
+                    <path d="M120,110 C145,105 160,120 155,140 C150,158 130,165 115,155 C108,140 105,120 120,110Z" fill="#3d9a98"/>
+                    <path d="M40,130 C58,125 68,140 60,155 C52,168 34,165 28,150 C26,140 30,133 40,130Z" fill="#4db0ae"/>
+                    <path d="M78,150 C95,145 108,158 100,170 C92,180 78,178 74,168 C72,160 74,153 78,150Z" fill="#3d9a98"/>
+                    <ellipse cx="100" cy="100" rx="92" ry="92" fill="none" stroke="#07172e" stroke-opacity="0.25" stroke-width="1"/>
                   </g>
                   <circle cx="100" cy="100" r="92" fill="url(#oceanGrad)" opacity="0.06"/>
                 </svg>

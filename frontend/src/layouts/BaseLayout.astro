@@ -1,5 +1,6 @@
 ---
 import '../styles/index.css';
+import logo from '../../public/images/logo.png'; 
 
 const {
   title = 'GeoSteam — Geoportal territorial | Steam Solutions',
@@ -27,7 +28,8 @@ const {
     rel="stylesheet"
   />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Favicon: usamos el mismo logo PNG que está en /public/images/logo.png -->
+  <link rel="icon" type="image/png" href="/images/logo.png" />
 </head>
 <body>
 
@@ -35,18 +37,8 @@ const {
   <nav class="navbar navbar-expand-md navbar-geo fixed-top py-3">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="/#top">
-        <svg width="30" height="27" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="navMark" x1="2" y1="26" x2="30" y2="4" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#4ECDC4" />
-              <stop offset="0.6" stop-color="#4A7FC5" />
-              <stop offset="1" stop-color="#1E3A5F" />
-            </linearGradient>
-          </defs>
-          <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)" />
-          <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)" />
-          <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)" />
-        </svg>
+        <!-- LOGO PNG -->
+        <img src={logo.src} alt="Steam Solutions" class="brand-logo" />
         <span class="font-display fw-semibold fs-5 text-white">GeoSteam</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -74,11 +66,8 @@ const {
   <footer>
     <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
       <div class="d-flex align-items-center gap-2">
-        <svg width="24" height="21" viewBox="0 0 34 30" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="14" width="7" height="14" rx="3.5" transform="rotate(-35 1 14)" fill="url(#navMark)" />
-          <rect x="10" y="6" width="7" height="18" rx="3.5" transform="rotate(-35 10 6)" fill="url(#navMark)" />
-          <rect x="19" y="0" width="7" height="14" rx="3.5" transform="rotate(-35 19 0)" fill="url(#navMark)" />
-        </svg>
+        <!-- LOGO PNG (Footer) -->
+        <img src={logo.src} alt="Steam Solutions" class="footer-logo" />
         <span style="color:var(--mist); font-size:0.85rem;">
           GeoSteam — un producto de <span class="text-white">Steam Solutions</span>
         </span>

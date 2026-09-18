@@ -66,6 +66,14 @@ desktop.ini
 *~
 
 # =============================================================================
+# DOCKER COMPOSE
+# Contiene puertos/paths específicos del entorno local. Cada quien debe
+# mantener su propia copia a partir de docker-compose.example.yml.
+# =============================================================================
+docker-compose.yml
+docker-compose.override.yml
+
+# =============================================================================
 # ARCHIVOS TEMPORALES DEL PROYECTO
 # =============================================================================
 rutas_carpetas.txt

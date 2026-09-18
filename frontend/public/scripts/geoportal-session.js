@@ -5,28 +5,59 @@
  * Es independiente del mapa: no toca MapLibre ni las capas.
  * Si falla, solo afecta a la pill, no al visor.
  * -----------------------------------------------------------------------
+ * CAMBIOS:
+ * - El enlace "Iniciar sesión" ya NO lleva ?next=/geoportal.
+ * - El logout limpia TODAS las claves de sesión y redirige a / (index).
+ * -----------------------------------------------------------------------
  */
 
 (function () {
   'use strict';
 
   var API_BASE = window.GEOSTEAM_API_BASE || '';
+  var HOME_URL = '/';                        // index.astro
   var token = localStorage.getItem('geosteam_token');
   var sessionBadge = document.getElementById('sessionBadge');
 
   // Si el DOM aún no tiene #sessionBadge, salimos silenciosamente.
   if (!sessionBadge) return;
 
+  /* -------------------------------------------------------------
+     Utilidad: limpiar TODA la sesión de localStorage
+     ------------------------------------------------------------- */
+  function clearSession() {
+    var keys = [
+      'geosteam_token',
+      'auth_session',
+      'userEmail',
+      'userName',
+      'userRole',
+      'userRoles',
+      'userWorkspaces',
+      'userId'
+    ];
+    keys.forEach(function (k) {
+      try { localStorage.removeItem(k); } catch (e) {}
+    });
+  }
+
+  /* -------------------------------------------------------------
+     Badge de invitado
+     ------------------------------------------------------------- */
   function setGuestBadge() {
     sessionBadge.classList.add('is-guest');
     sessionBadge.innerHTML =
       '<span class="user-avatar is-guest" aria-hidden="true">?</span>' +
       '<span class="user-info">' +
         '<span class="user-name">Invitado</span>' +
-        '<a class="user-action" href="/login?next=/geoportal">Iniciar sesión</a>' +
+        // ✅ Sin ?next= — el login decide el destino por ROL
+        '<a class="user-action" href="/login">Iniciar sesión</a>' +
       '</span>';
   }
 
+  /* -------------------------------------------------------------
+     Badge de usuario logueado
+     ------------------------------------------------------------- */
   function setUserBadge(user) {
     var email = user.email || user.username || 'Sesión activa';
     var initial = (email.charAt(0) || '?').toUpperCase();
@@ -54,22 +85,38 @@
     if (logoutBtn) {
       logoutBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        localStorage.removeItem('geosteam_token');
-        window.location.reload();
+
+        // 1. Limpiamos TODA la sesión
+        clearSession();
+
+        // 2. Avisamos a otros scripts por si quieren reaccionar
+        try {
+          window.dispatchEvent(new CustomEvent('geosteam:logout'));
+        } catch (err) { /* noop */ }
+
+        // 3. Redirigimos SIEMPRE al index (/)
+        try { window.location.replace(HOME_URL); }
+        catch (err) { window.location.href = HOME_URL; }
       });
     }
   }
 
+  /* -------------------------------------------------------------
+     Sin token → invitado
+     ------------------------------------------------------------- */
   if (!token) {
     setGuestBadge();
     return;
   }
 
+  /* -------------------------------------------------------------
+     Con token → pedimos /api/me y pintamos el badge
+     ------------------------------------------------------------- */
   fetch(API_BASE + '/api/me', { headers: { Authorization: 'Bearer ' + token } })
     .then(function (res) { if (!res.ok) throw new Error(); return res.json(); })
     .then(setUserBadge)
     .catch(function () {
-      localStorage.removeItem('geosteam_token');
+      clearSession();
       setGuestBadge();
     });
 

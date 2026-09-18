@@ -8,7 +8,7 @@ import '../styles/hub.css';   // topbar + user-pill + logout styles
 import '../styles/admin.css'; // específicos del panel
 ---
 
-<BareLayout title="Panel de administrador | GeoSteam" bodyClass="admin-body">
+<BareLayout title="Panel de administrador | GeoSteam" bodyClass="admin-body" showFooter={true}>
 
   <!-- Orbes de fondo (mismo lenguaje que el hub) -->
   <div class="bg-orb bg-orb--teal" aria-hidden="true"></div>
@@ -32,22 +32,25 @@ import '../styles/admin.css'; // específicos del panel
         y accede directamente a las demás áreas de GeoSteam.
       </p>
 
-      <!-- ============ ACCESOS RÁPIDOS ============ -->
+            <!-- ============ ACCESOS RÁPIDOS ============ -->
       <div class="access-row reveal" style="--delay:.28s;">
         <a href="/hub" class="access-chip">
-          <span class="dot" style="background:var(--blue);"></span>Espacio de trabajo
+          <span class="dot dot--blue"></span>
+          <span class="chip-text">Espacio de trabajo</span>
         </a>
         <a href="/geoportal" class="access-chip">
-          <span class="dot" style="background:var(--teal);"></span>Geoportal
+          <span class="dot dot--teal"></span>
+          <span class="chip-text">Geoportal</span>
         </a>
         <span class="access-chip is-soon" data-soon="Dashboard de mapas">
-          <span class="dot" style="background:var(--mist);"></span>Dashboard de mapas
+          <span class="dot dot--mist"></span>
+          <span class="chip-text">Dashboard de mapas</span>
         </span>
         <span class="access-chip is-soon" data-soon="GeoLibre">
-          <span class="dot" style="background:var(--mist);"></span>GeoLibre
+          <span class="dot dot--mist"></span>
+          <span class="chip-text">GeoLibre</span>
         </span>
       </div>
-
       <!-- ============ KPIs ============ -->
       <div class="row g-3 kpi-row">
         <div class="col-6 col-md-3 reveal" style="--delay:.35s;">

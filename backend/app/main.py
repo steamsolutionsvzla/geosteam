@@ -199,7 +199,7 @@ async def get_mis_capas(current_user=Depends(get_current_user_optional)):
                         "workspace": workspace,
                         "geometryType": geom_type,
                         "color": get_esri_color(layer_name),
-                        "defaultVisible": current_user is None,
+                        "defaultVisible": False,
                         "opacity": 0.75,
                         "attributeLabels": {},
                         "demoData": { "type": "FeatureCollection", "features": [] }
